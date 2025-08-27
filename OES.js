@@ -15,21 +15,7 @@ inp.on("line", (data) => {
 });
 
 inp.on("close", () => {
-  // function between(arr){
-  //   let N = Number(arr[0]);
-  //   let split = arr[1].split(" ")
-  //   let L= Number(split[0])
-  //   let R= Number(split[1]);
-  //   if(L<=N && N<=R){
-  //     console.log("yes")
-  //   }else console.log("no")
-  // }
-  // between(userInput)
-  function  between(arr){
-    let N = arr[0];
-    let[L , R] = arr[1].split(" ").map(Number)
-    console.log((L<N && N<R)?"yes":"no")
-  }
-  between(userInput) 
-
-});
+  let n = Number(userInput[0])
+  let num = Number.isInteger(n)?n+1:Math.ceil(n)
+  console.log(num)
+// });Rate 4/5 nearest greater num
