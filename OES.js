@@ -15,27 +15,21 @@ inp.on("line", (data) => {
 });
 
 inp.on("close", () => {
-  function power2(arr){
-    let str = arr[0].split("")
-    let count=0;
-    // console.log(str)
-    for(let i = 0;i<str.length;i++){
-      let letter = str[i]
-      if(letter==="a" || letter==="e"||letter==="i"||letter==="o"||letter==="u"){
-        // console.log("yes") 
-        count++;
-        break        
-      }else {
-        // console.log("no")
-      }
-    }
-    if(count){
-      console.log("yes")
-    }
-    else{
-      console.log("no")
-    }
+  // function between(arr){
+  //   let N = Number(arr[0]);
+  //   let split = arr[1].split(" ")
+  //   let L= Number(split[0])
+  //   let R= Number(split[1]);
+  //   if(L<=N && N<=R){
+  //     console.log("yes")
+  //   }else console.log("no")
+  // }
+  // between(userInput)
+  function  between(arr){
+    let N = arr[0];
+    let[L , R] = arr[1].split(" ").map(Number)
+    console.log((L<N && N<R)?"yes":"no")
   }
-  power2(userInput)
+  between(userInput) 
 
 });
