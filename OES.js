@@ -14,13 +14,11 @@ inp.on("line", (data) => {
 });
 
 inp.on("close", () => {
-  let sum,N,M;
-  const newArr = userInput[0].split(" ")
- 
-    N = Number(newArr[0]);
-    M = Number(newArr[1]);
-    sum = N+M;
-    sum%2 === 0 ? console.log("even"):console.log("odd")
+  function prime(arr){
+    let N = arr[0]
+    if(N%2===0 || N%3===0 || N%5===0 ||N%7===0 || N%9===0){
+      return 1
+    }else return 0
+   }prime(userInput)?console.log("no"):console.log("yes")
   
-   
 });
