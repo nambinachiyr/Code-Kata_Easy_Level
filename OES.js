@@ -15,19 +15,20 @@ inp.on("line", (data) => {
 });
 
 inp.on("close", () => {
- function strMid(arr){
-  let str = arr[0].split("")
-  let length  = str.length/2
-  if(Number.isInteger(length)){
-    str[length-1] = "*";
-    str[length] = "*"
-  }else 
-  {
-    let float = Math.floor(length)
-   str[float] = "*" 
-  } 
-  console.log(str.join(""))
+ function factor(arr){
+  let num = Number(arr[0])
+  // let compositeNum = 0 find composite num
+  let factorNum = [];
+  // for(let i = 2;i<=num;i++)
+  for(let i = 1;i<=num;i++){
+    if(num%i===0){
+      // compositeNum = compositeNum+1;
+     factorNum.push(i)
+    }
+  }
+  // return  compositeNum>2?"yes":"no"
+  return factorNum.join(" ")
  }
- strMid(userInput)
+console.log( factor(userInput))
 })
 // ;Rate 4/5 nearest greater num
