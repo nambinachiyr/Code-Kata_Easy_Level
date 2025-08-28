@@ -16,18 +16,16 @@ inp.on("line", (data) => {
 });
 
 inp.on("close", () => {
- function perfectSquare(arr){
-  let num = (arr[0].split(" "))
-  let firstSquare = Number(num[0]);
-  let secondSquare = Number(num[1]);
-  let product = firstSquare*secondSquare;
-  let sqrt = Math.round(Math.sqrt(product))
-  // Number.isInteger(sqrt)?console.log(sqrt*sqrt):console.log(sqrt*sqrt)
-  // console.log(sqrt)
-  // console.log(firstSquare*secondSquare)
-  return (sqrt*sqrt===product?console.log("yes"):console.log("no"));
-  // console.log(result)
+ function oddNum(arr){
+  let num = arr[0].split("")
+  let odds = []
+  for(let i = 0;i<num.length;i++){
+    if(num[i]%2!==0){
+      odds.push(num[i])
+    }
+  }
+  odds.length>0?console.log(odds.join(" ")):console.log("-1")
  }
-perfectSquare(userInput)
+oddNum(userInput)
 })
 // ;Rate 4/5 nearest greater num
