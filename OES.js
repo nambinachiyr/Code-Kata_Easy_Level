@@ -16,18 +16,8 @@ inp.on("line", (data) => {
 
 inp.on("close", () => {
  function factor(arr){
-  let num = Number(arr[0])
-  // let compositeNum = 0 find composite num
-  let factorNum = [];
-  // for(let i = 2;i<=num;i++)
-  for(let i = 1;i<=num;i++){
-    if(num%i===0){
-      // compositeNum = compositeNum+1;
-     factorNum.push(i)
-    }
-  }
-  // return  compositeNum>2?"yes":"no"
-  return factorNum.join(" ")
+  let num = Number(arr[0])%13==0?"yes":"no"
+  return num  
  }
 console.log( factor(userInput))
 })
