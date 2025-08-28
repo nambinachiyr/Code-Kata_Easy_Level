@@ -3,6 +3,7 @@
 
 const { constants } = require("buffer");
 const readline = require("readline");
+const { isNumberObject } = require("util/types");
 
 const inp = readline.createInterface({
   input: process.stdin
@@ -15,10 +16,18 @@ inp.on("line", (data) => {
 });
 
 inp.on("close", () => {
- function factor(arr){
-  let num = Number(arr[0])%13==0?"yes":"no"
-  return num  
+ function perfectSquare(arr){
+  let num = (arr[0].split(" "))
+  let firstSquare = Number(num[0]);
+  let secondSquare = Number(num[1]);
+  let product = firstSquare*secondSquare;
+  let sqrt = Math.round(Math.sqrt(product))
+  // Number.isInteger(sqrt)?console.log(sqrt*sqrt):console.log(sqrt*sqrt)
+  // console.log(sqrt)
+  // console.log(firstSquare*secondSquare)
+  return (sqrt*sqrt===product?console.log("yes"):console.log("no"));
+  // console.log(result)
  }
-console.log( factor(userInput))
+perfectSquare(userInput)
 })
 // ;Rate 4/5 nearest greater num
