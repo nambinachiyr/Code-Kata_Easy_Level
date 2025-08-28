@@ -16,13 +16,22 @@ inp.on("line", (data) => {
 });
 
 inp.on("close", () => {
- function area_farm(arr){
-  let split = arr[0].split(" ")
-  let L = split[0]
-  let B = split[1]
-  let area = (Math.floor(((L*B)*100000))/100000).toFixed(5)
-  console.log(area)
+ function odd_even_string(arr){
+   let str = arr[0].split("")
+   let odd = [];
+   let even = []
+   for(let i = 0;i<str.length;i++){
+    if(i%2===0){
+      odd.push(str[i])
+    }
+    else{
+      even.push(str[i])
+    }
+   }
+   let join_odd = odd.join("")
+   let join_even = even.join("")
+   console.log(join_odd, join_even)
  }
-area_farm(userInput)
+odd_even_string(userInput)
 })
 // ;Rate 4/5 nearest greater num
