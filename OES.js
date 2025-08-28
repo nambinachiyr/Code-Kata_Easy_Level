@@ -16,34 +16,31 @@ inp.on("line", (data) => {
 });
 /*
 Problem Statement:
-Given 2 numbers N,M find the GCD of N and M.If it cannot be found for given number(s) then print -1
+Write a program to calculate the total surface area and volume of cuboid.
+Input Description:
+Input contains three space separated positive integers L, B, H denoting the length, width and height of cuboid respectively.
+Output Description:
+The output should be the total surface area and volume of the cuboid, separated by a space.
 Sample Input:
-10 5
+1 2 3
 Sample Output:
-5
+22 6
 */
 
 inp.on("close", () => {
- function GCD(arr){
-   const split = arr[0].split(" ")
-   const N1 = Number(split[0])
-   const M1 = Number(split[1])
-   let greater = -1;
-   let N = N1<0?-1*N1:N1 
-   let M = M1<0?-1*M1:M1 
-  //  console.log(N,M)
-   N>M?greater=M:greater = N
-  //  console.log(greater)
-   let greatest_Num = -1
-   for(let i=1;i<=greater;i++){
-     
-    if(N%i===0&&M%i===0){
-      // multi==i?multi = i:multi = 0
-      greatest_Num = i
-    }
-    else greatest_Num
-  }console.log(greatest_Num)
+  let arr1 = userInput[0].split(" ")
+   let l = arr1[0]
+   let b = arr1[1]
+   let h = arr1[2]
+ function surface_Area(l,b,h){
+   let area = 2*(l*b+b*h+h*l)
+   return (area)   
  }
-GCD(userInput)
+ function volume_of_cuboid(l,b,h){
+   let volume = l*b*h
+   return (volume)
+ }
+
+console.log(surface_Area(l,b,h), volume_of_cuboid(l,b,h))
 })
 // ;Rate 4/5 nearest greater num
