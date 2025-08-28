@@ -16,16 +16,15 @@ inp.on("line", (data) => {
 });
 
 inp.on("close", () => {
- function oddNum(arr){
-  let num = arr[0].split("")
-  let odds = []
-  for(let i = 0;i<num.length;i++){
-    if(num[i]%2!==0){
-      odds.push(num[i])
-    }
-  }
-  odds.length>0?console.log(odds.join(" ")):console.log("-1")
+ function differnce(arr){
+  let teams = arr[0].split(" ")
+  let kabali_Num = Number(teams[0])
+  let opponent_Num = Number(teams[1])
+  let differnce_of_teams = kabali_Num-opponent_Num
+  let result;
+  differnce_of_teams<0?result=-1*differnce_of_teams:result=differnce_of_teams;
+  console.log(result)
  }
-oddNum(userInput)
+differnce(userInput)
 })
 // ;Rate 4/5 nearest greater num
