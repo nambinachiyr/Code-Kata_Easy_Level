@@ -16,15 +16,13 @@ inp.on("line", (data) => {
 });
 
 inp.on("close", () => {
- function differnce(arr){
-  let teams = arr[0].split(" ")
-  let kabali_Num = Number(teams[0])
-  let opponent_Num = Number(teams[1])
-  let differnce_of_teams = kabali_Num-opponent_Num
-  let result;
-  differnce_of_teams<0?result=-1*differnce_of_teams:result=differnce_of_teams;
-  console.log(result)
+ function area_farm(arr){
+  let split = arr[0].split(" ")
+  let L = split[0]
+  let B = split[1]
+  let area = (Math.floor(((L*B)*100000))/100000).toFixed(5)
+  console.log(area)
  }
-differnce(userInput)
+area_farm(userInput)
 })
 // ;Rate 4/5 nearest greater num
