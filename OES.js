@@ -17,40 +17,25 @@ inp.on("line", (data) => {
 });
 /*
 Problem Statement:
-Given a number N followed by N elements which can be arranged in ascending order with maximum one element update. Print the index of the element which has to be changed else print '-1' if the updation not neccassary or if the given input needs more than one update to form ascending order.
+Given 3 numbers a,b,c print a*b mod c.
 Sample Input:
-7
-1 2 4 3 5 6 8
-5
-1 10 3 14 5
+5 3 2
 Sample Output:
-2
--1
+1
 */
 
 inp.on("close", () => {
-  let length = Number(userInput[0])
-  let elements = userInput[1].split(" ")
-  let newEle = elements.map((ele,i)=>{
-     return Number(ele)
-  })
-  let count = 0;
-  let sort_index = -1
-  let index = 0;
-  let result = "";
-  if(length===newEle.length){
-    for(let i = 0;i<length-1;i++){
-      if(newEle[i]<newEle[i+1]){
-      }else{
-        count++;
-        index = i
-      }
-       result = count==1?index:sort_index
+  let user = userInput[0].split(" ")
+  let a = Number(user[0])
+  let b = Number(user[1])
+  let c = Number(user[2])
+  function mod(a,b,c){
+    let ab = a*b;
+    if(c!==0){
+      let remains = ab%c
+      console.log(remains)
     }
   }
-  // console.log(sort_index)
-  // console.log(count)
-  // console.log(index)
-  console.log(result)
+  mod(a,b,c)
 })
 // ;Rate 4/5 nearest greater num
