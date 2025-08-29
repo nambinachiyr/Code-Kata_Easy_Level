@@ -17,25 +17,22 @@ inp.on("line", (data) => {
 });
 /*
 Problem Statement:
-Given a number N, print the product of the digits.
-Input Description:
-Input Size : N <= 100000000000
+Given 3 numbers A,B,C find the sum of Arithmetic Series with a=A, d=B and n=C
 Sample Input:
-2143
+1 1 2
 Sample Output:
-24
+3
 */
 
 inp.on("close", () => {
-  let user = userInput[0].split("")
-  function product(user){
-    let sum = 1
-    for(let i = 0; i<user.length; i++){
-     sum = Number(user[i])*sum;
-      // console.log(sum)
-    }
+  let user = userInput[0].split(" ")
+  function arithmeticSum(user){
+    let a = Number(user[0])
+    let d = Number(user[1])
+    let n = Number(user[2])
+    let sum = n/2*(2*a+(n-1)*d)
     console.log(sum)
   }
-  product(user)
+  arithmeticSum(user)
 })
 // ;Rate 4/5 nearest greater num
