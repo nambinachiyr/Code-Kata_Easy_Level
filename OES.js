@@ -44,15 +44,15 @@ inp.on("close", () => {
     // count?console.log("yes"):console.log("no")
 
     // 2.Way
-     let isthere = false;
+     let isthere = -1;
      for(let i = 0;i<K.length;i++){
       if(N.includes(K[i])){
-        isthere = true;
+        isthere = 0;
         // console.log(N,K[i])
         break
       }
      }
-     isthere?console.log("yes"):console.log("no")
+     isthere?console.log(isthere):console.log(isthere)
     
 })
 // ;Rate 4/5 nearest greater num
