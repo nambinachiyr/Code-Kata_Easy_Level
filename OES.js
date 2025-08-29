@@ -17,22 +17,32 @@ inp.on("line", (data) => {
 });
 /*
 Problem Statement:
-Given 3 numbers A,B,C find the sum of Arithmetic Series with a=A, d=B and n=C
+Find the minimum among 10 numbers.
+Input Description:
+The input consists of 10 space-separated integers.
+Output Description:
+The output is the minimum of the given 10 integers.
 Sample Input:
-1 1 2
+5 4 3 2 1 7 6 10 8 9
 Sample Output:
-3
+1
 */
 
 inp.on("close", () => {
-  let user = userInput[0].split(" ")
-  function arithmeticSum(user){
-    let a = Number(user[0])
-    let d = Number(user[1])
-    let n = Number(user[2])
-    let sum = n/2*(2*a+(n-1)*d)
-    console.log(sum)
+ let arr = userInput[0].split(" ")
+ let temp = 0;
+ let sortArr = []
+ for(let i = 0;i<arr.length;i++){
+  let maxNum = Number(arr[i+1])
+  let minNum = Number(arr[i])
+  if(maxNum<minNum||maxNum===minNum){
+    temp = maxNum
+    sortArr.push(temp)
   }
-  arithmeticSum(user)
+}
+console.log(sortArr)
+let sortedArr = sortArr.sort()
+console.log(sortedArr[0])
+ 
 })
 // ;Rate 4/5 nearest greater num
