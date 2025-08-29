@@ -17,32 +17,42 @@ inp.on("line", (data) => {
 });
 /*
 Problem Statement:
-Find the minimum among 10 numbers.
+Given 2 numbers N and K followed by elements of N .Print 'yes' if K exists else print 'no'.
 Input Description:
-The input consists of 10 space-separated integers.
+The input consists of two integers, N and K, followed by N integers.
 Output Description:
-The output is the minimum of the given 10 integers.
+The output is 'yes' if K is found among the N integers, otherwise 'no'.
 Sample Input:
-5 4 3 2 1 7 6 10 8 9
+4 2
+1 2 3 3
 Sample Output:
-1
+yes
 */
 
 inp.on("close", () => {
- let arr = userInput[0].split(" ")
- let temp = 0;
- let sortArr = []
- for(let i = 0;i<arr.length;i++){
-  let maxNum = Number(arr[i+1])
-  let minNum = Number(arr[i])
-  if(maxNum<minNum||maxNum===minNum){
-    temp = maxNum
-    sortArr.push(temp)
-  }
-}
-console.log(sortArr)
-let sortedArr = sortArr.sort()
-console.log(sortedArr[0])
- 
+    let K = userInput[0].split(" ").map(Number)
+    let N = userInput[1].split(" ").map(Number)
+    // let count = false
+    // for(let i = 0; i<K.length; i++){
+    //   for(let j = 0; j<N.length; j++){
+    //     if(Number(K[i])===Number(N[j])){
+    //       count = true
+    //       break
+    //     }
+    //   }
+    // }
+    // count?console.log("yes"):console.log("no")
+
+    // 2.Way
+     let isthere = false;
+     for(let i = 0;i<K.length;i++){
+      if(N.includes(K[i])){
+        isthere = true;
+        // console.log(N,K[i])
+        break
+      }
+     }
+     isthere?console.log("yes"):console.log("no")
+    
 })
 // ;Rate 4/5 nearest greater num
