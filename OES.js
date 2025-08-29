@@ -17,25 +17,25 @@ inp.on("line", (data) => {
 });
 /*
 Problem Statement:
-Given 3 numbers a,b,c print a*b mod c.
+Given a number N, print the product of the digits.
+Input Description:
+Input Size : N <= 100000000000
 Sample Input:
-5 3 2
+2143
 Sample Output:
-1
+24
 */
 
 inp.on("close", () => {
-  let user = userInput[0].split(" ")
-  let a = Number(user[0])
-  let b = Number(user[1])
-  let c = Number(user[2])
-  function mod(a,b,c){
-    let ab = a*b;
-    if(c!==0){
-      let remains = ab%c
-      console.log(remains)
+  let user = userInput[0].split("")
+  function product(user){
+    let sum = 1
+    for(let i = 0; i<user.length; i++){
+     sum = Number(user[i])*sum;
+      // console.log(sum)
     }
+    console.log(sum)
   }
-  mod(a,b,c)
+  product(user)
 })
 // ;Rate 4/5 nearest greater num
