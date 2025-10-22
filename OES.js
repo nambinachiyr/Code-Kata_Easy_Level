@@ -1,26 +1,25 @@
 /*
-58. Merge and Sort Two Arrays
+57. Max Length Increasing Subarray
 
 Problem Statement:
-Given 2 array of size N and M.merge them in sorted order and print it.
+Given an array of N elements,find the maximum length of increasing continuous sub-array.If it is not found print '-1'.
 
 
 Input Description:
-The input consists of two integers N and M representing the sizes of the arrays, followed by N integers for the first array and M integers for the second array. The constraints are |N||M| <= 100000.
+Input Size : N <= 100000
 
 
 Output Description:
-The output is the merged sorted array.
+The maximum length of the increasing continuous sub-array, or '-1' if not found.
 
 
 Sample Input:
-5 4
-1 2 3 4 5
-1 2 3 4
+5
+1 2 3 2 1
 
 
 Sample Output:
-1 1 2 2 3 3 4 4 5
+3
 */
 
 
@@ -36,18 +35,28 @@ inp.on("line", (data) => {
   userInput.push(data.trim());
 });
 
-const difference = (arr1,arr2)=>{
-  // let newarr = []
-  for(let i = 0;i<arr2.length;i++){
-        arr1.push(arr2[i])
+const difference = (arr1)=>{
+  let maxLen = 1
+  let curLen = 1
+  for(let i = 1;i<arr1.length;i++){
+    if(arr1[i]>arr1[i-1]){
+      curLen++
+    }else{
+       if(maxLen<curLen){
+        maxLen = curLen
+      }curLen = 1
+    }
   }
-  const newarr = arr1.sort((a,b)=>a-b)
-process.stdout.write(newarr.join(' '))
- 
+  if(maxLen<curLen){
+    maxLen = curLen
+  }
+  if(maxLen<=1) maxLen = -1;
+  console.log(maxLen)
+
 }
 
 inp.on("close", () => {
   const arr1 = userInput[1].split(' ').map(num=>Number(num))
-  const arr2 = userInput[2].split(' ').map(num=>Number(num))
-  difference(arr1,arr2)
+  
+  difference(arr1)
 });
