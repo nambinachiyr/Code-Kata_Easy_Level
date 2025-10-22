@@ -1,10 +1,25 @@
+/*
+60. Minimum Difference in Array
+
+Problem Statement:
+Given an array, find the absolute minimum difference between any two elements in the array.
 
 
+Input Description:
+Input Size : N <= 1000000(complexity O(n) or O(nlogn))
 
-const { constants } = require("buffer");
-const { count } = require("console");
+
+Sample Input:
+5
+0 2 3 4 5
+
+
+Sample Output:
+1
+*/
+
+
 const readline = require("readline");
-const { isNumberObject } = require("util/types");
 
 const inp = readline.createInterface({
   input: process.stdin
@@ -15,45 +30,29 @@ const userInput = [];
 inp.on("line", (data) => {
   userInput.push(data);
 });
-/*
-33.
-Problem Statement:
-Given a number N followed by N elements, find the second smallest element.If it cannot be found then print -1
-Input Description:
-Input Size : N <= 100000 (ie do it in O(log n) time complexity)
-Sample Input:
-5
-1 2 3 4 5
-Sample Output:
-2
-*/
+
+const difference = (arr)=>{
+  // console.log(arr)
+  // let firstMin = arr[arr.length-1]-arr[arr.length-2]
+  // console.log(firstMin)
+  let min = []
+  // let dif = 0
+  for(let i = 0;i<arr.length;i++){
+    
+     for(let j=i+1;j<arr.length;j++){
+      
+      let Min = arr[i]-arr[j]
+      let firstMin = Min<0?Min*-1:Min
+      let temMin = firstMin
+      min.push(temMin)
+      
+     }
+  }const result =  min.sort((a,b)=>a-b)[0]
+  // console.log(min)
+  console.log(result)
+}
 
 inp.on("close", () => {
-    let length = Number(userInput[0])
-    let num = userInput[1].split(" ").map(Number)
-    // let min = num[0]
-    // let max = num[1]
-    // // Thorugh Looping -> Method one
-    // for(let i =0; i<length; i++){ 
-    //   // console.log(i)     
-    //   if(num[i]<min){
-    //     max = min
-    //     min = num[i]
-    //   }
-    //   else if(min<num[i] && max>num[i]){
-    //     max = num[i]        
-    //   }      
-    // }max!==min?console.log(max):console.log(-1)
-    //got 4/5
-    // let sort = num.sort()
-    // console.log(sort[1])   
-   let unique = [...new Set(num)]
-   if(unique.length<2){
-    console.log(-1)
-   }
-   else{
-    unique.sort((a,b)=>a-b)
-    console.log(unique[1])
-   }
-  //  nice perfect
-})
+  const arr = userInput[1].split(' ').map(num=>Number(num))
+  difference(arr.sort((a,b)=>a-b))
+});
