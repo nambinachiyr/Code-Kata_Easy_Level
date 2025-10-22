@@ -1,21 +1,26 @@
 /*
-60. Minimum Difference in Array
+58. Merge and Sort Two Arrays
 
 Problem Statement:
-Given an array, find the absolute minimum difference between any two elements in the array.
+Given 2 array of size N and M.merge them in sorted order and print it.
 
 
 Input Description:
-Input Size : N <= 1000000(complexity O(n) or O(nlogn))
+The input consists of two integers N and M representing the sizes of the arrays, followed by N integers for the first array and M integers for the second array. The constraints are |N||M| <= 100000.
+
+
+Output Description:
+The output is the merged sorted array.
 
 
 Sample Input:
-5
-0 2 3 4 5
+5 4
+1 2 3 4 5
+1 2 3 4
 
 
 Sample Output:
-1
+1 1 2 2 3 3 4 4 5
 */
 
 
@@ -28,31 +33,21 @@ const inp = readline.createInterface({
 const userInput = [];
 
 inp.on("line", (data) => {
-  userInput.push(data);
+  userInput.push(data.trim());
 });
 
-const difference = (arr)=>{
-  // console.log(arr)
-  // let firstMin = arr[arr.length-1]-arr[arr.length-2]
-  // console.log(firstMin)
-  let min = []
-  // let dif = 0
-  for(let i = 0;i<arr.length;i++){
-    
-     for(let j=i+1;j<arr.length;j++){
-      
-      let Min = arr[i]-arr[j]
-      let firstMin = Min<0?Min*-1:Min
-      let temMin = firstMin
-      min.push(temMin)
-      
-     }
-  }const result =  min.sort((a,b)=>a-b)[0]
-  // console.log(min)
-  console.log(result)
+const difference = (arr1,arr2)=>{
+  // let newarr = []
+  for(let i = 0;i<arr2.length;i++){
+        arr1.push(arr2[i])
+  }
+  const newarr = arr1.sort((a,b)=>a-b)
+process.stdout.write(newarr.join(' '))
+ 
 }
 
 inp.on("close", () => {
-  const arr = userInput[1].split(' ').map(num=>Number(num))
-  difference(arr.sort((a,b)=>a-b))
+  const arr1 = userInput[1].split(' ').map(num=>Number(num))
+  const arr2 = userInput[2].split(' ').map(num=>Number(num))
+  difference(arr1,arr2)
 });
