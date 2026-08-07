@@ -1,20 +1,29 @@
 /*
-36. Case-Sensitive String Equality
+39. Count String Occurrences
 
-Geekoin40
-Medium
+Geekoin30
+Easy
 Topics
+Solved!
 Problem Statement:
-Given 2 strings S1 and s2, check whether they are case senitively equal without using any predefined function(case sensitive).If they are not same print 'no'
+Given a sentence and string S, find how many times S occurs in the given sentence.If S is not found in the sentence print -1
+
+
+Input Description:
+Input Size : |sentence| <= 1000000(complexity O(n)).
+
+
+Output Description:
+The output is the number of times S occurs in the given sentence, or -1 if S is not found.
 
 
 Sample Input:
-guvi guvi
+I enjoy doing codekata
+codekata
 
 
 Sample Output:
-yes
-
+1
 
 
 */
@@ -32,28 +41,14 @@ inp.on("line", (data) => {
   userInput.push(data.trim());
 });
 
-const result = (str1,str2)=>{
-  let count = 0
-for(let i of str1){
-  for(let j of str2){
-    if(i===j){
-      count = count + 1
-    }
-
-  }
-}
-str1.length===str2.length&&count===str1.length?console.log("yes"):console.log("no")
-  
-// console.log(str1,str2)
-
-}
-
 inp.on("close", () => {
-  // console.log(userInput)
-  const arr = userInput[0].split(' ')
- const str1 = arr[0].split('')
- const str2 = arr[1].split('')
+  // console.log(userInput) //[ 'code code code', 'learn' ]
+  const sentance = userInput[0].split(' ')
+   const str = userInput[1].split(' ')
+  // console.log(sentance,str)   //[ 'code', 'code', 'code' ] [ 'learn' ]
+  const filtered = sentance.filter(s=>s===str[0])
+  // console.log(filtered)  //[]
+  filtered.length!==0?console.log(filtered.length):console.log(-1)  //-1
+
   
-  
-  result(str1,str2)
 });
