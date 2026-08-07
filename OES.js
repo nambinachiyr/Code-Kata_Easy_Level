@@ -1,23 +1,19 @@
 /*
+36. Case-Sensitive String Equality
+
+Geekoin40
+Medium
+Topics
 Problem Statement:
-Given 2 numbers N and K followed by N elements, find the Kth smallest element. If the element cannot be found then print -1
-
-
-Input Description:
-The input consists of two numbers N and K, followed by N elements. N <= 100000.
-
-
-Output Description:
-The output is the Kth smallest element. If the element cannot be found, print -1.
+Given 2 strings S1 and s2, check whether they are case senitively equal without using any predefined function(case sensitive).If they are not same print 'no'
 
 
 Sample Input:
-5 2
-1 1 2 4 5
+guvi guvi
 
 
 Sample Output:
-2
+yes
 
 
 
@@ -36,30 +32,28 @@ inp.on("line", (data) => {
   userInput.push(data.trim());
 });
 
-const result = (arr1,K)=>{
-//  k=2 in arr 1 1 1 1 5 => 1,5 so -> -1
-/*
-for(let i of arr1){
+const result = (str1,str2)=>{
+  let count = 0
+for(let i of str1){
+  for(let j of str2){
+    if(i===j){
+      count = count + 1
+    }
 
-  if(!seqNum.includes(i)){
-    seqNum.push(i)
-  }  
+  }
 }
- //console.log(seqNum) //[ 1, 2, 3, 4, 5 ] |  [ 1, 5 ]
-seqNum[K-1]?console.log(seqNum[K-1]):console.log(-1) //5 | -1
-*/
-const uniqueNum = [...new Set(arr1)]
-// const uniqueNum = arr1.filter((item,index)=>arr1.indexOf(item)===index)
-// console.log(uniqueNum.length,K)
-uniqueNum.length>=K?console.log(uniqueNum[K-1]):console.log(-1)
+str1.length===str2.length&&count===str1.length?console.log("yes"):console.log("no")
+  
+// console.log(str1,str2)
 
 }
 
 inp.on("close", () => {
-  const arr1 = userInput[1].split(' ').map(num=>Number(num))
-  const position = userInput[0].split(' ').map(num=>Number(num))
-  const K = position[1]
+  // console.log(userInput)
+  const arr = userInput[0].split(' ')
+ const str1 = arr[0].split('')
+ const str2 = arr[1].split('')
   
   
-  result(arr1,K)
+  result(str1,str2)
 });
