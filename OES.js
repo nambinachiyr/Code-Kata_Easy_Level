@@ -1,15 +1,19 @@
 /*
-37. First Occurrence of Character
+38. Character Count in String
 
 Geekoin50
 Medium
 Topics
 Problem Statement:
-Given a string 'S' and a character 'K', find at what position the character 'K' occurs for the first time in 'S'.(Assume the index of string starts at 1).If the character is not found in 'S' then print -1
+Given a string 'S' and a character 'K', find how many times 'K' got repeated in 'S'.If 'K' is not found in 'S' print -1
 
 
 Input Description:
-Input Size : |s| <= 100000
+The input consists of a string 'S' and a character 'K'. The size of string 'S' is at most 100000.
+
+
+Output Description:
+The output is the count of character 'K' in string 'S'. If 'K' is not found, print -1.
 
 
 Sample Input:
@@ -17,7 +21,7 @@ codekata a
 
 
 Sample Output:
-6
+2
 
 */
 
@@ -35,14 +39,14 @@ inp.on("line", (data) => {
 });
 
 function result(string,letter){
+  let count = 0;
     for(let s in string){
       // console.log(letter)
       if(string[s]===letter){
-        return console.log(Number(s)+1)
-        break;
+        count = count+1
       }
     }
-    console.log(-1)
+    count!=0?console.log(count):console.log(-1)
 }
 
 inp.on("close", () => {
