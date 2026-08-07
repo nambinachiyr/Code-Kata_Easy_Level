@@ -1,25 +1,25 @@
 /*
-55. Counting Distinct Pairs
-
 Problem Statement:
-Given an array A of N elements, count the number of distinct pairs (i,j) such that i < j and A[i] < A[j].If no such pairs can be made print -1
+Given 2 numbers N and K followed by N elements, find the Kth smallest element. If the element cannot be found then print -1
 
 
 Input Description:
-The input consists of an integer N, representing the number of elements, followed by N space-separated integers representing the elements of array A.
+The input consists of two numbers N and K, followed by N elements. N <= 100000.
 
 
 Output Description:
-The output is a single integer representing the count of distinct pairs (i,j) such that i < j and A[i] < A[j]. If no such pairs can be made, print -1.
+The output is the Kth smallest element. If the element cannot be found, print -1.
 
 
 Sample Input:
-5
-1 2 3 4 5
+5 2
+1 1 2 4 5
 
 
 Sample Output:
-10
+2
+
+
 
 */
 
@@ -36,23 +36,30 @@ inp.on("line", (data) => {
   userInput.push(data.trim());
 });
 
-const difference = (arr1)=>{
-  let count = []
-  for(let i = 0;i<arr1.length;i++){
-    for(let j = i+1;j<arr1.length;j++){
-      if(arr1[i]<arr1[j]){
-        let newArr = [arr1[i],arr1[j]]
-        count.push(newArr)
-      }
-    }
+const result = (arr1,K)=>{
+//  k=2 in arr 1 1 1 1 5 => 1,5 so -> -1
+/*
+for(let i of arr1){
 
-  }if(count.length===0) return console.log(-1);
-  const setArr = new Set(count.map(pair=>pair.sort((a,b)=>a-b).join(',')))
-  console.log(setArr.size)
+  if(!seqNum.includes(i)){
+    seqNum.push(i)
+  }  
+}
+ //console.log(seqNum) //[ 1, 2, 3, 4, 5 ] |  [ 1, 5 ]
+seqNum[K-1]?console.log(seqNum[K-1]):console.log(-1) //5 | -1
+*/
+const uniqueNum = [...new Set(arr1)]
+// const uniqueNum = arr1.filter((item,index)=>arr1.indexOf(item)===index)
+// console.log(uniqueNum.length,K)
+uniqueNum.length>=K?console.log(uniqueNum[K-1]):console.log(-1)
+
 }
 
 inp.on("close", () => {
   const arr1 = userInput[1].split(' ').map(num=>Number(num))
+  const position = userInput[0].split(' ').map(num=>Number(num))
+  const K = position[1]
   
-  difference(arr1)
+  
+  result(arr1,K)
 });
