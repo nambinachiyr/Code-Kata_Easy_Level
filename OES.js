@@ -1,26 +1,23 @@
 /*
-44. Common Elements in Sorted Arrays
+45. Sorted Elements Less Than K
 
-Geekoin30
-Easy
+Geekoin40
+Medium
 Topics
 Problem Statement:
-Given a number N and 2 arrays A and B of sorted order of size N, print the common elements.If it is not found print -1.
+Given 2 numbers N,K followed by N elements print all the elements lesser than K in sorted order.If the elements could not be found print -1
 
 
 Input Description:
-Input Size : 1 <= N <= 100000
+Input Size : N <= 100000
 
 
 Sample Input:
-5
-1 1 1 1 1
-1 2 3 4 5
+5 3 1 2 1 4 1
 
 
 Sample Output:
-1
-
+1 1 1 2
 */
 
 
@@ -36,29 +33,21 @@ inp.on("line", (data) => {
   userInput.push(data.trim());
 });
 
-function result(arr1,arr2){
-  let sameNum = []
- for(let i of arr1){
-  for(let j of arr2){
-    if(i===j){
-      if(!sameNum.includes(i)){
-        sameNum.push(i)
-      }
-    }
-  }
- }
+function result(arr,K){
+  let sameNum = arr.filter(n=>n<K)
+  // console.log(sameNum)
+ 
 
 // console.log(sameNum)
-sameNum.length===0?console.log(-1):console.log(sameNum.join(' '))
+sameNum.length===0?console.log(-1):console.log(sameNum.sort().join(' '))
 }
 
 inp.on("close", () => {
   // console.log(userInput) 
-  const N = Number(userInput[0])
-  const arr1 = userInput[1].split(' ').map(n=>Number(n))
-  const arr2 = userInput[2].split(' ').map(n=>Number(n))
-  // console.log(arr1,arr2)
-  result(arr1,arr2)
+  const [N, K] = userInput[0].split(' ').map(n=>Number(n))
+  const arr = userInput[1].split(' ').map(n=>Number(n))
+
+  result(arr,K)
  
   
 });
