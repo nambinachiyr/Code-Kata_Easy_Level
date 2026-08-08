@@ -1,31 +1,25 @@
 /*
-43. Minimum Odd Quotient Factor
+44. Common Elements in Sorted Arrays
 
-Geekoin40
-Medium
+Geekoin30
+Easy
 Topics
 Problem Statement:
-Given number N, find the minimum factor which yeilds odd number as the quotient.
+Given a number N and 2 arrays A and B of sorted order of size N, print the common elements.If it is not found print -1.
 
 
 Input Description:
-The input consists of a single integer N, where N <= 100000.
-
-
-Output Description:
-The output is the minimum factor of N that yields an odd number as the quotient.
+Input Size : 1 <= N <= 100000
 
 
 Sample Input:
-9
+5
+1 1 1 1 1
+1 2 3 4 5
 
 
 Sample Output:
 1
-
-
-
-
 
 */
 
@@ -42,28 +36,29 @@ inp.on("line", (data) => {
   userInput.push(data.trim());
 });
 
-function result(N){
-  const factors = []
-  for(let i = 1 ;i<=N;i++){
-    if(N % i === 0){
-       factors.push(i)
+function result(arr1,arr2){
+  let sameNum = []
+ for(let i of arr1){
+  for(let j of arr2){
+    if(i===j){
+      if(!sameNum.includes(i)){
+        sameNum.push(i)
+      }
     }
   }
-  // console.log(factors)
-  const result = factors.filter(f=>{
-    let que = N/f
-    if(que %2 !==0){
-      return f
-    }
-  })
-  // console.log(result)
-  result.length===0?console.log(-1):console.log(result[0])
+ }
+
+// console.log(sameNum)
+sameNum.length===0?console.log(-1):console.log(sameNum.join(' '))
 }
 
 inp.on("close", () => {
   // console.log(userInput) 
-  let N = Number(userInput[0])
-  result(N)
+  const N = Number(userInput[0])
+  const arr1 = userInput[1].split(' ').map(n=>Number(n))
+  const arr2 = userInput[2].split(' ').map(n=>Number(n))
+  // console.log(arr1,arr2)
+  result(arr1,arr2)
  
   
 });
