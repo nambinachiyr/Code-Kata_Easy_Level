@@ -1,23 +1,29 @@
 /*
-41. Common Characters in Strings
+42. Pair Sum Check
 
-Geekoin40
+Geekoin50
 Medium
 Topics
 Problem Statement:
-Given 2 strings,check whether they have any common characters.If found print 'yes' else print 'no'.
+Given 2 numbers N,X and an array of N elements, check if there exists any 2 numbers in the array with sum equal to X.If found print 'yes' otherwise print 'no'
 
 
 Input Description:
-Input Size : |s| <= 100000(O(n))
+The input consists of two numbers N and X, and an array of N elements. N and X are up to 100000.
+
+
+Output Description:
+Print 'yes' if two numbers with sum equal to X are found in the array, otherwise print 'no'.
 
 
 Sample Input:
-guvi guvigeeks
+4 4
+2 2 0 0
 
 
 Sample Output:
 yes
+
 
 
 */
@@ -35,35 +41,29 @@ inp.on("line", (data) => {
   userInput.push(data.trim());
 });
 
-function result(str1,str2){
-  let count = 0
-  for(let i=0;i<str1.length;i++){    
-    for(let j = 0;j<str2.length;j++){
-    if(str2[j]===str1[i]){
-        count = count + 1;
-       str2 = str2.slice(j+1,) //why slice is string concept so start with 1
-        if(count===str1.length){
-          break
-        }
-        break
-      }else{
-        count = 0
-        continue;
+function result(arr,X){
+  let count = false
+  for(let i=0;i<arr.length;i++){    
+    for(let j=i+1;j<arr.length;j++){
+      if(arr[i]+arr[j] === X){
+        // console.log(arr[i],'-',arr[j])
+        //  console.log("yes")
+         count = true
+         break;
       }
     }
-    if(count === str1.length){
-      break;
+    if(count){
+      break
     }
   }
-  
-  count===str1.length?console.log("yes"): console.log("no")
+  count ?console.log("yes"): console.log("no")
 }
 
 inp.on("close", () => {
-  // console.log(userInput) 
-  const arr = userInput[0].split(' ')
-  const str1 = arr[0].split('')
-  let str2 = arr[1].split('')
-  result(str1,str2)
+  console.log(userInput) 
+  const [N,X] = userInput[0].split(' ').map(Num=>Number(Num))
+  const arr = userInput[1].split(' ').map(Num=>Number(Num))
+  console.log(arr)
+  result(arr,X)
   
 });
