@@ -1,29 +1,23 @@
 /*
-40. Print till next zero
+41. Common Characters in Strings
 
 Geekoin40
 Medium
 Topics
 Problem Statement:
-Given a number N followed by N elements, if the number '0' occurs, print the proceeding numbers until the next '0' is encountered. If there are no balancing 0's, print -1.
+Given 2 strings,check whether they have any common characters.If found print 'yes' else print 'no'.
 
 
 Input Description:
-The input consists of an integer N, followed by N elements. N is constrained such that 1 < N <= 100000.
-
-
-Output Description:
-Print the numbers between the first two occurrences of '0'. If there are no two '0's, print -1.
+Input Size : |s| <= 100000(O(n))
 
 
 Sample Input:
-10
-1 1 1 0 1 0 1 1 0 1
+guvi guvigeeks
 
 
 Sample Output:
-1 1 1
-
+yes
 
 
 */
@@ -41,32 +35,35 @@ inp.on("line", (data) => {
   userInput.push(data.trim());
 });
 
-function result(arr){
-  let count = false
-  let numBetweenZero = []
-  for(let i=0;i<arr.length;i++){
-    if(arr[i]===0){
-      for(let j = i+1;j<arr.length;j++){
-        if(arr[j]!=0){
-          numBetweenZero.push(arr[j])
-        }else{
-          count = true;
-          break;
+function result(str1,str2){
+  let count = 0
+  for(let i=0;i<str1.length;i++){    
+    for(let j = 0;j<str2.length;j++){
+    if(str2[j]===str1[i]){
+        count = count + 1;
+       str2 = str2.slice(j+1,) //why slice is string concept so start with 1
+        if(count===str1.length){
+          break
         }
+        break
+      }else{
+        count = 0
+        continue;
       }
     }
-    if(count){
+    if(count === str1.length){
       break;
     }
   }
-  !count?console.log(-1): console.log(numBetweenZero.join(' '))
+  
+  count===str1.length?console.log("yes"): console.log("no")
 }
 
 inp.on("close", () => {
-  console.log(userInput) 
-  const arr = userInput[1].split(' ').map(n=>Number(n))
-  console.log(arr)
- 
-  result(arr)
+  // console.log(userInput) 
+  const arr = userInput[0].split(' ')
+  const str1 = arr[0].split('')
+  let str2 = arr[1].split('')
+  result(str1,str2)
   
 });
