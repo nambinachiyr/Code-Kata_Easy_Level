@@ -1,27 +1,30 @@
 /*
-38. Character Count in String
+40. Print till next zero
 
-Geekoin50
+Geekoin40
 Medium
 Topics
 Problem Statement:
-Given a string 'S' and a character 'K', find how many times 'K' got repeated in 'S'.If 'K' is not found in 'S' print -1
+Given a number N followed by N elements, if the number '0' occurs, print the proceeding numbers until the next '0' is encountered. If there are no balancing 0's, print -1.
 
 
 Input Description:
-The input consists of a string 'S' and a character 'K'. The size of string 'S' is at most 100000.
+The input consists of an integer N, followed by N elements. N is constrained such that 1 < N <= 100000.
 
 
 Output Description:
-The output is the count of character 'K' in string 'S'. If 'K' is not found, print -1.
+Print the numbers between the first two occurrences of '0'. If there are no two '0's, print -1.
 
 
 Sample Input:
-codekata a
+10
+1 1 1 0 1 0 1 1 0 1
 
 
 Sample Output:
-2
+1 1 1
+
+
 
 */
 
@@ -38,24 +41,32 @@ inp.on("line", (data) => {
   userInput.push(data.trim());
 });
 
-function result(string,letter){
-  let count = 0;
-    for(let s in string){
-      // console.log(letter)
-      if(string[s]===letter){
-        count = count+1
+function result(arr){
+  let count = false
+  let numBetweenZero = []
+  for(let i=0;i<arr.length;i++){
+    if(arr[i]===0){
+      for(let j = i+1;j<arr.length;j++){
+        if(arr[j]!=0){
+          numBetweenZero.push(arr[j])
+        }else{
+          count = true;
+          break;
+        }
       }
     }
-    count!=0?console.log(count):console.log(-1)
+    if(count){
+      break;
+    }
+  }
+  !count?console.log(-1): console.log(numBetweenZero.join(' '))
 }
 
 inp.on("close", () => {
-  // console.log(userInput) 
-  const arr = userInput[0].split(' ')
-  const string = arr[0]
-  const letter = arr[1]
-  // console.log(string,"S")
-  // console.log(letter,"L") 
-  result(string,letter)
+  console.log(userInput) 
+  const arr = userInput[1].split(' ').map(n=>Number(n))
+  console.log(arr)
+ 
+  result(arr)
   
 });
