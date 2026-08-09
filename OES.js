@@ -1,28 +1,31 @@
 /*
-46. Descending Elements Below N
+47. Numbers Repeated K Times
 
 Geekoin50
 Medium
 Topics
 Problem Statement:
-Given a number N and an array of N elements, print all elements lesser than N in descending order. If no element found print -1.
+Given 2 numbers N,K and an array of N elements, 
+print the number(s) that has been repeated K times.
+Print them in ascending order if there are more than one number to be printed.
+If no element satisfies the pattern then print -1
 
 
 Input Description:
-The input consists of a number N, and an array of N elements. N is between 1 and 10000 (inclusive).
+The input consists of two integers N and K, followed by an array of N elements. N and K are up to 100000.
 
 
 Output Description:
-Print all elements from the array that are lesser than N, in descending order. If no such elements are found, print -1.
+Print the numbers that have been repeated K times in ascending order. If no such element exists, print -1.
 
 
 Sample Input:
-5
-2 14 15 14 3
+5 2
+1 2 4 1 2
 
 
 Sample Output:
-3 2
+1 2
 
 
 */
@@ -30,28 +33,39 @@ Sample Output:
 
 const readline = require("readline");
 
-const inp = readline.createInterface({
+const rl = readline.createInterface({
   input: process.stdin
 });
 
 const userInput = [];
 
-inp.on("line", (data) => {
+rl.on("line", (data) => {
   userInput.push(data.trim());
 });
 
 function result(arr,K){
-  let sameNum = arr.filter(n=>n<K)
-  // console.log(sameNum)
- 
-
-// console.log(sameNum)
-sameNum.length===0?console.log(-1):console.log(sameNum.sort().reverse().join(' '))
+  const sameElement = []
+ for(let i =0;i<arr.length;i++){
+  let count = 0
+  for(let j =i; j<arr.length ;j++){
+  
+     if(arr[i]===arr[j]){
+      
+      count = count+1;
+      if(count===K){
+      
+        sameElement.push(arr[i])
+        break;
+      }
+     }
+  }
+ }
+sameElement.length!==0?console.log(sameElement.sort().join(' ')):console.log(-1)
 }
 
-inp.on("close", () => {
+rl.on("close", () => {
   // console.log(userInput) 
-  const K = Number(userInput[0])
+  const [N, K] = userInput[0].split(' ').map(n=>Number(n))
   const arr = userInput[1].split(' ').map(n=>Number(n))
 
   result(arr,K)
