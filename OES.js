@@ -24,8 +24,6 @@ Sample Output:
 1
 
 */
-
-
 const readline = require("readline");
 
 const rl = readline.createInterface({
@@ -38,20 +36,23 @@ rl.on("line", (data) => {
   userInput.push(data.trim());
 });
 
-function result(N,arr,K){
-  const length = Math.abs(arr.length-K)
-  
- arr.length = length
- console.log(arr.join(' '))
+function result(s1,s2){
+  let test = []
+ for(let i = 0;i<s1.length;i++){
+  s2.includes(s1[i])?s2:test.push(s1[i])
+ }
+  // console.log(test)
+  console.log(test.length===0?-1:test.join(' '))
+
 }
 
 rl.on("close", () => {
-  // console.log(userInput) 
-  const [N,K] = userInput[0].split(' ').map(n=>Number(n))
-  const arr = userInput[1].split(' ').map(n=>Number(n))
-  
+  const arr = userInput[0].split(' ') 
+  let s1 = arr[0].split('')
+  const s2 = arr[1].split('')
+  // console.log(s1,s2 ) 
 
-  result(N,arr,K)
+  result(s1,s2)
  
   
 });
