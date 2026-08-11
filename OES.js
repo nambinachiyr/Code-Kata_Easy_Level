@@ -1,29 +1,29 @@
 /*
-54. Find Position of Number in Array
+55. Counting Distinct Pairs
 
-Geekoin40
+Geekoin50
 Medium
 Topics
-Attempted!
+Solved!
 Problem Statement:
-Given a number N,K followed by array of N elements where the difference between any adjacent elements is 1. Find the position of the given number K.If K not found in the array print -1
+Given an array A of N elements, count the number of distinct pairs (i,j) such that i < j and A[i] < A[j].If no such pairs can be made print -1
 
 
 Input Description:
-The input consists of two integers N and K, followed by an array of N elements where the difference between any adjacent elements is 1.
+The input consists of an integer N, representing the number of elements, followed by N space-separated integers representing the elements of array A.
 
 
 Output Description:
-The output is the position of the given number K. If K is not found in the array, print -1.
+The output is a single integer representing the count of distinct pairs (i,j) such that i < j and A[i] < A[j]. If no such pairs can be made, print -1.
 
 
 Sample Input:
-5 1
-3 2 1 2 3
+5
+1 2 3 4 5
 
 
 Sample Output:
-3
+10
 
 */
 const readline = require("readline");
@@ -38,18 +38,29 @@ rl.on("line", (data) => {
   userInput.push(data.trim());
 });
 
-function result(N,K,arr){
-  const index = arr.findIndex(a=>a==K)
-  console.log(index+1===0?-1:index+1)
-
+function result(N,arr){
+  let test = []
+  let seen = new Set()  
+  for(let i = 0 ;i<N-1;i++){
+    for(let j = i+1;j<N;j++){
+      if(i<j && arr[i]<arr[j] ){
+        let pair = `${arr[i]},${arr[j]}`
+        if(!seen.has(pair)){
+          seen.add(pair)
+          test.push([arr[i],arr[j]])
+        }
+      }
+    }
+  } 
+  console.log(seen.size===0?-1:seen.size)
+ 
 }
 
 rl.on("close", () => {
-  const [N,K] = userInput[0].split(' ').map(n=>Number(n))
+  const N= Number(userInput[0])
   let arr = userInput[1].split(' ').map(n=>Number(n))
- 
 
-  result(N,K,arr)
+  result(N,arr)
  
   
 });
