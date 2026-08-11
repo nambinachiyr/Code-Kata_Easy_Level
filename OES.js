@@ -1,23 +1,29 @@
 /*
-53. Rotated Array Rotation Count
+54. Find Position of Number in Array
 
-Geekoin50
+Geekoin40
 Medium
 Topics
+Attempted!
 Problem Statement:
-Given an value 'M' follwed by array of M elements in which the elements would have been rotated for certain 'N' times from the intial array representation where all elements are arranged in ascending order.Print the 'N' or print -1 if there is no rotation made or cannot be determined.Note: 1<=N<=length of the given array.
+Given a number N,K followed by array of N elements where the difference between any adjacent elements is 1. Find the position of the given number K.If K not found in the array print -1
+
+
+Input Description:
+The input consists of two integers N and K, followed by an array of N elements where the difference between any adjacent elements is 1.
+
+
+Output Description:
+The output is the position of the given number K. If K is not found in the array, print -1.
 
 
 Sample Input:
-5
-15 18 2 3 6 12
+5 1
+3 2 1 2 3
 
 
 Sample Output:
-2
-
-
-
+3
 
 */
 const readline = require("readline");
@@ -32,29 +38,18 @@ rl.on("line", (data) => {
   userInput.push(data.trim());
 });
 
-function result(N,arr){
-  let test = [] 
-  let count = 0
-  for(let i = 0;i<N-1;i++){
-    count= count+1
-    if(arr[i]>arr[i+1]){
-     break
-    }else{
-      if(arr[i] === arr[i+1]){
-        count = 0
-      }
-    }
-  }
-  // console.log(count)
-console.log(count===0?-1:count)
+function result(N,K,arr){
+  const index = arr.findIndex(a=>a==K)
+  console.log(index+1===0?-1:index+1)
+
 }
 
 rl.on("close", () => {
-  const N = userInput[0].split('').map(n=>Number(n))
+  const [N,K] = userInput[0].split(' ').map(n=>Number(n))
   let arr = userInput[1].split(' ').map(n=>Number(n))
  
 
-  result(N[0],arr)
+  result(N,K,arr)
  
   
 });
