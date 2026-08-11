@@ -1,19 +1,23 @@
 /*
-63. Unique Characters in a String
-
-Geekoin40
-Medium
-Topics
+64. Reverse Words Except Ends
 Problem Statement:
-Given a String S,print the number of unique characters in it.If all the characters are duplicated,then print -1.
+Given a string S consisting of a sentence, the task is to reverse every word of the sentence except the first and last character of the words.
+
+
+Input Description:
+The input consists of a string S representing a sentence.
+
+
+Output Description:
+The output is the modified string with every word reversed except its first and last characters.
 
 
 Sample Input:
-GUVIGEEK
+guvi coding platform
 
 
 Sample Output:
-4
+gvui cnidog proftalm.
 */
 
 const readline = require('readline');
@@ -32,19 +36,29 @@ function result(arr){
 
   let count = 0
   let test = []
-  let uniqueChar = ''
   for (let i = 0 ; i<arr.length;i++){
-    let ch = arr.charAt(i)
-    if(arr.indexOf(ch)===arr.lastIndexOf(ch)){
-      uniqueChar = uniqueChar+ch
+    let changedWord = ''
+    let letters = arr[i].split('')
+    for(let l = 0;l<letters.length/2;l++){
+       let FirstLetter = letters[0]
+       let LastLetter = letters[letters.length-1]
+       if(letters[l]!==FirstLetter && letters[l]!==LastLetter){
+           let temp = letters[l]
+           letters[l] = letters[letters.length-(l+1)]
+          //  console.log(letters.length-(l+1))
+           letters[letters.length-(l+1)] = temp
+          }
+          // changedWord = FirstLetter+letters[l]+LastLetter
     }
+    arr[i] = letters.join('')
+    // console.log(arr[i])
   }
-console.log(uniqueChar.length===0?-1:uniqueChar.length)
+console.log(arr.join(' '))
   }
 
 
 rl.on("close", () => {
-  let arr = userInput[0]
-  result(arr) 
-  
+  let arr = userInput[0].split(' ')
+  // console.log(arr) 
+  result(arr)
 });
