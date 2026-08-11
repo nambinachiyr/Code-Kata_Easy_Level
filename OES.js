@@ -1,23 +1,26 @@
 /*
-64. Reverse Words Except Ends
+65. Roman Numeral to Integer Conversion
+
+Geekoin60
+Medium
+Topics
+Company
 Problem Statement:
-Given a string S consisting of a sentence, the task is to reverse every word of the sentence except the first and last character of the words.
+Given a roman numeral N, convert it into integer.Take L=50, C=100.If it is not a valid roman numeral print '-1'
 
 
 Input Description:
-The input consists of a string S representing a sentence.
-
-
-Output Description:
-The output is the modified string with every word reversed except its first and last characters.
+Input Size : N <= 100
 
 
 Sample Input:
-guvi coding platform
+VI
+Y
 
 
 Sample Output:
-gvui cnidog proftalm.
+6
+-1
 */
 
 const readline = require('readline');
@@ -32,33 +35,38 @@ rl.on("line", (data) => {
   userInput.push(data.trim());
 });
 
-function result(arr){
-
-  let count = 0
-  let test = []
-  for (let i = 0 ; i<arr.length;i++){
-    let changedWord = ''
-    let letters = arr[i].split('')
-    for(let l = 0;l<letters.length/2;l++){
-       let FirstLetter = letters[0]
-       let LastLetter = letters[letters.length-1]
-       if(letters[l]!==FirstLetter && letters[l]!==LastLetter){
-           let temp = letters[l]
-           letters[l] = letters[letters.length-(l+1)]
-          //  console.log(letters.length-(l+1))
-           letters[letters.length-(l+1)] = temp
-          }
-          // changedWord = FirstLetter+letters[l]+LastLetter
+function result(RomanNums){
+  let inputs = {
+    'I':1,
+    "V":5,
+    "X":10,
+    "L":50,
+    "C":100
+  }
+  let resultArr = []
+  for(let i = 0;i<RomanNums.length;i++){
+    let re = 0
+    let correct
+    let str = RomanNums[i]
+    // console.log(str)
+    for(let r = 0;r<str.length;r++){
+      let r1 = 0;
+      let srt = str[r].toUpperCase() 
+      // console.log(srt)
+       r1 =inputs[srt]
+       re  = re+r1
+        correct = re>=1?re:-1
+      }
+      console.log(correct)
+      resultArr.push(correct)
     }
-    arr[i] = letters.join('')
-    // console.log(arr[i])
-  }
-console.log(arr.join(' '))
-  }
+  // console.log(resultArr.join(' '))
 
+ }
 
 rl.on("close", () => {
-  let arr = userInput[0].split(' ')
-  // console.log(arr) 
-  result(arr)
+  let RomanNums = userInput
+  
+  // console.log(N1,N2) 
+  result(RomanNums)
 });
