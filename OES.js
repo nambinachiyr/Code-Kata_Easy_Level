@@ -1,29 +1,32 @@
 /*
-65. Roman Numeral to Integer Conversion
+66. Isomorphic Strings
 
-Geekoin60
+Geekoin50
 Medium
 Topics
-Company
 Problem Statement:
-Given a roman numeral N, convert it into integer.Take L=50, C=100.If it is not a valid roman numeral print '-1'
+Given 2 strings,check whether it is isomorphic.If it is not isomorphic print '-1'.
 
 
 Input Description:
-Input Size : N <= 100
+The input consists of two strings. The size of each string |s| is at most 100000.
+
+
+Output Description:
+The output is 'yes' if the strings are isomorphic, otherwise '-1'.
 
 
 Sample Input:
-VI
-Y
+aab xxy
 
 
 Sample Output:
-6
--1
+yes
+
 */
 
 const readline = require('readline');
+const { once } = require('stream');
 
 const rl = readline.createInterface({
   input: process.stdin
@@ -35,38 +38,35 @@ rl.on("line", (data) => {
   userInput.push(data.trim());
 });
 
-function result(RomanNums){
-  let inputs = {
-    'I':1,
-    "V":5,
-    "X":10,
-    "L":50,
-    "C":100
-  }
-  let resultArr = []
-  for(let i = 0;i<RomanNums.length;i++){
-    let re = 0
-    let correct
-    let str = RomanNums[i]
-    // console.log(str)
-    for(let r = 0;r<str.length;r++){
-      let r1 = 0;
-      let srt = str[r].toUpperCase() 
-      // console.log(srt)
-       r1 =inputs[srt]
-       re  = re+r1
-        correct = re>=1?re:-1
-      }
-      console.log(correct)
-      resultArr.push(correct)
-    }
-  // console.log(resultArr.join(' '))
+function result(str1,str2){
+  
+    function getPattern(str){
+      let test = []
+      let count = 0
+      for(let s = 0;s<str.length;s++){
+        let first = str[0]
+        if(first===str[s]){
+          count = 1
+          test.push(count)
+        }
+        else{
+          count=count+1
+          test.push(count)
+        }
 
+      }
+      return test
+    } 
+    // console.log(getPattern(str1))    
+    // console.log(getPattern(str2))    
+ console.log(getPattern(str1).join(' ')===getPattern(str2).join(' ')?"yes":"no")
+ 
+  
  }
 
 rl.on("close", () => {
-  let RomanNums = userInput
-  
-  // console.log(N1,N2) 
-  result(RomanNums)
+  let a = userInput[0].split(" ")
+  const str1 = a[0]
+  const str2 = a[1]
+  result(str1,str2)
 });
