@@ -1,24 +1,23 @@
 /*
-61. Max Element using Bitwise AND
+62. Reverse a String-2
 
 Geekoin40
 Medium
-Company
+Topics
 Problem Statement:
-Given a number N and an array of N elements, find the maximum of the elements (using Bitwise AND) and print the output.
+Given a string S, print the reverse of the string.
 
 
 Input Description:
-Input Size N <= 100000
+Input Size : |s| <= 100000 (ie do it in O(n) or O(log n) time complexity)
 
 
 Sample Input:
-4
-2 4 4 2
+codekata
 
 
 Sample Output:
-4
+atakedoc
 */
 
 const readline = require('readline');
@@ -33,21 +32,22 @@ rl.on("line", (data) => {
   userInput.push(data.trim());
 });
 
-function result(N,arr){
-  let test  = []
-  for(let i = 0 ;i<N;i++){
-      let result = arr[i] & arr[i]
-      test.push(result)
-  } 
-  console.log(test.sort()[test.length-1])
- 
+function result(arr){
+
+  for (let i = 0 ; i<arr.length/2;i++){
+    let previous = arr[i]
+    arr[i] = arr[arr.length-(i+1)]
+    arr[arr.length-(i+1)] = previous
+  }
+  console.log(arr.join(''))
+
+  // --------------------------------------------------------------------------
+        // This is One line Answer
+  //  console.log(arr.reverse().join(''))
 }
 
 rl.on("close", () => {
-  const N= Number(userInput[0])
-  let arr = userInput[1].split(' ').map(n=>Number(n))
-
-  result(N,arr)
- 
+  let arr = userInput[0].split('')
+  result(arr) 
   
 });
