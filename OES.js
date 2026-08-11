@@ -1,23 +1,19 @@
 /*
-62. Reverse a String-2
+63. Unique Characters in a String
 
 Geekoin40
 Medium
 Topics
 Problem Statement:
-Given a string S, print the reverse of the string.
-
-
-Input Description:
-Input Size : |s| <= 100000 (ie do it in O(n) or O(log n) time complexity)
+Given a String S,print the number of unique characters in it.If all the characters are duplicated,then print -1.
 
 
 Sample Input:
-codekata
+GUVIGEEK
 
 
 Sample Output:
-atakedoc
+4
 */
 
 const readline = require('readline');
@@ -34,20 +30,21 @@ rl.on("line", (data) => {
 
 function result(arr){
 
-  for (let i = 0 ; i<arr.length/2;i++){
-    let previous = arr[i]
-    arr[i] = arr[arr.length-(i+1)]
-    arr[arr.length-(i+1)] = previous
+  let count = 0
+  let test = []
+  let uniqueChar = ''
+  for (let i = 0 ; i<arr.length;i++){
+    let ch = arr.charAt(i)
+    if(arr.indexOf(ch)===arr.lastIndexOf(ch)){
+      uniqueChar = uniqueChar+ch
+    }
   }
-  console.log(arr.join(''))
+console.log(uniqueChar.length===0?-1:uniqueChar.length)
+  }
 
-  // --------------------------------------------------------------------------
-        // This is One line Answer
-  //  console.log(arr.reverse().join(''))
-}
 
 rl.on("close", () => {
-  let arr = userInput[0].split('')
+  let arr = userInput[0]
   result(arr) 
   
 });
