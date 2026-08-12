@@ -1,23 +1,23 @@
 /*
-69. Prime Count in a Range
+70. One Character Difference
 
-Geekoin30
-Easy
+Geekoin50
+Medium
 Topics
 Problem Statement:
-Given a range of 2 numbers (i.e) L and R count the number of prime numbers in the range (inclusive of L and R ).
+Given 2 strings check whether they differ exacly by one character.If yes then print 'yes' otherwise print 'no'
 
 
 Input Description:
-Input Size : L <= R <= 100000 (complexity O(n) read about Sieve of Eratosthenes)
+Input Size : |s| <= 100000(complexity O(nlogn) or O(n))
 
 
 Sample Input:
-2 5
+codekata codekate
 
 
 Sample Output:
-3
+yes
 
 */
 
@@ -33,29 +33,27 @@ rl.on("line", (data) => {
   userInput.push(data.trim());
 });
 
-function result(a,num1,num2){
-  let primeNumbersCount = 0
-  for(let i = num1;i<=num2;i++){
-    let count = 0
-      for(let j = 1;j<=i;j++){
-        if(i%j===0){
-          count++
-        }
+function result(a,word1,word2){
+  let count = 0
+  for(let i = 0 ;i<word1.length;i++){
+    // for(let j = 0;j<word2.length;j++){
+      if(word1[i]!==word2[i]){
+        // console.log(word1[i],'-',word2[i])
+        count++
       }
-      if(count>2){
-        // console.log("This not Prime Number - ",i)
-      }else{
-        // console.log("This is prime Number - ",i)
-        primeNumbersCount++
-      }
-    }
-    console.log(primeNumbersCount)
+    // }
+  }
+  if(count===1){
+    console.log("yes")
+  }else{
+    console.log("no")
+  }
  }
 
 rl.on("close", () => {
-  let a = userInput[0].split(' ') .map((n)=>Number(n)) 
-  let num1 = a[0]
-  let num2 = a[1]
+  let a = userInput[0].split(' ')
+  let word1 = a[0].split('')
+  let word2 = a[1].split("")
  
-  result(a,num1,num2)
+  result(a,word1,word2)
 });
