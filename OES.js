@@ -1,11 +1,11 @@
 /*
-74. Reverse String After Removing Vowels
+75. Max Repeated Character Count
 
-Geekoin40
+Geekoin50
 Medium
 Topics
 Problem Statement:
-Given a string S, print the reverse of the string after removing the vowels.If the resulting string is empty print '-1'.
+Given a string S,count the maximum number of times a character repeated in the string.If no character is repeated print '0'.
 
 
 Input Description:
@@ -17,7 +17,7 @@ codekata
 
 
 Sample Output:
-tkdc
+2
 */
 
 const readline = require('readline');
@@ -33,19 +33,25 @@ rl.on("line", (data) => {
 });
 
 function result(str){
-  let withOutVowel = ''
-  const vowel = ['a','e','i','o','u']
-  for(let i of str.reverse()){
-    if(!vowel.includes(i.toLowerCase())){
-       withOutVowel = withOutVowel+ i
+  let MaxCount = 0
+  for(let i=0;i<str.length;i++){
+    let count = 1
+    for(let j=i+1;j<str.length;j++){
+     if(str[i]===str[j]){
+      count++
+      // console.log(str[i],i,'-',j,str[j])
+      // console.log(count)
+     }
     }
-    // console.log(withOutVowel)
+    if(MaxCount<count){
+     MaxCount = count
+    }
+    
   }
-  console.log(withOutVowel.length===0?-1:withOutVowel)
+  console.log(MaxCount)
  }
 
 rl.on("close", () => {
-  let str = userInput[0].split("")
-  
+  let str = userInput[0].split("")  
   result(str)
 });
