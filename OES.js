@@ -1,28 +1,27 @@
 /*
-68. CamelCase Conversion
+69. Prime Count in a Range
 
-Geekoin50
-Medium
+Geekoin30
+Easy
 Topics
 Problem Statement:
-Given a string/sentence print its corresponding camelcase convention.
+Given a range of 2 numbers (i.e) L and R count the number of prime numbers in the range (inclusive of L and R ).
 
 
 Input Description:
-Input Size : |s| <= 1000000(complexity O(n))
+Input Size : L <= R <= 100000 (complexity O(n) read about Sieve of Eratosthenes)
 
 
 Sample Input:
-guvi geeks
+2 5
 
 
 Sample Output:
-GuviGeeks
+3
 
 */
 
 const readline = require('readline');
-const { once } = require('stream');
 
 const rl = readline.createInterface({
   input: process.stdin
@@ -34,21 +33,29 @@ rl.on("line", (data) => {
   userInput.push(data.trim());
 });
 
-function result(a,word1,word2){
- for(let i = 0 ;i<a.length;i++){
-  let word =''
-     for(let j = 0;j<a[i].length;j++){
-      word = a[i][0].toUpperCase()+a[i].slice(1,)
+function result(a,num1,num2){
+  let primeNumbersCount = 0
+  for(let i = num1;i<=num2;i++){
+    let count = 0
+      for(let j = 1;j<=i;j++){
+        if(i%j===0){
+          count++
+        }
+      }
+      if(count>2){
+        // console.log("This not Prime Number - ",i)
+      }else{
+        // console.log("This is prime Number - ",i)
+        primeNumbersCount++
+      }
     }
-    // console.log(word)
-    a[i] = word
- }
- console.log(a.join(''))
+    console.log(primeNumbersCount)
  }
 
 rl.on("close", () => {
-  let a = userInput[0].split(' ')  
-  let word1 = a[0]
-  let word2 = a[1]
-  result(a,word1,word2)
+  let a = userInput[0].split(' ') .map((n)=>Number(n)) 
+  let num1 = a[0]
+  let num2 = a[1]
+ 
+  result(a,num1,num2)
 });
