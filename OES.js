@@ -1,23 +1,28 @@
 /*
-71. Holiday Check
+72. Cyclic Right Shift Array
 
 Geekoin40
 Medium
 Topics
 Problem Statement:
-Given a day, print 'yes' if it is a holiday otherwise print'no'.Assume that weekend days are holidays
+Given two numbers N,K followed by an array of N elements, print the array after doing right shift K times (in cyclic manner).
+
+
+Input Description:
+The input consists of two numbers N, K, followed by an array of N elements. Input Size: 1 <= N, K <= 100000.
+
+
+Output Description:
+The output is the array after performing a right cyclic shift K times.
 
 
 Sample Input:
-saturday
-monday
+3 2
+7 2 3
 
 
 Sample Output:
-yes
-no
-
-
+ 3 7
 
 */
 
@@ -33,49 +38,36 @@ rl.on("line", (data) => {
   userInput.push(data.trim());
 });
 
-function result(a){
-//  console.log(a)
- const weekEndDays = ["saturday","sunday"]
- const weekDays = ["monday","tuesday","wednesday","thursday","friday"]
-
-//  for(let i =0;i<a.length;i++){
-//   // console.log(i,' - i')
-//   for(let j = 0;j<weekDays.length;j++){
-//     // console.log(j,' - j')
-//     if(a[i]===weekEndDays[j]){
-//       console.log("yes")
-//       break
-//     }else if(a[i]===weekDays[j]){
-//       console.log("no")
-//       break
-//     }
-//   }
-//  }
-//   Way II
-for(let i of a){
-  let flex = false
-  for(let weekEndDay of weekEndDays){
-    for(let weekDay of weekDays){
-      if(i.toLowerCase()===weekEndDay){
-      console.log("yes")
-      flex = true
-      break
-    }else if(i.toLowerCase()===weekDay){ //or weekDays.include(i.toLowerCase())that alse we can use
-      // console.log(i)
-       console.log("no")
-       flex = true
-       break
+function result(a,N,K){
+  let count = 0
+  for(let i = 0;i<K;i++){
+  //  console.log("Running")
+    if(count!==K){
+      for(let i = 0 ;i<N-1;i++){         
+        if(count!==K){
+          let pop =  a.pop()
+          a.unshift(pop)
+          count++
+         if(count===K){
+          break;
+         }
+        }
+        console.log(count)
+        if(count === K){
+          break;
+        } 
     }
-  }
-  if(flex){
+  }else{
     break
   }
+  // console.log(count)
   }
-}
 
+ console.log(a.join(' '))
  }
 
 rl.on("close", () => {
-  let a = userInput 
-  result(a)
+  let [N,K] = userInput[0].split(" ") .map(n=>Number(n))
+  let a = userInput[1].split(' ')
+  result(a,N,K)
 });
