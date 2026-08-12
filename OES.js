@@ -1,11 +1,11 @@
 /*
-75. Max Repeated Character Count
+76. Find the Unique Number-2
 
 Geekoin50
 Medium
 Topics
 Problem Statement:
-Given a string S,count the maximum number of times a character repeated in the string.If no character is repeated print '0'.
+Given a number N and an array of N elements, every number is repeated except for one. Print that one number.
 
 
 Input Description:
@@ -13,11 +13,12 @@ Input Size : 1 <= N <= 100000
 
 
 Sample Input:
-codekata
+10
+1 2 3 2 3 3 2 5 5 2
 
 
 Sample Output:
-2
+1
 */
 
 const readline = require('readline');
@@ -32,26 +33,25 @@ rl.on("line", (data) => {
   userInput.push(data.trim());
 });
 
-function result(str){
-  let MaxCount = 0
-  for(let i=0;i<str.length;i++){
-    let count = 1
-    for(let j=i+1;j<str.length;j++){
-     if(str[i]===str[j]){
-      count++
-      // console.log(str[i],i,'-',j,str[j])
-      // console.log(count)
-     }
+function result(n,nums){
+  let uniqueOne;
+  for(let i = 0 ;i<n;i++){
+    let count = 0
+    for(let j = 0;j<n;j++){
+       if(nums[i]===nums[j]){
+         count++
+       }
+    }if(count===1){
+      uniqueOne = nums[i]
+      // console.log(nums[i])
+      break
     }
-    if(MaxCount<count){
-     MaxCount = count
-    }
-    
   }
-  console.log(MaxCount)
+  n===1?console.log(nums[0]):console.log(uniqueOne)
  }
 
 rl.on("close", () => {
-  let str = userInput[0].split("")  
-  result(str)
+  let n = Number(userInput[0] )
+  let nums = userInput[1].split(' ').map(n=>Number(n))
+  result(n,nums)
 });
