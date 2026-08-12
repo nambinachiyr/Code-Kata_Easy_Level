@@ -1,26 +1,23 @@
 /*
-73. Sum of Squares of Digits
+74. Reverse String After Removing Vowels
 
-Geekoin50
+Geekoin40
 Medium
 Topics
 Problem Statement:
-Given a number N, print the sum of the squares of its digits.
+Given a string S, print the reverse of the string after removing the vowels.If the resulting string is empty print '-1'.
 
 
 Input Description:
-The input consists of a number N, where 1 <= N <= 1000000000000000000.
-
-
-Output Description:
-The output is the sum of the squares of the digits of N.
+Input Size : 1 <= N <= 100000
 
 
 Sample Input:
-19
+codekata
+
 
 Sample Output:
-82
+tkdc
 */
 
 const readline = require('readline');
@@ -35,16 +32,20 @@ rl.on("line", (data) => {
   userInput.push(data.trim());
 });
 
-function result(nums){
-  let add = 0
-  for(let n of nums){
-    add = add+n*n
+function result(str){
+  let withOutVowel = ''
+  const vowel = ['a','e','i','o','u']
+  for(let i of str.reverse()){
+    if(!vowel.includes(i.toLowerCase())){
+       withOutVowel = withOutVowel+ i
+    }
+    // console.log(withOutVowel)
   }
-  console.log(add)
+  console.log(withOutVowel.length===0?-1:withOutVowel)
  }
 
 rl.on("close", () => {
-  let nums = userInput[0].split("") .map(n=>Number(n))
+  let str = userInput[0].split("")
   
-  result(nums)
+  result(str)
 });
