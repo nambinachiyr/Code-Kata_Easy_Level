@@ -1,26 +1,36 @@
 /*
-76. Find the Unique Number-2
+78. Anagram Count for kabali
 
-Geekoin50
+Geekoin40
 Medium
 Topics
 Problem Statement:
-Given a number N and an array of N elements, every number is repeated except for one. Print that one number.
+Given a number N and an array of N strings, find the number of strings that are an anagram of 'kabali'.If there exists no anagram for the given string print '0'.
 
 
 Input Description:
-Input Size : 1 <= N <= 100000
+The input consists of an integer N, representing the number of strings, followed by N strings.
+Constraints: 1 <= N <= 1000
+
+
+Output Description:
+The output is a single integer representing the count of strings that are an anagram of 'kabali', or '0' if no such anagram exists.
 
 
 Sample Input:
-10
-1 2 3 2 3 3 2 5 5 2
+5
+kabali
+kaabli
+kababa
+kab
+kabail
 
 
 Sample Output:
-1
+3
 */
 
+const { match } = require('assert');
 const readline = require('readline');
 
 const rl = readline.createInterface({
@@ -33,25 +43,29 @@ rl.on("line", (data) => {
   userInput.push(data.trim());
 });
 
-function result(n,nums){
-  let uniqueOne;
-  for(let i = 0 ;i<n;i++){
-    let count = 0
-    for(let j = 0;j<n;j++){
-       if(nums[i]===nums[j]){
-         count++
-       }
-    }if(count===1){
-      uniqueOne = nums[i]
-      // console.log(nums[i])
-      break
+function result(strs,n){
+
+  function anagaramStr(str1,str2){
+    if(str1.length!==str2.length){
+      return false
     }
+    let a = str1.split('').sort().join(' ')
+    let b = str2.split("").sort().join(" ")
+    return a===b
   }
-  n===1?console.log(nums[0]):console.log(uniqueOne)
+  let count=0
+ for(let i = 0;i<=n-1;i++){
+   for(let j = i+1;j<n;j++ ){
+    if(anagaramStr(strs[i],strs[j])){
+      count++
+    }
+   }
+ }
+ console.log(count)
  }
 
 rl.on("close", () => {
-  let n = Number(userInput[0] )
-  let nums = userInput[1].split(' ').map(n=>Number(n))
-  result(n,nums)
+  const n = Number(userInput[0])
+  let strs = userInput.slice(1,)
+  result(strs,n)
 });
