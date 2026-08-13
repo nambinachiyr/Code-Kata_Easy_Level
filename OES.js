@@ -1,33 +1,21 @@
 /*
-78. Anagram Count for kabali
+79. Sorted Prime Factors
 
-Geekoin40
+Geekoin50
 Medium
 Topics
 Problem Statement:
-Given a number N and an array of N strings, find the number of strings that are an anagram of 'kabali'.If there exists no anagram for the given string print '0'.
+Given a number N, print their prime factors in sorted order.
 
 
 Input Description:
-The input consists of an integer N, representing the number of strings, followed by N strings.
-Constraints: 1 <= N <= 1000
-
-
-Output Description:
-The output is a single integer representing the count of strings that are an anagram of 'kabali', or '0' if no such anagram exists.
+The input consists of a number N, where 2 <= N <= 100000.
 
 
 Sample Input:
-5
-kabali
-kaabli
-kababa
-kab
-kabail
-
-
+18
 Sample Output:
-3
+2 3
 */
 
 const { match } = require('assert');
@@ -43,29 +31,25 @@ rl.on("line", (data) => {
   userInput.push(data.trim());
 });
 
-function result(strs,n){
-
-  function anagaramStr(str1,str2){
-    if(str1.length!==str2.length){
-      return false
+function result(n){
+  let i = 2
+  let factors = []
+  for(let i = 2;i<=n;i++){
+    if(n%i===0){
+      if(!factors.includes(i)){
+         factors.push(i)
+      }
+      
+      while(n%i===0){
+        n = n/i
+        console.log(n)
+      }
     }
-    let a = str1.split('').sort().join(' ')
-    let b = str2.split("").sort().join(" ")
-    return a===b
   }
-  let count=0
- for(let i = 0;i<=n-1;i++){
-   for(let j = i+1;j<n;j++ ){
-    if(anagaramStr(strs[i],strs[j])){
-      count++
-    }
-   }
- }
- console.log(count)
+  console.log(factors.join(' '))
  }
 
 rl.on("close", () => {
   const n = Number(userInput[0])
-  let strs = userInput.slice(1,)
-  result(strs,n)
+  result(n)
 });
