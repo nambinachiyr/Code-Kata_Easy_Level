@@ -1,21 +1,23 @@
 /*
-81. Collinearity of Three Points
+82. Greatest Common Divisor-2
 
 Geekoin40
 Medium
 Topics
 Problem Statement:
-Given 3 points check whether they lie on the same line.If they lie on the same line print 'yes' Otherwise print 'no'.
+Given a number N and a number K, find the greatest number which divides both.
+
+
+Input Description:
+N and K <= 100000
 
 
 Sample Input:
-0 1
-0 0
-0 2
+5 10
 
 
 Sample Output:
-yes
+5
 */
 
 const { match } = require('assert');
@@ -31,29 +33,36 @@ rl.on("line", (data) => {
   userInput.push(data.trim());
 });
 
-function result(vectors,x1,x2,x3,y1,y2,y3){
+function result(num){
 
-  if(x1===x2){
-    if(x1===x2){
-     console.log("yes")
-    }
+  // First Way 4/5
+  // ---------------------------
+  // let factors = []
+  //  for(let i = 2;i<=num[0];i++){
+  //   if(num[0] % i===0 && num[1] % i===0){
+  //     if(!factors.includes(i)){
+  //       factors.push(i)
+  //     }
+  //   }
+  //  }
+  //  console.log(factors.sort((a,b)=>b-a)[0])
+
+  // -----------------------------------------------------------
+
+  // 2nd Way
+
+  let num1 = num[0]
+  let num2 = num[1]
+
+  while(num1%num2 !== 0){
+    let temp = num2
+    num2  = num1%num2
+    num1 = temp
   }
-  else{
-    let crossProduct = (y2-y1)*(x3-x2)-(y3-y2)*(x2-x1)
-     if(crossProduct===0){
-      console.log("yes")
-     }else{
-      console.log("no")
-     }
-  }
-
-
+  console.log(num2)
  }
 
 rl.on("close", () => {
-  const vectors = userInput
-  const [x1,y1] = userInput[0].split(' ').map(n=>Number(n))
-  const [x2,y2] = userInput[1].split(' ').map(n=>Number(n))
-  const [x3,y3] = userInput[2].split(' ').map(n=>Number(n))
-  result(vectors,x1,x2,x3,y1,y2,y3)
+  const num = userInput[0].split(' ').map(n=>Number(n))
+  result(num)
 });
