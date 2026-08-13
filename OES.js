@@ -1,21 +1,21 @@
 /*
-79. Sorted Prime Factors
+80. Encode String by Adding 3
 
-Geekoin50
+Geekoin40
 Medium
 Topics
 Problem Statement:
-Given a number N, print their prime factors in sorted order.
+Given a string S, print the encoded string by adding 3 to each character(a maps to d,b maps to e,c maps to f and so on).
 
 
 Input Description:
-The input consists of a number N, where 2 <= N <= 100000.
+Input Size : 1 <= N <= 100000
 
 
 Sample Input:
-18
+RADAR
 Sample Output:
-2 3
+UDGDU
 */
 
 const { match } = require('assert');
@@ -31,25 +31,22 @@ rl.on("line", (data) => {
   userInput.push(data.trim());
 });
 
-function result(n){
-  let i = 2
-  let factors = []
-  for(let i = 2;i<=n;i++){
-    if(n%i===0){
-      if(!factors.includes(i)){
-         factors.push(i)
-      }
-      
-      while(n%i===0){
-        n = n/i
-        console.log(n)
-      }
+function result(string){
+  let words = []
+  for(let i of string){
+    let num = i.charCodeAt(i)+3
+    if(num>90){
+      num = num-26
     }
+    let newStr = String.fromCharCode(num)
+    
+     words.push(newStr)
   }
-  console.log(factors.join(' '))
+
+  console.log(words.join(''))
  }
 
 rl.on("close", () => {
-  const n = Number(userInput[0])
-  result(n)
+  const string = userInput[0].split('')
+  result(string)
 });
