@@ -1,24 +1,23 @@
 /*
-94. Count Occurrences of K in N
+95. Print 1st and 3rd Character
 
 Geekoin40
 Medium
 Topics
 Problem Statement:
-Given 2 numbers N and K.Print the number of occurrences of K in N.If K is not found print '-1'.
+Given a string S, print the 1st and 3rd character of the string (chracter index starts from 1).
 
 
 Input Description:
-1 <= N <= 100000, 0 <= K <= 9
+Input Size : 1 <= N <= 100000
 
 
 Sample Input:
-1000 0
+codekata
 
 
 Sample Output:
-3
-
+cd
 */
 
 const readline = require('readline');
@@ -33,19 +32,22 @@ rl.on("line", (data) => {
   userInput.push(data.trim());
 });
 
-function result(n,k){
-let nums = n.split('')
- let isHas = nums.filter(num=>
-  num===k[0]
- )
- console.log(isHas.length===0?-1:isHas.length)
-
-
+function result(str){
+//  console.log(str)
+ let first_And_Third_char = []
+ for(let i = 0;i<4;i++){
+   if(i===0 || i=== 2){
+    //  console.log(i)
+     first_And_Third_char.push(str[i])
+   }
+    
+    }
+  console.log(first_And_Third_char.join(''))
 }
 
 rl.on("close", () => {
   // console.log(userInput)
- let [n,k] = userInput[0].split(' ')
+ let str = userInput[0].split('')
  
-  result(n,k)
+  result(str)
 });
