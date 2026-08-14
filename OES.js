@@ -1,20 +1,23 @@
 /*
-85. Sort Strings by Length and Lexicographically
+86. Remove Extra Spaces
 
-Geekoin50
+Geekoin40
 Medium
 Topics
 Problem Statement:
-Given an array of N strings sort it in ascending order based on the length of the string.If two strings are found to have the same length sort them in lexicographical order.
+Given a sentence S take out the extra spaces.If no extra space is present print the same as output.
+
+
+Input Description:
+Input Size : |s| <= 100000(complexity O(n))
 
 
 Sample Input:
-3
-coding platform codekata
+codekata challenge
 
 
 Sample Output:
-coding codekata platform
+codekata challenge
 */
 
 const readline = require('readline');
@@ -29,27 +32,21 @@ rl.on("line", (data) => {
   userInput.push(data.trim());
 });
 
-function result(n,str){
-  let newArr = str.sort((a,b)=>{
-    console.log(a,b)
-    if(a.length<b.length){
-      return -1
-    }else if(a.length>b.length){
-      return 1
-    }else{
-     if(a<b){
-      return -1
-     }else {
-      return 1
-     }
-    }
-  })
-  console.log(newArr)
+function result(str){
+  if(str.includes('')){
+    const withOutSpace = str.filter(e=>
+      e !== ''
+    )
+    console.log(withOutSpace.join(' '))
+  }else{
+    console.log(str.join(' '))
+  }
  }
 
 rl.on("close", () => {
-  const n = userInput[0]
-  const str = userInput[1].split(' ')
+ 
+  const str = userInput[0].split(' ')
+  console.log(str)
   
-  result(n,str)
+  result(str)
 });
