@@ -1,23 +1,28 @@
 /*
-87. String Case Conversion
+89. Counting Perfect Squares in a Range
 
 Geekoin50
 Medium
 Topics
 Problem Statement:
-Given a string S change upper case to lowercase and lowercase to uppercase.
+Given a range (i.e) two numbers L and R count the number of perfect squares within the range (inclusive of L and R).If no perfect square exists within the range print '-1'.
 
 
 Input Description:
-The input consists of a string S with size |s| <= 10000000 (complexity O(n)).
+The input consists of two integers L and R, representing the range, where L <= R <= 100000.
+
+
+Output Description:
+The output is an integer representing the count of perfect squares within the range [L, R], or -1 if none exist.
 
 
 Sample Input:
-CodEkaTa
+2 10
 
 
 Sample Output:
-cODeKAtA
+2
+
 */
 
 const readline = require('readline');
@@ -32,22 +37,20 @@ rl.on("line", (data) => {
   userInput.push(data.trim());
 });
 
-function result(str){
-  let newStr = ''
-  for(let i of str){
-    if(i===i.toLowerCase()){
-      newStr = newStr+i.toUpperCase()
-    }
-    else{
-      newStr = newStr + i.toLowerCase()
+function result(n,k){
+ 
+  let numbeOfSquare = 0
+  for(let i = n;i<=k;i++){
+    if(Number.isInteger(Math.sqrt(i))){
+      numbeOfSquare ++
     }
   }
-  console.log(newStr)
+ console.log(numbeOfSquare===0?-1:numbeOfSquare)
 }
 rl.on("close", () => {
  
-  const str = userInput[0]
-  // console.log(str)
+  const [n,k] = userInput[0].split(' ').map(n=>Number(n))
   
-  result(str)
+  
+  result(n,k)
 });
