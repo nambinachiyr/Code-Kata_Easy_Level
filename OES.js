@@ -1,24 +1,23 @@
 /*
-92. Sorted Array Search
+94. Count Occurrences of K in N
 
 Geekoin40
 Medium
 Topics
 Problem Statement:
-Given 2 numbers N,K followed by a sorted array of N elements, search and tell if an element K is present in the array.print 'yes' if element is present otherwise print 'no'.
+Given 2 numbers N and K.Print the number of occurrences of K in N.If K is not found print '-1'.
 
 
 Input Description:
-Input Size : 1 <= N <= 1000000000000000(Do it in logN time complexity)
-
-
-Output Description:
-print 'yes' if element is present otherwise print 'no'.
+1 <= N <= 100000, 0 <= K <= 9
 
 
 Sample Input:
-3 2
-2 3 7
+1000 0
+
+
+Sample Output:
+3
 
 */
 
@@ -34,14 +33,19 @@ rl.on("line", (data) => {
   userInput.push(data.trim());
 });
 
-function result(n,k,arr){
-  
-  console.log(arr.includes(k)?"yes":"no")
- 
+function result(n,k){
+let nums = n.split('')
+ let isHas = nums.filter(num=>
+  num===k[0]
+ )
+ console.log(isHas.length===0?-1:isHas.length)
+
+
 }
 
 rl.on("close", () => {
- const [n,k] = userInput[0].split(' ').map(n=>Number(n))
- const arr = userInput[1].split(' ').map(n=>Number(n))
-  result(n,k,arr)
+  // console.log(userInput)
+ let [n,k] = userInput[0].split(' ')
+ 
+  result(n,k)
 });
