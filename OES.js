@@ -1,19 +1,15 @@
 /*
-90. String Difference Check
+91. Parentheses Balancing
 
 Geekoin50
 Medium
 Topics
 Problem Statement:
-Given 2 strings and a number K, check whether they differ exactly by K characters.
-
-
-Input Description:
-Input Size : |s| <= 100000(complexity O(nlogn) or O(n))
+Given a string S consisting of only '(' and ')', print 'yes' if it is balanced otherwise print 'no'.
 
 
 Sample Input:
-codekata codeguvi 4
+(())
 
 
 Sample Output:
@@ -33,32 +29,39 @@ rl.on("line", (data) => {
   userInput.push(data.trim());
 });
 
-function result(k,str1,str2){
-  
-  let count = 0
-  for(let i = 0;i<str1.length;i++){
-    for(let j = i;j<str2.length;j++){
-      if(str1[i] !== str2[j]){
-        count++
-        break;
-      }else{
-        // count--
-        break
-      }
+function result(symbol){
+  // let balanced = false
+  // for(let i = 0 ;i<symbol.length/2; i++){
+  //   if(symbol[i]==='(' && symbol[(symbol.length-1)-i]===')'){
+  //     //  console.log(i,symbol[i],symbol[(symbol.length-1)-i],(symbol.length-1)-i)
+  //      balanced = true
+  //    }else{
+  //     balanced = false
+  //     break;
+  //    }
+  // }
+  // console.log(balanced?"yes":"no")
+
+
+  // This is is 5/5
+  let leftCurve = 0
+  let rightCurve = 0
+  for(let i = 0 ;i<symbol.length ;i++){
+    if(symbol[i]==="("){
+      leftCurve++
+    }else if (symbol[i]===")"){
+      rightCurve++
+    }else{
+      break
     }
   }
-  console.log(count!==k?"no":"yes")
-
-  // WE acn do the same problem using one loop
+  console.log(leftCurve===rightCurve?"yes":"no")
+  // console.log(rightCurve)
 }
 
 rl.on("close", () => {
-//  console.log(userInput)
-  const arr = userInput[0].split(' ')
-  const str1 = arr[0]
-  const str2 = arr[1]
-  const k = Number(arr[2])
+const symbol = userInput[0].split('')
+// console.log(symbol)  
   
-  
-  result(k,str1,str2)
+  result(symbol)
 });
