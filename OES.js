@@ -1,26 +1,27 @@
 /*
-82. Greatest Common Divisor-2
+83. Max after each insertion
 
-Geekoin40
+Geekoin50
 Medium
 Topics
 Problem Statement:
-Given a number N and a number K, find the greatest number which divides both.
+Given a number N and K followed by N elements and K elements. Now insert the given K elements one by one into the array and print the maximum in the array after each insertion .
 
 
 Input Description:
-N and K <= 100000
+Input Size : K <= N <= 10000(read about priority queues and implement)
 
 
 Sample Input:
-5 10
+5 2
+1 2 3 4 5
+5 4
 
 
 Sample Output:
-5
+5 5
 */
 
-const { match } = require('assert');
 const readline = require('readline');
 
 const rl = readline.createInterface({
@@ -33,36 +34,22 @@ rl.on("line", (data) => {
   userInput.push(data.trim());
 });
 
-function result(num){
-
-  // First Way 4/5
-  // ---------------------------
-  // let factors = []
-  //  for(let i = 2;i<=num[0];i++){
-  //   if(num[0] % i===0 && num[1] % i===0){
-  //     if(!factors.includes(i)){
-  //       factors.push(i)
-  //     }
-  //   }
-  //  }
-  //  console.log(factors.sort((a,b)=>b-a)[0])
-
-  // -----------------------------------------------------------
-
-  // 2nd Way
-
-  let num1 = num[0]
-  let num2 = num[1]
-
-  while(num1%num2 !== 0){
-    let temp = num2
-    num2  = num1%num2
-    num1 = temp
-  }
-  console.log(num2)
+function result(n,k,arr1,insertingElements){
+  let maxElement = [];
+  for(let i = 0 ; i<k ;i++){
+    let max = 0
+    // console.log(i,"i")
+    arr1[n+i] = insertingElements[i];
+    max = arr1.sort((a,b)=>a-b)[arr1.length-1]
+    maxElement.push(max)
+    // console.log(arr1.length)
+  }   
+  console.log(maxElement.join(' '))
  }
 
 rl.on("close", () => {
-  const num = userInput[0].split(' ').map(n=>Number(n))
-  result(num)
+  const [n,k] = userInput[0].split(' ').map(n=>Number(n))
+  let arr1 = userInput[1].split(' ').map(n=>Number(n))
+  let insertingElements = userInput[2].split(' ').map(n=>Number(n))
+  result(n,k,arr1,insertingElements)
 });
