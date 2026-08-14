@@ -1,19 +1,24 @@
 /*
-91. Parentheses Balancing
+92. Sorted Array Search
 
-Geekoin50
+Geekoin40
 Medium
 Topics
 Problem Statement:
-Given a string S consisting of only '(' and ')', print 'yes' if it is balanced otherwise print 'no'.
+Given 2 numbers N,K followed by a sorted array of N elements, search and tell if an element K is present in the array.print 'yes' if element is present otherwise print 'no'.
+
+
+Input Description:
+Input Size : 1 <= N <= 1000000000000000(Do it in logN time complexity)
+
+
+Output Description:
+print 'yes' if element is present otherwise print 'no'.
 
 
 Sample Input:
-(())
-
-
-Sample Output:
-yes
+3 2
+2 3 7
 
 */
 
@@ -29,39 +34,14 @@ rl.on("line", (data) => {
   userInput.push(data.trim());
 });
 
-function result(symbol){
-  // let balanced = false
-  // for(let i = 0 ;i<symbol.length/2; i++){
-  //   if(symbol[i]==='(' && symbol[(symbol.length-1)-i]===')'){
-  //     //  console.log(i,symbol[i],symbol[(symbol.length-1)-i],(symbol.length-1)-i)
-  //      balanced = true
-  //    }else{
-  //     balanced = false
-  //     break;
-  //    }
-  // }
-  // console.log(balanced?"yes":"no")
-
-
-  // This is is 5/5
-  let leftCurve = 0
-  let rightCurve = 0
-  for(let i = 0 ;i<symbol.length ;i++){
-    if(symbol[i]==="("){
-      leftCurve++
-    }else if (symbol[i]===")"){
-      rightCurve++
-    }else{
-      break
-    }
-  }
-  console.log(leftCurve===rightCurve?"yes":"no")
-  // console.log(rightCurve)
+function result(n,k,arr){
+  
+  console.log(arr.includes(k)?"yes":"no")
+ 
 }
 
 rl.on("close", () => {
-const symbol = userInput[0].split('')
-// console.log(symbol)  
-  
-  result(symbol)
+ const [n,k] = userInput[0].split(' ').map(n=>Number(n))
+ const arr = userInput[1].split(' ').map(n=>Number(n))
+  result(n,k,arr)
 });
