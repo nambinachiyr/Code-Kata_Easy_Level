@@ -1,25 +1,19 @@
 /*
-83. Max after each insertion
+84. String Numeric Validation
 
-Geekoin50
+Geekoin40
 Medium
 Topics
 Problem Statement:
-Given a number N and K followed by N elements and K elements. Now insert the given K elements one by one into the array and print the maximum in the array after each insertion .
-
-
-Input Description:
-Input Size : K <= N <= 10000(read about priority queues and implement)
+Given a string S.Validate if a given string is numeric.print 'yes' if it is a numeric otherwise print 'no'.
 
 
 Sample Input:
-5 2
-1 2 3 4 5
-5 4
+guvigeeks
 
 
 Sample Output:
-5 5
+no
 */
 
 const readline = require('readline');
@@ -34,22 +28,31 @@ rl.on("line", (data) => {
   userInput.push(data.trim());
 });
 
-function result(n,k,arr1,insertingElements){
-  let maxElement = [];
-  for(let i = 0 ; i<k ;i++){
-    let max = 0
-    // console.log(i,"i")
-    arr1[n+i] = insertingElements[i];
-    max = arr1.sort((a,b)=>a-b)[arr1.length-1]
-    maxElement.push(max)
-    // console.log(arr1.length)
-  }   
-  console.log(maxElement.join(' '))
+function result(str){
+//   let isNumber = false
+//  for(let i of str){
+//   if(i<'0' || '9'>i){
+//     if(Number(i)){
+//     isNumber = true
+//   }
+//   }
+// }
+// if(isNumber){
+//  console.log("yes")
+// }else{
+//  console.log("no")
+// }
+
+// This is the actual answer
+if(str.trim() !=='' && !isNaN(Number(str))){
+  console.log("yes")
+}else{
+  console.log("no")
+}
  }
 
 rl.on("close", () => {
-  const [n,k] = userInput[0].split(' ').map(n=>Number(n))
-  let arr1 = userInput[1].split(' ').map(n=>Number(n))
-  let insertingElements = userInput[2].split(' ').map(n=>Number(n))
-  result(n,k,arr1,insertingElements)
+  const str = userInput[0]
+  
+  result(str)
 });
