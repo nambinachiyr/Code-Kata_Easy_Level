@@ -1,19 +1,20 @@
 /*
-84. String Numeric Validation
+85. Sort Strings by Length and Lexicographically
 
-Geekoin40
+Geekoin50
 Medium
 Topics
 Problem Statement:
-Given a string S.Validate if a given string is numeric.print 'yes' if it is a numeric otherwise print 'no'.
+Given an array of N strings sort it in ascending order based on the length of the string.If two strings are found to have the same length sort them in lexicographical order.
 
 
 Sample Input:
-guvigeeks
+3
+coding platform codekata
 
 
 Sample Output:
-no
+coding codekata platform
 */
 
 const readline = require('readline');
@@ -28,31 +29,27 @@ rl.on("line", (data) => {
   userInput.push(data.trim());
 });
 
-function result(str){
-//   let isNumber = false
-//  for(let i of str){
-//   if(i<'0' || '9'>i){
-//     if(Number(i)){
-//     isNumber = true
-//   }
-//   }
-// }
-// if(isNumber){
-//  console.log("yes")
-// }else{
-//  console.log("no")
-// }
-
-// This is the actual answer
-if(str.trim() !=='' && !isNaN(Number(str))){
-  console.log("yes")
-}else{
-  console.log("no")
-}
+function result(n,str){
+  let newArr = str.sort((a,b)=>{
+    console.log(a,b)
+    if(a.length<b.length){
+      return -1
+    }else if(a.length>b.length){
+      return 1
+    }else{
+     if(a<b){
+      return -1
+     }else {
+      return 1
+     }
+    }
+  })
+  console.log(newArr)
  }
 
 rl.on("close", () => {
-  const str = userInput[0]
+  const n = userInput[0]
+  const str = userInput[1].split(' ')
   
-  result(str)
+  result(n,str)
 });
