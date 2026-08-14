@@ -1,23 +1,23 @@
 /*
-86. Remove Extra Spaces
+87. String Case Conversion
 
-Geekoin40
+Geekoin50
 Medium
 Topics
 Problem Statement:
-Given a sentence S take out the extra spaces.If no extra space is present print the same as output.
+Given a string S change upper case to lowercase and lowercase to uppercase.
 
 
 Input Description:
-Input Size : |s| <= 100000(complexity O(n))
+The input consists of a string S with size |s| <= 10000000 (complexity O(n)).
 
 
 Sample Input:
-codekata challenge
+CodEkaTa
 
 
 Sample Output:
-codekata challenge
+cODeKAtA
 */
 
 const readline = require('readline');
@@ -33,20 +33,21 @@ rl.on("line", (data) => {
 });
 
 function result(str){
-  if(str.includes('')){
-    const withOutSpace = str.filter(e=>
-      e !== ''
-    )
-    console.log(withOutSpace.join(' '))
-  }else{
-    console.log(str.join(' '))
+  let newStr = ''
+  for(let i of str){
+    if(i===i.toLowerCase()){
+      newStr = newStr+i.toUpperCase()
+    }
+    else{
+      newStr = newStr + i.toLowerCase()
+    }
   }
- }
-
+  console.log(newStr)
+}
 rl.on("close", () => {
  
-  const str = userInput[0].split(' ')
-  console.log(str)
+  const str = userInput[0]
+  // console.log(str)
   
   result(str)
 });
