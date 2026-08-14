@@ -1,27 +1,23 @@
 /*
-89. Counting Perfect Squares in a Range
+90. String Difference Check
 
 Geekoin50
 Medium
 Topics
 Problem Statement:
-Given a range (i.e) two numbers L and R count the number of perfect squares within the range (inclusive of L and R).If no perfect square exists within the range print '-1'.
+Given 2 strings and a number K, check whether they differ exactly by K characters.
 
 
 Input Description:
-The input consists of two integers L and R, representing the range, where L <= R <= 100000.
-
-
-Output Description:
-The output is an integer representing the count of perfect squares within the range [L, R], or -1 if none exist.
+Input Size : |s| <= 100000(complexity O(nlogn) or O(n))
 
 
 Sample Input:
-2 10
+codekata codeguvi 4
 
 
 Sample Output:
-2
+yes
 
 */
 
@@ -37,20 +33,32 @@ rl.on("line", (data) => {
   userInput.push(data.trim());
 });
 
-function result(n,k){
- 
-  let numbeOfSquare = 0
-  for(let i = n;i<=k;i++){
-    if(Number.isInteger(Math.sqrt(i))){
-      numbeOfSquare ++
+function result(k,str1,str2){
+  
+  let count = 0
+  for(let i = 0;i<str1.length;i++){
+    for(let j = i;j<str2.length;j++){
+      if(str1[i] !== str2[j]){
+        count++
+        break;
+      }else{
+        // count--
+        break
+      }
     }
   }
- console.log(numbeOfSquare===0?-1:numbeOfSquare)
+  console.log(count!==k?"no":"yes")
+
+  // WE acn do the same problem using one loop
 }
+
 rl.on("close", () => {
- 
-  const [n,k] = userInput[0].split(' ').map(n=>Number(n))
+//  console.log(userInput)
+  const arr = userInput[0].split(' ')
+  const str1 = arr[0]
+  const str2 = arr[1]
+  const k = Number(arr[2])
   
   
-  result(n,k)
+  result(k,str1,str2)
 });
