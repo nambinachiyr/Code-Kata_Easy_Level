@@ -1,22 +1,27 @@
 /*
-98. Even Factors of a Number
+99. Prime Pairs for a Number
 
-Geekoin60
+Geekoin50
 Medium
 Topics
 Problem Statement:
-Given a number N, print the even factors of N.If the even factor does not exists for N print '-1'.
+Given a number N, print the distinct pairs formed by multiplying two prime numbers (i.e)prime x prime should yield the N.Also print the numbers in descending order.If no such pairs can be formed print '-1'.
 
 
 Input Description:
-Input Size : 1 <= N <= 1000
+The input consists of a single integer N, where 1 <= N <= 100000.
+
+
+Output Description:
+Print the distinct pairs of prime numbers (prime x prime = N) in descending order. If no such pairs can be formed, print '-1'.
 
 
 Sample Input:
-8
+65
+
 
 Sample Output:
-2 4 8
+13 5
 */
 
 const readline = require('readline');
@@ -34,16 +39,49 @@ rl.on("line", (data) => {
 function result(n){
   let i = 2
   let factors = []
-  while(i<=n){    
-      let factor=n/i
-      if(Number.isInteger(factor)){
-      factors.push(i)
+  
+  for(let i = 2 ;i <n;i++){
+      if(Number.isInteger(n/i)){
+        let num = n/i
+        let flexArr = [num,i]
+        let itHas = factors.some(pairs=>
+          pairs[0] === flexArr[1] &&
+          pairs[1] === flexArr[0]
+        )
+      if(!itHas){
+        factors.push(flexArr)
+      }
+      
+      }
     }
-    i++
-  }
 
-  let EvenFactors = factors.filter(n=>n%2===0)
-  console.log(factors.length===0?-1:EvenFactors.length!==0?EvenFactors.join(' '):-1)
+    // Find the PrimeFactors
+    
+    let primeFactors = []
+    
+    for(let pair of factors){
+      let count = 0
+      for(let num of pair){
+        let isPrime = false
+        for(let j = 2 ;j<num;j++){
+          if(num % j !== 0){
+            // console.log(num)
+            isPrime = true
+            count++
+            break;
+          }else{
+            isPrime = false;
+            count = 0
+          }
+        }if(isPrime && count===2){
+           primeFactors.push(pair)
+        }
+        
+      }
+    }
+    // console.log(primeFactors)
+    
+    console.log(primeFactors.length===0?-1:primeFactors.map(n=>n.join(' ')).join(' '))
 }
 
 rl.on("close", () => {
