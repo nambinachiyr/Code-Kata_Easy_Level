@@ -1,11 +1,11 @@
 /*
-95. Print 1st and 3rd Character
+96. Least Repeated Characters
 
-Geekoin40
+Geekoin50
 Medium
 Topics
 Problem Statement:
-Given a string S, print the 1st and 3rd character of the string (chracter index starts from 1).
+Given a string, print the least repeated characters in the string.If there are more than one character repeated preserve the order as in the input.
 
 
 Input Description:
@@ -13,11 +13,11 @@ Input Size : 1 <= N <= 100000
 
 
 Sample Input:
-codekata
+codeKata challenge
 
 
 Sample Output:
-cd
+odKthng
 */
 
 const readline = require('readline');
@@ -33,16 +33,27 @@ rl.on("line", (data) => {
 });
 
 function result(str){
-//  console.log(str)
- let first_And_Third_char = []
- for(let i = 0;i<4;i++){
-   if(i===0 || i=== 2){
-    //  console.log(i)
-     first_And_Third_char.push(str[i])
-   }
-    
+  // console.log(str)
+ let SameElement = []
+ let diffElement = []
+for(let i = 0;i<str.length;i++){
+  let count = 0
+  for(let j = i+1 ;j<str.length;j++) {
+    if(str[i]===str[j]){
+      if(!SameElement.includes(str[i])){
+        SameElement.push(str[i])
+      }
     }
-  console.log(first_And_Third_char.join(''))
+  }
+}
+
+for(let i of str){
+  if(!SameElement.includes(i) && i!==' '){
+    diffElement.push(i)
+  }
+}
+
+console.log(diffElement.length===0?SameElement.join(''):diffElement.join(''))
 }
 
 rl.on("close", () => {
