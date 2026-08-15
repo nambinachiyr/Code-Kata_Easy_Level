@@ -1,32 +1,32 @@
 /*
-102. Check Sorted Array
+103. Substring Check-2
 
 Geekoin40
 Medium
 Topics
 Problem Statement:
-Given a number N, followed by an array of N elements,print 'yes' if it is a sorted array(either ascending or descending)otherwise print 'no'.
+Given 2 strings.check if the second string is a substring of the first string.Print 'yes' if there exists a valid substring otherwise print 'no'.
 
 
 Input Description:
-The input consists of a number N, followed by an array of N elements. N is between 1 and 100000.
+The input consists of two strings. The size of the strings (N) is between 1 and 100000 (inclusive).
 
 
 Output Description:
-The output is 'yes' if the given array is sorted (either ascending or descending), otherwise 'no'.
+Print 'yes' if the second string is a substring of the first string, otherwise print 'no'.
 
 
 Sample Input:
-3
-2 3 7
+codekata code
 
 
 Sample Output:
 yes
 
+
 */
 
-const readline = require('readline');
+const readline = require('readline')
 
 const rl = readline.createInterface({
   input: process.stdin
@@ -38,53 +38,47 @@ rl.on("line", (data) => {
   userInput.push(data.trim());
 });
 
-function result(n,arr){
-  // 4/5
+function result(str1,str2){
+//  console.log(str1,str2)
 
-  //  let isSorted = false
-  //  let accCount = 0
-  //  descCount = 0
-  //  for(let i = 0;i<n;i++){
-  //   if(i<n){
-  //     if(arr[i]<=arr[i+1]){
-  //       accCount++
-  //       isSorted = true
-  //       console.log(accCount,"acc")
-  //     }else if(arr[i]>=arr[i+1]){
-  //       descCount++
-  //       isSorted = true;
-  //       console.log(descCount,"dec")
-  //     }      
+// this logic is for only find the present charactar no substring
+  // let isthere = false
+  // for(let i = 0;i<str1.length;i++){
+  //   for(let j = 0;j<str2.length;j++){
+  //     if(str1[i]===str2[j]){
+  //       // console.log("yes",str1[i],j,i)
+  //       isthere = true
+  //     }else{
+  //       isthere = false
+  //     }
+
   //   }
   // }
-  // if(isSorted && accCount === n-1){
-  //   console.log("yes accending")
-  // }else if(isSorted && descCount === n-1){
-  //   console.log("yes descending")
-  // }else{
-  //   console.log("no Sorted")
-  // }
-  // }
 
-  // 5/5
+  // console.log(isthere?"yes":"no")
 
-  let accending = true 
-  let descending = true
-  for(let i =0 ;i<n;i++){
-    if(arr[i]>arr[i+1]){
-      accending = false
-    }else if(arr[i]<arr[i+1]){
-      descending = false
+  for(let i = 0;i<str1.length;i++){
+    let count = true
+    for(let j = 0;j<=str2.length;j++){
+      if(str1[i+j]!==str2[j]){
+         count = false
+         break
+      }
+    }
+    if(count){
+      console.log("yes")
+      return
     }
   }
-  console.log(accending || descending ?"yes":"no")
+  console.log("no")
+  
+  
 }
 
 
 rl.on("close", () => {
-  // console.log(userInput)
- let n = Number(userInput[0])
- let arr = userInput[1].split(' ').map(n=>Number(n))
- 
-  result(n,arr)
+ const str = userInput[0].split(' ')
+ const str1 = str[0].split('')
+ const str2 = str[1].split('')
+ result(str1,str2)
 });
