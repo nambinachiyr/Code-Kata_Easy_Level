@@ -1,23 +1,16 @@
 /*
-100. Power of Two Check-2
+101. Power of a Number
 
 Geekoin40
 Medium
 Topics
 Problem Statement:
-Given a number N, check if it is a power of 2.
-
-
-Input Description:
-The input consists of a number N, where 1 <= N <= 100000.
-
-
-Output Description:
-Print 'yes' if N is a power of 2, otherwise print 'no'.
+Given 2 numbers N and K.check if N is a power of K.Print 'yes' if it is a power of k otherwise print 'no'.
 
 
 Sample Input:
-64
+64 8
+
 
 Sample Output:
 yes
@@ -36,14 +29,10 @@ rl.on("line", (data) => {
   userInput.push(data.trim());
 });
 
-function result(n){
-  
-  let isPwerOf2 = false
-  if(n===1){
-    console.log("yes")
-  }else{
+function result(n,k){
+  console.log(n,k)
   for(let i = 1 ;n!==0;i++){
-      n = n/2
+      n = n/k
       if(Number.isInteger(n)){
         if(n===1){
           isPwerOf2 = true
@@ -60,11 +49,11 @@ function result(n){
     }
   }
 
-}
+
 
 rl.on("close", () => {
   // console.log(userInput)
- let n = Number(userInput[0])
+ let [n,k] = userInput[0].split(' ').map(n=>Number(n))
  
-  result(n)
+  result(n,k)
 });
