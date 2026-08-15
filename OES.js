@@ -1,23 +1,22 @@
 /*
-96. Least Repeated Characters
+98. Even Factors of a Number
 
-Geekoin50
+Geekoin60
 Medium
 Topics
 Problem Statement:
-Given a string, print the least repeated characters in the string.If there are more than one character repeated preserve the order as in the input.
+Given a number N, print the even factors of N.If the even factor does not exists for N print '-1'.
 
 
 Input Description:
-Input Size : 1 <= N <= 100000
+Input Size : 1 <= N <= 1000
 
 
 Sample Input:
-codeKata challenge
-
+8
 
 Sample Output:
-odKthng
+2 4 8
 */
 
 const readline = require('readline');
@@ -32,33 +31,24 @@ rl.on("line", (data) => {
   userInput.push(data.trim());
 });
 
-function result(str){
-  // console.log(str)
- let SameElement = []
- let diffElement = []
-for(let i = 0;i<str.length;i++){
-  let count = 0
-  for(let j = i+1 ;j<str.length;j++) {
-    if(str[i]===str[j]){
-      if(!SameElement.includes(str[i])){
-        SameElement.push(str[i])
-      }
+function result(n){
+  let i = 2
+  let factors = []
+  while(i<=n){    
+      let factor=n/i
+      if(Number.isInteger(factor)){
+      factors.push(i)
     }
+    i++
   }
-}
 
-for(let i of str){
-  if(!SameElement.includes(i) && i!==' '){
-    diffElement.push(i)
-  }
-}
-
-console.log(diffElement.length===0?SameElement.join(''):diffElement.join(''))
+  let EvenFactors = factors.filter(n=>n%2===0)
+  console.log(factors.length===0?-1:EvenFactors.length!==0?EvenFactors.join(' '):-1)
 }
 
 rl.on("close", () => {
   // console.log(userInput)
- let str = userInput[0].split('')
+ let n = Number(userInput[0])
  
-  result(str)
+  result(n)
 });
