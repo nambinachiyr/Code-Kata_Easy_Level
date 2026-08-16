@@ -1,23 +1,23 @@
 /*
-120. Decimal to Binary Conversion
+121. Binary to Decimal Conversion
 
 Geekoin40
 Medium
 Topics
 Problem Statement:
-Given a number N in decimal convert it into binary value.
+Given a number N in binary format convert it to decimal number.
 
 
 Input Description:
-Input Size : N <= 100000
+N <= 10^18
 
 
 Sample Input:
-5
+101
 
 
 Sample Output:
-101
+5
 */
 
 const readline = require('readline')
@@ -33,10 +33,13 @@ rl.on("line", (data) => {
 });
 
 function result(n){
-console.log(n.toString(2))
+  // console.log(typeof n )
+  let decimal = parseInt(n,2)
+console.log(decimal)  
+
 }
 rl.on("close", () => {
- const n = Number(userInput[0])
+ const n = userInput[0]
  
  result(n)
 });
