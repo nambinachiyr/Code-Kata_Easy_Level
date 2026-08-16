@@ -1,24 +1,23 @@
 /*
-119. Combination Calculation
+120. Decimal to Binary Conversion
 
 Geekoin40
 Medium
 Topics
 Problem Statement:
-Given 2 numbers N,K print the value of nCk(C-Combination).
+Given a number N in decimal convert it into binary value.
 
 
 Input Description:
-Input Size : K <= N <= 10
+Input Size : N <= 100000
 
 
 Sample Input:
-5 2
+5
 
 
 Sample Output:
-10
-
+101
 */
 
 const readline = require('readline')
@@ -33,28 +32,11 @@ rl.on("line", (data) => {
   userInput.push(data.trim());
 });
 
-function result(n,r){
-
-  // Compination na orders matter illa  but permutation la order tha matter 
-  // Like AB!= BA in compination
-  // AB=BA in permutation
-  let Permutate ;
-//  Permulate Formula -> 6!/(6-4)! = 360
-// This is Math 
-//For Coding la answer = answer*(n),  answer*(n-1),answer*(n-2)
-// But compination = answer*(n)/r 
-
-
-let answer = 1
-for(let i = 0;i<r;i++){
- answer = (answer*(n-i))/(r-i)
-//  console.log(answer)
-}
-console.log(answer)
- 
+function result(n){
+console.log(n.toString(2))
 }
 rl.on("close", () => {
-//  const n = Number(userInput[0])
- const [n,r] = userInput[0].split(' ').map(n=>Number(n))
- result(n,r)
+ const n = Number(userInput[0])
+ 
+ result(n)
 });
