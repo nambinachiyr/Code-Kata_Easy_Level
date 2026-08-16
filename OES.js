@@ -1,29 +1,28 @@
 /*
-115. Bitwise XOR of Array Elements
+116. Bitwise Left Shift
 
-Geekoin50
+Geekoin40
 Medium
-Topics
 Company
 Problem Statement:
-Given a number N and an array of N elements, find the Bitwise XOR of the array elements.
+Given 2 numbers N,K print the number after performing bitwise left shift 'K' times.
 
 
 Input Description:
-The input consists of an integer N, representing the size of the array, followed by N array elements. The input size N is at most 100000.
+The input consists of two integers, N and K, where 1 <= N, K <= 1000.
 
 
 Output Description:
-The output is the Bitwise XOR of all elements in the array.
+The output is the integer N after performing a bitwise left shift K times.
 
 
 Sample Input:
-2
-2 4
+5 2
 
 
 Sample Output:
-6
+20
+
 */
 
 const readline = require('readline')
@@ -38,18 +37,18 @@ rl.on("line", (data) => {
   userInput.push(data.trim());
 });
 
-function result(n,arr){
+function result(arr){
+  let leftShift ;
+for(let i = 0;i<arr.length;i++){
 
-  let xor = 0   //XOR = if 0 0->0, 1 1->0, 0 1->1, 1 0->1 2same->0 different->1
-  for(let i = 0;i<n;i++){
-    xor = xor ^ arr[i]
-  }
-  console.log(xor)
-
-//  console.log(arr[0]^arr[1])
+    leftShift = arr[0]
+  
+  leftShift = leftShift<<arr[i]
+}
+console.log(leftShift)
 }
 rl.on("close", () => {
- const n = Number(userInput[0])
- const arr = userInput[1].split(' ').map(n=>Number(n))
- result(n,arr)
+//  const n = Number(userInput[0])
+ const arr = userInput[0].split(' ').map(n=>Number(n))
+ result(arr)
 });
