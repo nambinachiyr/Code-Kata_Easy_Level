@@ -1,20 +1,15 @@
 /*
-112. Bitwise OR of Array Elements
+113. Max Bitwise OR of Segments
 
 Geekoin40
 Medium
-Topics
 Company
 Problem Statement:
-Given a number N and an array of N elements, find the Bitwise OR of the array elements.
+Given a number N and an array of N integers, find the maximum of Bitwise OR of all segments.
 
 
 Input Description:
 Input Size : N <= 100000
-
-
-Output Description:
-The output is the Bitwise OR of the array elements.
 
 
 Sample Input:
@@ -24,7 +19,6 @@ Sample Input:
 
 Sample Output:
 6
-
 */
 
 const readline = require('readline')
@@ -40,13 +34,18 @@ rl.on("line", (data) => {
 });
 
 function result(n,arr){
+  let maxValue = 0
   let preValue = arr[0]
  for(let i= 0;i<arr.length;i++){
-   if(i!==arr.length-1){
+   if(i!==arr.length){
      preValue = preValue | arr[i]
+     if(maxValue<preValue){
+      maxValue = preValue
+     }
+
     }
  }
- console.log(preValue)
+ console.log(maxValue)
 }
 rl.on("close", () => {
  const n = Number(userInput[0])
