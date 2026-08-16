@@ -1,11 +1,11 @@
 /*
-866. Star Pyramid Pattern
+867. Inverted Half Pyramid Pattern
 
 Geekoin30
 Easy
 Topics
 Problem Statement:
-Write a code to generate a pyramid pattern using stars from the given input size N.
+Write a code to generate an inverted half pyramid pattern using stars.
 
 
 Input Description:
@@ -13,11 +13,11 @@ Given an integer R indicates number of rows.Where 1<=R<=100
 
 
 Output Description:
-Print the star pyramid with the given integer R.
+Print the star inverted pyramid with the given integer R.
 
 
 Explanation:
-From the given input R=5, print the half pyramid star pattern with size 5.
+From the given input R=5, print the inverted half pyramid star pattern with size 5.
 
 
 Sample Input:
@@ -27,11 +27,11 @@ Sample Input:
 Sample Output:
 
 
+*  *  *  *  *  
+*  *  *  *  
+*  *  *  
+*  *  
 *  
-* *  
-* * *  
-* * * *  
-* * * * *  
 
 */
 
@@ -47,15 +47,15 @@ rl.on("line", (data) => {
   userInput.push(data.trim());
 });
 
-function result(n,k){
+function result(n){
   
-  for(let i = 0;i<n;i++){
+  for(let i = n-1;i>=0;i--){
     let partten = ''
     for(j=0;j<=i;j++){
       if(j===i){
         partten = partten+'*'
       }else{
-        partten = partten + '* '
+        partten = partten + '*  '
       }
     }
     console.log(partten)
@@ -65,7 +65,7 @@ function result(n,k){
 
 
 rl.on("close", () => {
- const [n,k] = userInput[0].split(' ').map(n=>Number(n))
+ const n = Number(userInput[0])
 
- result(n,k)
+ result(n)
 });
