@@ -1,23 +1,23 @@
 /*
-108. Odd Factors of a Number
+109. Integer or Long
 
-Geekoin40
+Geekoin50
 Medium
 Topics
 Problem Statement:
-Given a number N, print the odd factors for the N.
+Given a number N, print 'INT' if it is integer range or print 'LONG' if it is greater.
 
 
 Input Description:
-The input consists of a single integer N, where 1 <= N <= 1000.
+Input Size : 1 <= N <= 100000
 
 
 Sample Input:
-9
+999
 
 
 Sample Output:
-1 3 9
+INT
 
 */
 
@@ -34,20 +34,12 @@ rl.on("line", (data) => {
 });
 
 function result(n){
-  // console.log(n)
-  let factors = []
-  let num = n
-  for(let i = 1;i<=num;i++){
-    
-  if(i%2!==0){
-    let f=n/i
-   if(Number.isInteger(f)){
-    factors.push(i)
-   }
-  }
-  // console.log(n)
-  }
-  console.log(factors.join(' '))
+ const int = 100000
+ if(100000>n){
+  console.log("INT")
+ }else{
+  console.log("LONG")
+ }
 }
 rl.on("close", () => {
  const n = Number(userInput[0])
