@@ -1,23 +1,19 @@
 /*
-105. String Rotation
+106. Sine of an Angle
 
-Geekoin50
+Geekoin40
 Medium
 Topics
 Problem Statement:
-Given a string S and an integer K, print the string obtained by rotating the orignal string by K positions.
-
-
-Input Description:
-Input Size : 1 <= N, K <= 100000
+Given an angle A, print the sine of the given angle.
 
 
 Sample Input:
-katacode 4
+30
 
 
 Sample Output:
-codekata
+0.5
 
 */
 
@@ -33,20 +29,24 @@ rl.on("line", (data) => {
   userInput.push(data.trim());
 });
 
-function result(str,N){
-  let a = str.split('')
-  for(let i = 0 ; i<N;i++){
-    let first = a.shift()
-    a.push(first)
-  }
-  console.log(a.join(''))
+function result(degree){
+
+  // This is a big hard bcz 
+  // First we fit the radian like θ this is the formula for radian 
+  // -> let radian = degree * Math.PI / 180 (deg*π/180)
+
+  let radian = degree*Math.PI/180
+  console.log(radian)
+  let answer = Math.sin(radian).toFixed(1)
+
+ console.log(answer)
  }
 
 
 
 rl.on("close", () => {
- const [str,n] = userInput[0].split(' ')
- let N = Number(n)
+ const n = userInput[0]
+ let degree = Number(n)
 
- result(str,N)
+ result(degree)
 });
