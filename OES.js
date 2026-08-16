@@ -1,11 +1,12 @@
 /*
-128. Binary to Octal Conversion
+129. Binary to Hexadecimal Conversion
 
 Geekoin40
 Medium
 Topics
+Company
 Problem Statement:
-Given a binary number convert it into octal format.
+Given a binary number convert it to hexadecimal.
 
 
 Sample Input:
@@ -13,7 +14,7 @@ Sample Input:
 
 
 Sample Output:
-144
+64
 */
 
 const readline = require('readline')
@@ -31,11 +32,11 @@ rl.on("line", (data) => {
 function result(k){
 let binary = k
 let decimal = parseInt(binary,2)
-let octal = decimal.toString(8)
-console.log(octal)
+let hex = decimal.toString(16).toUpperCase() //this is importent for hex->toUpperCase()
+console.log(hex)
 }
 rl.on("close", () => {
 
- const k =Number(userInput[0])
+ const k =  userInput[0] //->import ent points dont convert string to Number for finding binary search
  result(k)
 });
