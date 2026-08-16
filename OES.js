@@ -1,21 +1,19 @@
 /*
-122. Swap Adjacent Elements
+123. Repeating Digits Check
 
 Geekoin40
 Medium
 Topics
-Company
 Problem Statement:
-Given an array of N elements switch(swap) the element with the adjacent element and print the output.
+Given a number N,check whether it has repeating digits in it.print 'yes' if it has repeating digits otherwise print 'no'.
 
 
 Sample Input:
-5
-3 2 1 2 3
+11234
 
 
 Sample Output:
-2 3 2 1 3
+yes
 */
 
 const readline = require('readline')
@@ -30,34 +28,25 @@ rl.on("line", (data) => {
   userInput.push(data.trim());
 });
 
-function result(n,nums){
+function result(nums){
 
-  // this got 4/5
-//   let j = 0
-//  for(let i = 1;i<n;i++){
-//   if(i!==n-1 && j!==n-1){
-//     let temp = nums[j]
-//     nums[j] = nums[j+1]
-//     nums[j+1] = temp
+  let isThere = false
+  for(let i = 0;i<nums.length;i++ ){
+    for(let j = i;j<nums.length;j++){
 
-//     // console.log(j,i)
-//     j=j+2
-//   }
-  
-//  }
-
-
-// This git 5/5
-for(let i =0 ;i<n-1;i+=2){
-  let temp = nums[i]
-     nums[i]=nums[i+1]
-     nums[i+1] = temp
-}
- console.log(nums)
+      if(i!==nums.length){
+        if(nums[i]===nums[j+1]){
+          isThere = true
+          break
+        }
+      }
+    }
+  }
+ console.log(isThere?"yes":"no")
 }
 rl.on("close", () => {
- const n = Number(userInput[0])
- const nums = userInput[1].split(' ').map(n=>Number(n))
+//  const n = Number(userInput[0])
+ const nums = userInput[0].split('').map(n=>Number(n))
  
- result(n,nums)
+ result(nums)
 });
