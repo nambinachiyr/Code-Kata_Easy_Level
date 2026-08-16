@@ -36,10 +36,13 @@ function result(degree){
   // -> let radian = degree * Math.PI / 180 (deg*π/180)
 
   let radian = degree*Math.PI/180
-  console.log(radian)
-  let answer = Math.sin(radian).toFixed(1)
+  // console.log(radian)
+  let answer = Math.sin(radian)
 
- console.log(answer)
+ if(Math.abs(answer)<(1e-10)){  //Learn this one 
+  answer = 0
+ }
+ console.log(Number.isInteger(answer)?answer:answer.toFixed(1))
  }
 
 
