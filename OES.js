@@ -1,27 +1,23 @@
 /*
-107. Triangle Interior Angles Check
+108. Odd Factors of a Number
 
-Geekoin50
+Geekoin40
 Medium
 Topics
 Problem Statement:
-Given 3 angles A,B,C find if they can be interior angles of a triangle.If they form an interior triangle for the given angle,print 'yes' otherwise print 'no'.
+Given a number N, print the odd factors for the N.
 
 
 Input Description:
-The input consists of three integers A, B, and C, representing the angles. The constraints for the angles are 0 <= A,B,C <= 180.
-
-
-Output Description:
-The output should be 'yes' if the given angles can form an interior triangle, and 'no' otherwise.
+The input consists of a single integer N, where 1 <= N <= 1000.
 
 
 Sample Input:
-2 2 176
+9
 
 
 Sample Output:
-yes
+1 3 9
 
 */
 
@@ -37,25 +33,24 @@ rl.on("line", (data) => {
   userInput.push(data.trim());
 });
 
-function result(A,B,C){
-//  This is Interior Triangle kku oru Major Role ithutha..
-// # 3 angles = 180deg
-if(A!==0 && B!==0&& C!==0){
-  if(A+B+C===180){
-  console.log("yes")
-} else{
-  console.log("no")
+function result(n){
+  // console.log(n)
+  let factors = []
+  let num = n
+  for(let i = 1;i<=num;i++){
+    
+  if(i%2!==0){
+    let f=n/i
+   if(Number.isInteger(f)){
+    factors.push(i)
+   }
+  }
+  // console.log(n)
+  }
+  console.log(factors.join(' '))
 }
- }else{
-  console.log("no")
- }
-}
-
-
-
 rl.on("close", () => {
- const [A,B,C] = userInput[0].split(' ').map(n=>Number(n))
+ const n = Number(userInput[0])
 
-
- result(A,B,C)
+ result(n)
 });
