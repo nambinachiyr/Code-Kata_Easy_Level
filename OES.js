@@ -1,23 +1,23 @@
 /*
-125. Sum of First and Last Digits
+127. Check Digits 0 to K in N
 
 Geekoin50
 Medium
 Topics
 Problem Statement:
-Given a number N, print the sum of its first and last digit.
+Given a number N and a number K, check if it has all digits from 0 to k in it.
 
 
 Input Description:
-Input Size : |N| <= 10000
+Input Size : N <= 100000
 
 
 Sample Input:
-51233
+1234034 4
 
 
 Sample Output:
-8
+yes
 */
 
 const readline = require('readline')
@@ -33,15 +33,22 @@ rl.on("line", (data) => {
 });
 
 function result(n,k){
-  let sumOfOdd = 0
-  for(let i = n;i<=k;i++){
-    if(i%2!==0){
-      sumOfOdd = sumOfOdd +i
+
+  let kArr = []
+  for(let i = 0;i<n.length;i++){
+    if(n[i]<=k ){
+      if(Number.isInteger(n[i])){
+      if(!kArr.includes(n[i])){
+        kArr.push(n[i])
+      }
     }
   }
-  console.log(sumOfOdd)
+  }
+  console.log(kArr.length===k+1?"yes":"no")
 }
 rl.on("close", () => {
- const [n,k] = userInput[0].split(' ').map(n=>Number(n))
+ const arr = userInput[0].split(' ')
+ const n = arr[0].split('').map(n=>Number(n))
+ const k =Number( arr[1])
  result(n,k)
 });
