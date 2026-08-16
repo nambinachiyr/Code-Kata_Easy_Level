@@ -1,36 +1,37 @@
 /*
-865. Hollow Rectangle Star Pattern
+866. Star Pyramid Pattern
 
 Geekoin30
 Easy
 Topics
 Problem Statement:
-Write a code to generate a hollow rectangle using stars.
+Write a code to generate a pyramid pattern using stars from the given input size N.
 
 
 Input Description:
-Given an integer R indicates no of rows and an integer C indicates no of columns.Where 1<=R<=100
+Given an integer R indicates number of rows.Where 1<=R<=100
 
 
 Output Description:
-Print the hollow rectangle using stars with R rows and C columns.
+Print the star pyramid with the given integer R.
 
 
 Explanation:
-From the given input R=3 and C=5 print the hollow rectangle of star width 5 and height 3.
+From the given input R=5, print the half pyramid star pattern with size 5.
 
 
 Sample Input:
-3 5
+5
 
 
 Sample Output:
 
 
+*  
+* *  
+* * *  
+* * * *  
 * * * * *  
-*       *  
-* * * * *  
- 
 
 */
 
@@ -50,16 +51,11 @@ function result(n,k){
   
   for(let i = 0;i<n;i++){
     let partten = ''
-    for(j=0;j<k;j++){
-      if((j===k-1)){
-        partten = partten+'*'  //Row,s last one is not have space
-      }else if(i===0 || i===n-1){
-        partten = partten+ '* ' //Row's inner
-      }
-      else if(j===0){
-        partten = partten+'* '
+    for(j=0;j<=i;j++){
+      if(j===i){
+        partten = partten+'*'
       }else{
-        partten = partten+'  '
+        partten = partten + '* '
       }
     }
     console.log(partten)
