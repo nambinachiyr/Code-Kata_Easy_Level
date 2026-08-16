@@ -1,24 +1,24 @@
 /*
-113. Max Bitwise OR of Segments
+114. Bitwise NOT of a Number
 
-Geekoin40
+Geekoin50
 Medium
+Topics
 Company
 Problem Statement:
-Given a number N and an array of N integers, find the maximum of Bitwise OR of all segments.
+Given a number N, print the Bitwise NOT of that number.
 
 
 Input Description:
-Input Size : N <= 100000
+Input Size : 1 <= N <= 10000
 
 
 Sample Input:
-2
-2 4
+5
 
 
 Sample Output:
-6
+-6
 */
 
 const readline = require('readline')
@@ -33,23 +33,12 @@ rl.on("line", (data) => {
   userInput.push(data.trim());
 });
 
-function result(n,arr){
-  let maxValue = 0
-  let preValue = arr[0]
- for(let i= 0;i<arr.length;i++){
-   if(i!==arr.length){
-     preValue = preValue | arr[i]
-     if(maxValue<preValue){
-      maxValue = preValue
-     }
-
-    }
- }
- console.log(maxValue)
+function result(n){
+//  formula -> ~N= -(N+1)
+ console.log(~n)
 }
 rl.on("close", () => {
  const n = Number(userInput[0])
- const arr = userInput[1].split(' ').map(n=>Number(n))
 
- result(n,arr)
+ result(n)
 });
