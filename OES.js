@@ -1,11 +1,11 @@
 /*
-109. Integer or Long
+110. Divisibility Check of a Number
 
 Geekoin50
 Medium
 Topics
 Problem Statement:
-Given a number N, print 'INT' if it is integer range or print 'LONG' if it is greater.
+Given a number N, check if N is divisible by any number less than N (ie.,it leaves no remainder)except 1.
 
 
 Input Description:
@@ -13,11 +13,11 @@ Input Size : 1 <= N <= 100000
 
 
 Sample Input:
-999
+10
 
 
 Sample Output:
-INT
+yes
 
 */
 
@@ -34,12 +34,15 @@ rl.on("line", (data) => {
 });
 
 function result(n){
- const int = 100000
- if(100000>n){
-  console.log("INT")
- }else{
-  console.log("LONG")
+  let isDivisible = false
+ for(let i = 2;i<n;i++){
+  let divider = n/i
+  if(Number.isInteger(divider)){
+      isDivisible = true
+      break
+  }
  }
+ console.log(isDivisible?"yes":"no")
 }
 rl.on("close", () => {
  const n = Number(userInput[0])
