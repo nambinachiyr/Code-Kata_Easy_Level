@@ -1,19 +1,19 @@
 /*
-116. Bitwise Left Shift
+117. Bitwise Right Shift
 
-Geekoin40
+Geekoin50
 Medium
 Company
 Problem Statement:
-Given 2 numbers N,K print the number after performing bitwise left shift 'K' times.
+Given 2 numbers N and K print the number after performing bitwise right shift 'K' times(upto 2 decimal places).
 
 
 Input Description:
-The input consists of two integers, N and K, where 1 <= N, K <= 1000.
+The input consists of two numbers, N and K, where 1 <= N, K <= 1000.
 
 
 Output Description:
-The output is the integer N after performing a bitwise left shift K times.
+The output is the number N after performing a bitwise right shift K times, rounded to 2 decimal places.
 
 
 Sample Input:
@@ -21,7 +21,7 @@ Sample Input:
 
 
 Sample Output:
-20
+1
 
 */
 
@@ -43,7 +43,7 @@ for(let i = 0;i<arr.length;i++){
 
     leftShift = arr[0]
   
-  leftShift = leftShift<<arr[i]
+  leftShift = leftShift>>arr[i]
 }
 console.log(leftShift)
 }
