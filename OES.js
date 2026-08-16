@@ -32,11 +32,16 @@ rl.on("line", (data) => {
   userInput.push(data.trim());
 });
 
-function result(N){
-  let sum = N[0]+N[N.length-1]
-  console.log(sum)
+function result(n,k){
+  let sumOfOdd = 0
+  for(let i = n;i<=k;i++){
+    if(i%2!==0){
+      sumOfOdd = sumOfOdd +i
+    }
+  }
+  console.log(sumOfOdd)
 }
 rl.on("close", () => {
- const N = userInput[0].split('').map(n=>Number(n))
- result(N)
+ const [n,k] = userInput[0].split(' ').map(n=>Number(n))
+ result(n,k)
 });
