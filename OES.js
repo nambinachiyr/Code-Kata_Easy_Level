@@ -1,28 +1,31 @@
 /*
-103. Substring Check-2
+864. Rectangle of Stars
 
-Geekoin40
-Medium
+Geekoin30
+Easy
 Topics
 Problem Statement:
-Given 2 strings.check if the second string is a substring of the first string.Print 'yes' if there exists a valid substring otherwise print 'no'.
+Generate a solid rectangle using stars.
 
 
 Input Description:
-The input consists of two strings. The size of the strings (N) is between 1 and 100000 (inclusive).
+Given an integer R indicates no of rows and an integer C indicates no of columns.Where 1<=R<=100
 
 
 Output Description:
-Print 'yes' if the second string is a substring of the first string, otherwise print 'no'.
+Print the rectangle using stars with R rows and C columns.
 
 
 Sample Input:
-codekata code
+3 5
 
 
 Sample Output:
-yes
 
+
+* * * * *  
+* * * * *  
+* * * * *  
 
 */
 
@@ -38,47 +41,25 @@ rl.on("line", (data) => {
   userInput.push(data.trim());
 });
 
-function result(str1,str2){
-//  console.log(str1,str2)
-
-// this logic is for only find the present charactar no substring
-  // let isthere = false
-  // for(let i = 0;i<str1.length;i++){
-  //   for(let j = 0;j<str2.length;j++){
-  //     if(str1[i]===str2[j]){
-  //       // console.log("yes",str1[i],j,i)
-  //       isthere = true
-  //     }else{
-  //       isthere = false
-  //     }
-
-  //   }
-  // }
-
-  // console.log(isthere?"yes":"no")
-
-  for(let i = 0;i<str1.length;i++){
-    let count = true
-    for(let j = 0;j<=str2.length;j++){
-      if(str1[i+j]!==str2[j]){
-         count = false
-         break
+function result(n,k){
+  
+  for(let i = 0;i<n;i++){
+    let partten = ''
+    for(j=0;j<k;j++){
+      if(j===k-1){
+        // partten = partten+'*'  Row,s last one is not have space
+      }else{
+        partten = partten+ '* ' //Row's inner
       }
     }
-    if(count){
-      console.log("yes")
-      return
-    }
+    console.log(partten)
   }
-  console.log("no")
-  
-  
-}
+ }
+
 
 
 rl.on("close", () => {
- const str = userInput[0].split(' ')
- const str1 = str[0].split('')
- const str2 = str[1].split('')
- result(str1,str2)
+ const [n,k] = userInput[0].split(' ').map(n=>Number(n))
+
+ result(n,k)
 });
