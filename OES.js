@@ -1,19 +1,27 @@
 /*
-106. Sine of an Angle
+107. Triangle Interior Angles Check
 
-Geekoin40
+Geekoin50
 Medium
 Topics
 Problem Statement:
-Given an angle A, print the sine of the given angle.
+Given 3 angles A,B,C find if they can be interior angles of a triangle.If they form an interior triangle for the given angle,print 'yes' otherwise print 'no'.
+
+
+Input Description:
+The input consists of three integers A, B, and C, representing the angles. The constraints for the angles are 0 <= A,B,C <= 180.
+
+
+Output Description:
+The output should be 'yes' if the given angles can form an interior triangle, and 'no' otherwise.
 
 
 Sample Input:
-30
+2 2 176
 
 
 Sample Output:
-0.5
+yes
 
 */
 
@@ -29,27 +37,25 @@ rl.on("line", (data) => {
   userInput.push(data.trim());
 });
 
-function result(degree){
-
-  // This is a big hard bcz 
-  // First we fit the radian like θ this is the formula for radian 
-  // -> let radian = degree * Math.PI / 180 (deg*π/180)
-
-  let radian = degree*Math.PI/180
-  // console.log(radian)
-  let answer = Math.sin(radian)
-
- if(Math.abs(answer)<(1e-10)){  //Learn this one 
-  answer = 0
+function result(A,B,C){
+//  This is Interior Triangle kku oru Major Role ithutha..
+// # 3 angles = 180deg
+if(A!==0 && B!==0&& C!==0){
+  if(A+B+C===180){
+  console.log("yes")
+} else{
+  console.log("no")
+}
+ }else{
+  console.log("no")
  }
- console.log(Number.isInteger(answer)?answer:answer.toFixed(1))
- }
+}
 
 
 
 rl.on("close", () => {
- const n = userInput[0]
- let degree = Number(n)
+ const [A,B,C] = userInput[0].split(' ').map(n=>Number(n))
 
- result(degree)
+
+ result(A,B,C)
 });
