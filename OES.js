@@ -1,37 +1,27 @@
 /*
-867. Inverted Half Pyramid Pattern
+104. Rectangle with Integer Sides
 
-Geekoin30
-Easy
+Geekoin40
+Medium
 Topics
 Problem Statement:
-Write a code to generate an inverted half pyramid pattern using stars.
+Given 2 numbers P and A which are the perimeter and area of a rectangle respectively, find if there can actually be a rectangle with this perimeter and area having integer sides.If there exists such rectangle print 'yes' otherwise print 'no'.
 
 
 Input Description:
-Given an integer R indicates number of rows.Where 1<=R<=100
+Input Size : 1 <= P,A <= 100000
 
 
 Output Description:
-Print the star inverted pyramid with the given integer R.
-
-
-Explanation:
-From the given input R=5, print the inverted half pyramid star pattern with size 5.
+The output is 'yes' if such a rectangle exists, otherwise 'no'.
 
 
 Sample Input:
-5
+20 25
 
 
 Sample Output:
-
-
-*  *  *  *  *  
-*  *  *  *  
-*  *  *  
-*  *  
-*  
+yes
 
 */
 
@@ -47,25 +37,26 @@ rl.on("line", (data) => {
   userInput.push(data.trim());
 });
 
-function result(n){
-  
-  for(let i = n-1;i>=0;i--){
-    let partten = ''
-    for(j=0;j<=i;j++){
-      if(j===i){
-        partten = partten+'*'
-      }else{
-        partten = partten + '*  '
-      }
+function result(P,A){
+  let isTrue = false
+ for(let i = 0;i<P;i++){
+  if(A%i===0){
+    let l = i
+    let b = A/i
+    // Area ku formula Area = l*b //inside the rectangle
+    if(2*(l+b)===P){     //Perimeter = 2*(l+b) //outside sides 
+      // console.log(l,b)
+      isTrue = true
     }
-    console.log(partten)
   }
+}
+console.log(isTrue?"yes":"no")
  }
 
 
 
 rl.on("close", () => {
- const n = Number(userInput[0])
+ const [P,A] = userInput[0].split(' ').map(n=>Number(n))
 
- result(n)
+ result(P,A)
 });
