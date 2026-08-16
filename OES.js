@@ -1,20 +1,24 @@
 /*
-129. Binary to Hexadecimal Conversion
+130. Max Sum of Adjacent Pairs
 
-Geekoin40
+Geekoin50
 Medium
 Topics
-Company
 Problem Statement:
-Given a binary number convert it to hexadecimal.
+Given a number N and an array of N elements, find the sum of the maximum elements obtained by considering all consecutive pairs of adjacent elements.
+
+
+Input Description:
+The input consists of a number N representing the size of the array, followed by N elements. N <= 100000.
 
 
 Sample Input:
-1100100
+5
+1 2 3 4 5
 
 
 Sample Output:
-64
+14
 */
 
 const readline = require('readline')
@@ -29,14 +33,25 @@ rl.on("line", (data) => {
   userInput.push(data.trim());
 });
 
-function result(k){
-let binary = k
-let decimal = parseInt(binary,2)
-let hex = decimal.toString(16).toUpperCase() //this is importent for hex->toUpperCase()
-console.log(hex)
+function result(arr){
+  let max = 0
+
+  function maxNumInPairs(num1,num2){
+    if(num1>num2){
+      max = num1+max
+    }else{
+      max = num2+max
+    }
+  }
+   for(let i = 0;i<arr.length;i++){
+    if(i!==(arr.length-1)){
+       maxNumInPairs(arr[i],arr[i+1])
+    }
+   }
+   console.log(max)
 }
 rl.on("close", () => {
-
- const k =  userInput[0] //->import ent points dont convert string to Number for finding binary search
- result(k)
+const n = userInput[0]
+ const arr =  userInput[1].split(' ').map(n=>Number(n)) 
+ result(arr)
 });
