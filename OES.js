@@ -1,11 +1,11 @@
 /*
-118. Permutation Calculation
+119. Combination Calculation
 
 Geekoin40
 Medium
 Topics
 Problem Statement:
-Given 2 numbers N,K print the value of nPk(P-Permutation).
+Given 2 numbers N,K print the value of nCk(C-Combination).
 
 
 Input Description:
@@ -17,7 +17,7 @@ Sample Input:
 
 
 Sample Output:
-20
+10
 
 */
 
@@ -33,21 +33,21 @@ rl.on("line", (data) => {
   userInput.push(data.trim());
 });
 
-function result(arr){
+function result(n,r){
 
-  // N items-la K items-a eduthu, ethana different orders-la arrange panna mudiyum?
-  // Like 12345->345,543,435,123,321,231...like that
-  // N- array's Element, K-how many number take out of the array and changing
-
+  // Compination na orders matter illa  but permutation la order tha matter 
+  // Like AB!= BA in compination
+  // AB=BA in permutation
   let Permutate ;
 //  Permulate Formula -> 6!/(6-4)! = 360
 // This is Math 
-//For Coding la answer = answer*(n),  answer*(n-1),answer*(n-2) 
+//For Coding la answer = answer*(n),  answer*(n-1),answer*(n-2)
+// But compination = answer*(n)/r 
 
 
 let answer = 1
-for(let i = 0;i<arr[1];i++){
- answer = answer*(arr[0]-i)
+for(let i = 0;i<r;i++){
+ answer = (answer*(n-i))/(r-i)
 //  console.log(answer)
 }
 console.log(answer)
@@ -55,6 +55,6 @@ console.log(answer)
 }
 rl.on("close", () => {
 //  const n = Number(userInput[0])
- const arr = userInput[0].split(' ').map(n=>Number(n))
- result(arr)
+ const [n,r] = userInput[0].split(' ').map(n=>Number(n))
+ result(n,r)
 });
