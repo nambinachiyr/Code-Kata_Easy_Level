@@ -1,28 +1,29 @@
 /*
-111. Bitwise AND of Array Elements
+112. Bitwise OR of Array Elements
 
 Geekoin40
 Medium
 Topics
+Company
 Problem Statement:
-Given a number N and an array of N elements ,find the Bitwise AND of the array elements.
+Given a number N and an array of N elements, find the Bitwise OR of the array elements.
 
 
 Input Description:
-The input consists of an integer N, representing the size of the array, followed by N array elements. N <= 100000.
+Input Size : N <= 100000
 
 
 Output Description:
-The output is the Bitwise AND of all elements in the array.
+The output is the Bitwise OR of the array elements.
 
 
 Sample Input:
-4
-4 3 2 1
+2
+2 4
 
 
 Sample Output:
-0
+6
 
 */
 
@@ -39,19 +40,13 @@ rl.on("line", (data) => {
 });
 
 function result(n,arr){
-  let preValue;
+  let preValue = arr[0]
  for(let i= 0;i<arr.length;i++){
    if(i!==arr.length-1){
-    if(!preValue){
-      preValue = arr[i]&arr[i+1]
-      console.log(preValue)
+     preValue = preValue | arr[i]
     }
-    let now = arr[i]&arr[i+1]
-    console.log(preValue,now)
-     preValue = preValue&now
-   }
  }
- console.log(preValue,"pr")
+ console.log(preValue)
 }
 rl.on("close", () => {
  const n = Number(userInput[0])
