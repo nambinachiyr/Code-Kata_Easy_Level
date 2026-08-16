@@ -1,23 +1,21 @@
 /*
-121. Binary to Decimal Conversion
+122. Swap Adjacent Elements
 
 Geekoin40
 Medium
 Topics
+Company
 Problem Statement:
-Given a number N in binary format convert it to decimal number.
-
-
-Input Description:
-N <= 10^18
+Given an array of N elements switch(swap) the element with the adjacent element and print the output.
 
 
 Sample Input:
-101
+5
+3 2 1 2 3
 
 
 Sample Output:
-5
+2 3 2 1 3
 */
 
 const readline = require('readline')
@@ -32,14 +30,34 @@ rl.on("line", (data) => {
   userInput.push(data.trim());
 });
 
-function result(n){
-  // console.log(typeof n )
-  let decimal = parseInt(n,2)
-console.log(decimal)  
+function result(n,nums){
 
+  // this got 4/5
+//   let j = 0
+//  for(let i = 1;i<n;i++){
+//   if(i!==n-1 && j!==n-1){
+//     let temp = nums[j]
+//     nums[j] = nums[j+1]
+//     nums[j+1] = temp
+
+//     // console.log(j,i)
+//     j=j+2
+//   }
+  
+//  }
+
+
+// This git 5/5
+for(let i =0 ;i<n-1;i+=2){
+  let temp = nums[i]
+     nums[i]=nums[i+1]
+     nums[i+1] = temp
+}
+ console.log(nums)
 }
 rl.on("close", () => {
- const n = userInput[0]
+ const n = Number(userInput[0])
+ const nums = userInput[1].split(' ').map(n=>Number(n))
  
- result(n)
+ result(n,nums)
 });
