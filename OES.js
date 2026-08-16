@@ -1,23 +1,19 @@
 /*
-127. Check Digits 0 to K in N
+128. Binary to Octal Conversion
 
-Geekoin50
+Geekoin40
 Medium
 Topics
 Problem Statement:
-Given a number N and a number K, check if it has all digits from 0 to k in it.
-
-
-Input Description:
-Input Size : N <= 100000
+Given a binary number convert it into octal format.
 
 
 Sample Input:
-1234034 4
+1100100
 
 
 Sample Output:
-yes
+144
 */
 
 const readline = require('readline')
@@ -32,23 +28,14 @@ rl.on("line", (data) => {
   userInput.push(data.trim());
 });
 
-function result(n,k){
-
-  let kArr = []
-  for(let i = 0;i<n.length;i++){
-    if(n[i]<=k ){
-      if(Number.isInteger(n[i])){
-      if(!kArr.includes(n[i])){
-        kArr.push(n[i])
-      }
-    }
-  }
-  }
-  console.log(kArr.length===k+1?"yes":"no")
+function result(k){
+let binary = k
+let decimal = parseInt(binary,2)
+let octal = decimal.toString(8)
+console.log(octal)
 }
 rl.on("close", () => {
- const arr = userInput[0].split(' ')
- const n = arr[0].split('').map(n=>Number(n))
- const k =Number( arr[1])
- result(n,k)
+
+ const k =Number(userInput[0])
+ result(k)
 });
