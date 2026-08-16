@@ -1,19 +1,15 @@
 /*
-117. Bitwise Right Shift
+118. Permutation Calculation
 
-Geekoin50
+Geekoin40
 Medium
-Company
+Topics
 Problem Statement:
-Given 2 numbers N and K print the number after performing bitwise right shift 'K' times(upto 2 decimal places).
+Given 2 numbers N,K print the value of nPk(P-Permutation).
 
 
 Input Description:
-The input consists of two numbers, N and K, where 1 <= N, K <= 1000.
-
-
-Output Description:
-The output is the number N after performing a bitwise right shift K times, rounded to 2 decimal places.
+Input Size : K <= N <= 10
 
 
 Sample Input:
@@ -21,7 +17,7 @@ Sample Input:
 
 
 Sample Output:
-1
+20
 
 */
 
@@ -38,14 +34,24 @@ rl.on("line", (data) => {
 });
 
 function result(arr){
-  let leftShift ;
-for(let i = 0;i<arr.length;i++){
 
-    leftShift = arr[0]
-  
-  leftShift = leftShift>>arr[i]
+  // N items-la K items-a eduthu, ethana different orders-la arrange panna mudiyum?
+  // Like 12345->345,543,435,123,321,231...like that
+  // N- array's Element, K-how many number take out of the array and changing
+
+  let Permutate ;
+//  Permulate Formula -> 6!/(6-4)! = 360
+// This is Math 
+//For Coding la answer = answer*(n),  answer*(n-1),answer*(n-2) 
+
+
+let answer = 1
+for(let i = 0;i<arr[1];i++){
+ answer = answer*(arr[0]-i)
+//  console.log(answer)
 }
-console.log(leftShift)
+console.log(answer)
+ 
 }
 rl.on("close", () => {
 //  const n = Number(userInput[0])
