@@ -1,25 +1,28 @@
 /*
-135. Remove Duplicates from Array
+136. Word Position in String
 
-Geekoin40
+Geekoin50
 Medium
 Topics
 Problem Statement:
-Given a number N and an array of N elements, print the array after removing duplicate elements.If no duplicate elements found print the same.
+Given 2 strings S and X print the word position of X in S.(word count starts from 1).If the given word doesn't exists in S print '-1'.
 
 
 Input Description:
-Input Size : N <= 100000
+The input consists of 2 strings S and X. The size of S and X are between 1 and 1000 characters (1 <= |s|, |x| <= 1000).
+
+
+Output Description:
+The output is the word position of X in S (starting from 1), or -1 if X is not found.
 
 
 Sample Input:
-4
-2 4 4 2
+codekata coding challenge
+coding
 
 
 Sample Output:
-2 4
-
+2
 */
 
 const readline = require('readline');
@@ -34,25 +37,39 @@ rl.on('line', (data) => {
   userInput.push(data.trim());
 });
 
-  function result(arr) {
-  for(let i= 0;i<arr.length;i++){
-    for(let j=i+1;j<arr.length;j++){
-      if(arr[i]===arr[j]){
-       for(k=j;k<=arr.length-1;k++){
-        // console.log(arr[k],arr[j+k])
-         arr[k] = arr[k+1] 
-       }      
-       arr.length--
-       j--
+  function result(string,word) {
+  let isWord = false
+  let index;
+  for(let j=0;j<string.length;j++){
+    let count =1
+    for(let i = 0 ;i<string[j].length;i++){
+      if(string[j][i]===word[i]){
+        isWord = true
+        index = j
+        // console.log(count,string[j].length)
+        if(count===string[j].length){
+          break
+        }
+        count++
+        
+      }
+      else{
+        isWord = false
+        count=0
+        break
+      }
     }
-      // console.log(arr)
+    if(count!==string[j] && !isWord){
+
+    }else{
+      break
     }
   }
-  console.log(arr.join(' '))
+  console.log(isWord?index+1:-1)
 }
 
 rl.on('close', () => {
-  const n = userInput[0];
-  const arr = userInput[1].split(' ').map((n) => Number(n));
-  result(arr);
+ const string = userInput[0].split(' ')
+ const word = userInput[1].split('')
+ result(string,word)
 });
