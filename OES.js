@@ -34,6 +34,9 @@ rl.on('line', (data) => {
 });
 
   function result(n,nums) {
+
+    // 4/5
+
     // console.log(nums[n-1-2]+nums[n-2])
     let preFix = [...nums]
     let sufFix = [...nums]
