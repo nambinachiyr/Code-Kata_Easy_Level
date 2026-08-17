@@ -1,23 +1,28 @@
 /*
-145. Reverse String with Separator
+146. Longest Word in a Sentence
 
-Geekoin40
+Geekoin50
 Medium
 Topics
 Problem Statement:
-Given a input string S, reverse the given string by appending each character of the string with '-'.
+Find the word having maximum length in a given sentence and print it. If two words are of same length return the first occuring word of max-length.
 
 
 Input Description:
-Input Size : |S| <= 100000
+The input consists of a sentence where its size |s| is less than or equal to 100000.
+
+
+Output Description:
+The output is the word with the maximum length.
 
 
 Sample Input:
-codekata
+guvi geek
 
 
 Sample Output:
-a-t-a-k-e-d-o-c
+guvi
+
 */
 
 const readline = require('readline');
@@ -33,25 +38,30 @@ rl.on('line', (data) => {
 });
 
   function result(str) {
-  let reverseStr = []
-  // This is One Case
-  // for(let i = str.length-1;i>=0;i--){
-  //   if(i===0){
-  //       reverseStr = reverseStr+str[i]
-  //   }else{
-  //     reverseStr = reverseStr+str[i]+'-'
-  //   }
-  // }
+    let longWord;
+    let pre= str[0]
+    for(let i = 0;i<str.length-1;i++){
+      for(let j=i+1;j<str.length;j++){
+        if(str[i].length<str[j].length){
+       longWord = str[j]
+      }else if(str[i].length>str[j].length){
+        longWord = str[i]
+      }else{
+        longWord = str[i]
+      }
 
-  for(let i = str.length-1;i>=0;i--){
-    if(str[i]!==' '){
-      reverseStr.push(str[i])
+      }
+      if(pre.length>longWord.length){
+       longWord = pre
+      }else{
+        pre = longWord
+      }
     }
-  }
-  console.log(reverseStr.join('-'))
+    console.log(longWord)
+
   }
 
 rl.on('close', () => {
-const str = userInput[0]
+const str = userInput[0].split(' ')
 result(str)
 });
