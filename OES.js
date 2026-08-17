@@ -1,24 +1,23 @@
 /*
-144. Character Frequency Sort
+145. Reverse String with Separator
 
-Geekoin50
+Geekoin40
 Medium
 Topics
 Problem Statement:
-Given an array of N elements.find the number of occurences of each character and print it in the decreasing order of occurences, if 2 or more number occurs the same number of times, print the numbers in decreasing order.
+Given a input string S, reverse the given string by appending each character of the string with '-'.
 
 
 Input Description:
-Input Size : |N| <= 100000
+Input Size : |S| <= 100000
 
 
 Sample Input:
-5
-3 3 4 4 7
+codekata
 
 
 Sample Output:
-4 3 7
+a-t-a-k-e-d-o-c
 */
 
 const readline = require('readline');
@@ -33,29 +32,26 @@ rl.on('line', (data) => {
   userInput.push(data.trim());
 });
 
-  function result(n,arr) {
-   let decreasingArr = arr.sort((a,b)=>b-a)
-  //  console.log(decreasingArr)
-   let sameElements = []
+  function result(str) {
+  let reverseStr = []
+  // This is One Case
+  // for(let i = str.length-1;i>=0;i--){
+  //   if(i===0){
+  //       reverseStr = reverseStr+str[i]
+  //   }else{
+  //     reverseStr = reverseStr+str[i]+'-'
+  //   }
+  // }
 
-   for(let i = 0;i<decreasingArr.length-1;i++){
-    if(decreasingArr[i]===decreasingArr[i+1]){
-      if(!sameElements.includes[decreasingArr[i]]){
-        sameElements.push(decreasingArr[i])
-      }
+  for(let i = str.length-1;i>=0;i--){
+    if(str[i]!==' '){
+      reverseStr.push(str[i])
     }
-   }
-  //  console.log(sameElements)
-   for(let i = 0;i<decreasingArr.length;i++){
-    if(!sameElements.includes(decreasingArr[i])){
-      sameElements.push(decreasingArr[i])
-    }
-   }
-   console.log(sameElements.length===0?decreasingArr.join(' '):sameElements.join(' '))
+  }
+  console.log(reverseStr.join('-'))
   }
 
 rl.on('close', () => {
-const n = Number(userInput[0])
-const arr = userInput[1].split(' ').map(n=>Number(n))
-result(n,arr)
+const str = userInput[0]
+result(str)
 });
