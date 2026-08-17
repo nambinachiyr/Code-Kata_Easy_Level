@@ -1,28 +1,19 @@
 /*
-141. Counting Subarrays
+142. Date Format Validation
 
-Geekoin40
+Geekoin50
 Medium
 Topics
 Problem Statement:
-Given an array print the number of subarrays that can be formed with it.
-
-
-Input Description:
-The input consists of an integer N representing the size of the array, where N <= 100000, followed by N space-separated integers representing the array elements.
-
-
-Output Description:
-The output is a single integer representing the total number of subarrays that can be formed from the given array.
+Accept a string and find if it is of date format 'dd/mm/yyyy'.
 
 
 Sample Input:
-5
-1 2 3 2 1
+01/13/1999
 
 
 Sample Output:
-15
+no
 */
 
 const readline = require('readline');
@@ -37,19 +28,44 @@ rl.on('line', (data) => {
   userInput.push(data.trim());
 });
 
-  function result(n,nums) {
-  //  console.log(n,nums)
-   let subarrayCount = 0
-   for(let i = n;i>=1;i--){
-    // console.log(i)
-    subarrayCount = subarrayCount+i
-   }
-   console.log(subarrayCount)
+  function result(date) {
+//  console.log(date)   //day/mm/year
+ let [day,mm,yr] = date.split('/')
+//  console.log(day,mm,yr)
+ let days = []
+ for(let i = 1;i<=31;i++){
+  days.push(i)
+ }
+ let months = []
+ for(let i = 1;i<=12;i++){
+  months.push(i)
+ }
+ function remove0(d){
+  let splitD = d.split('').map(n=>Number(n))
+  // console.log(splitD)
+  if(splitD[0]===0){
+    return splitD[1]
+  }else{
+   return Number(d)
+  }
+ }
+
+ if(yr.split('').length===4 && day.split('').length===2 && mm.split('').length===2){
+    
+       if( !months.includes(remove0(mm)) ||!days.includes(remove0(day))){
+        console.log("no")
+       }
+    
+     else if(days.includes(remove0(day)) && months.includes(remove0(mm))){
+      console.log('yes')
+     }
+ }else{
+  console.log('no')
+ }
+ 
 }
 rl.on('close', () => {
-const n= userInput[0].split('').map(n=>Number(n))[0]
-const nums = userInput[1].split(' ').map(n=>Number(n))
+const date = userInput[0]
 
-// console.log(arr1,arr2,nums)
- result(n,nums)
+ result(date)
 });
