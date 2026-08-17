@@ -1,24 +1,28 @@
 /*
-139. Prefix and Suffix Sum
+140. Common Numbers in Sorted Order
 
-Geekoin50
+Geekoin40
 Medium
 Topics
 Problem Statement:
-Given a numbers N, print the sum of prefix sum and suffix sum array for each position.
+Given 2 numbers N and M followed by N numbers and M numbers, print the common numbers in sorted order.
 
 
 Input Description:
-Input Size : N <= 10000
+N,M <= 100000 (ie do it in O(n) time complexity)
+
+
+Output Description:
+The common numbers in sorted order.
 
 
 Sample Input:
-4
-2 4 4 2
+5 4
+1 2 3 4 5 1 2 3 4
 
 
 Sample Output:
-14 16 16 14
+1 2 3 4
 */
 
 const readline = require('readline');
@@ -33,34 +37,29 @@ rl.on('line', (data) => {
   userInput.push(data.trim());
 });
 
-  function result(n,nums) {
-
-    // 4/5
-
-    // console.log(nums[n-1-2]+nums[n-2])
-    let preFix = [...nums]
-    let sufFix = [...nums]
-
-    for(let i = 0;i<n-1;i++){
-     preFix[i+1] = preFix[i+1] + preFix[i]
-    }
-
-    for(let i = 0 ;i<n-1;i++){
-      sufFix[(n-1)-(i+1)] =  sufFix[n-1-i] + sufFix[(n-1)-(i+1)]      
-    }
-
-    for(let i=0;i<nums.length;i++){
-      nums[i] = preFix[i]+sufFix[i]
-    }
-  
-  // console.log(preFix.join(' '))
-  // console.log(sufFix.join(' '))
-  console.log(nums.join(' '))
+  function result(n,k,arr1,arr2) {
+    console.log(arr2[0])
+    let isTrue = false
+    let sameElement = []
+  for(let i = 0 ;i<n-1;i++){
+   for(let j =i ;j<k;j++){
+    if(arr1[i]===arr2[j]){
+    isTrue = true
+    sameElement.push(arr1[i])
+    break
+   }else{
+    isTrue = false
+    break
+   }
+   }
+  }
+  console.log(isTrue?sameElement.join(' '):-1)
 }
-
 rl.on('close', () => {
-const n = Number(userInput[0])
-const nums = userInput[1].split(/\s+/).map(n=>Number(n))
-// console.log(n,nums)
- result(n,nums)
+const [n,k] = userInput[0].split(' ').map(n=>Number(n))
+const nums = userInput[1].split(' ').map(n=>Number(n))
+const arr1 = nums.slice(0,n)
+const arr2 = nums.slice(n,n+k)
+// console.log(arr1,arr2,nums)
+ result(n,k,arr1,arr2)
 });
