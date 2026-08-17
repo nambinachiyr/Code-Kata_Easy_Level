@@ -1,19 +1,20 @@
 /*
-142. Date Format Validation
+143. Equalize String Lengths
 
 Geekoin50
 Medium
 Topics
 Problem Statement:
-Accept a string and find if it is of date format 'dd/mm/yyyy'.
+Given 2 strings S1 and S2,work on the strings such that both string has the same number of characters.To adjust the length reduce number of exceeding characters from longer string.
 
 
 Sample Input:
-01/13/1999
+guvi
+geeks
 
 
 Sample Output:
-no
+guvigeek
 */
 
 const readline = require('readline');
@@ -28,44 +29,27 @@ rl.on('line', (data) => {
   userInput.push(data.trim());
 });
 
-  function result(date) {
-//  console.log(date)   //day/mm/year
- let [day,mm,yr] = date.split('/')
-//  console.log(day,mm,yr)
- let days = []
- for(let i = 1;i<=31;i++){
-  days.push(i)
- }
- let months = []
- for(let i = 1;i<=12;i++){
-  months.push(i)
- }
- function remove0(d){
-  let splitD = d.split('').map(n=>Number(n))
-  // console.log(splitD)
-  if(splitD[0]===0){
-    return splitD[1]
-  }else{
-   return Number(d)
+  function result(str1,str2) {
+    let string1 = str1.split('')
+    let string2 = str2.split('')
+    let string  = []
+    if(string1.length<string2.length){
+      string = [...string1]
+      for(let i = 0;i<string1.length;i++){
+       string.push(string2[i])
+       string.length++
+      }
+    }else{
+      string = [...string2]
+      for(let i = 0;i<string2.length;i++){
+        string.unshift(string1[(string2.length-1)-i])
+      }
+    }
+    console.log(string.join(''))
   }
- }
 
- if(yr.split('').length===4 && day.split('').length===2 && mm.split('').length===2){
-    
-       if( !months.includes(remove0(mm)) ||!days.includes(remove0(day))){
-        console.log("no")
-       }
-    
-     else if(days.includes(remove0(day)) && months.includes(remove0(mm))){
-      console.log('yes')
-     }
- }else{
-  console.log('no')
- }
- 
-}
 rl.on('close', () => {
-const date = userInput[0]
-
- result(date)
+const [str1,str2] = userInput[0].split(' ')
+// console.log(str1,str2)
+ result(str1,str2)
 });
