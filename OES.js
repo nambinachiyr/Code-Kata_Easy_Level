@@ -1,15 +1,15 @@
 /*
-138. Suffix Sum of an Array
+139. Prefix and Suffix Sum
 
 Geekoin50
 Medium
 Topics
 Problem Statement:
-Given a number N and an array of N elements, print the suffix sum of the array.
+Given a numbers N, print the sum of prefix sum and suffix sum array for each position.
 
 
 Input Description:
-The input consists of an integer N, representing the number of elements, followed by N integers forming the array. N is at most 100000.
+Input Size : N <= 10000
 
 
 Sample Input:
@@ -18,7 +18,7 @@ Sample Input:
 
 
 Sample Output:
-12 10 6 2
+14 16 16 14
 */
 
 const readline = require('readline');
@@ -34,15 +34,30 @@ rl.on('line', (data) => {
 });
 
   function result(n,nums) {
-  for(let i =n-1;i!==0;i--){
-    nums[i-1] = nums[i]+nums[i-1]
-  }
+    // console.log(nums[n-1-2]+nums[n-2])
+    let preFix = [...nums]
+    let sufFix = [...nums]
+
+    for(let i = 0;i<n-1;i++){
+     preFix[i+1] = preFix[i+1] + preFix[i]
+    }
+
+    for(let i = 0 ;i<n-1;i++){
+      sufFix[(n-1)-(i+1)] =  sufFix[n-1-i] + sufFix[(n-1)-(i+1)]      
+    }
+
+    for(let i=0;i<nums.length;i++){
+      nums[i] = preFix[i]+sufFix[i]
+    }
+  
+  // console.log(preFix.join(' '))
+  // console.log(sufFix.join(' '))
   console.log(nums.join(' '))
 }
 
 rl.on('close', () => {
 const n = Number(userInput[0])
-const nums = userInput[1].split(' ').map(n=>Number(n))
+const nums = userInput[1].split(/\s+/).map(n=>Number(n))
 // console.log(n,nums)
  result(n,nums)
 });
