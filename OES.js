@@ -1,28 +1,19 @@
 /*
-146. Longest Word in a Sentence
+147. Hexadecimal to Decimal Conversion
 
-Geekoin50
+Geekoin40
 Medium
 Topics
 Problem Statement:
-Find the word having maximum length in a given sentence and print it. If two words are of same length return the first occuring word of max-length.
-
-
-Input Description:
-The input consists of a sentence where its size |s| is less than or equal to 100000.
-
-
-Output Description:
-The output is the word with the maximum length.
+Given a hexadecimal number convert it into decimal.
 
 
 Sample Input:
-guvi geek
+293
 
 
 Sample Output:
-guvi
-
+659
 */
 
 const readline = require('readline');
@@ -37,31 +28,12 @@ rl.on('line', (data) => {
   userInput.push(data.trim());
 });
 
-  function result(str) {
-    let longWord;
-    let pre= str[0]
-    for(let i = 0;i<str.length-1;i++){
-      for(let j=i+1;j<str.length;j++){
-        if(str[i].length<str[j].length){
-       longWord = str[j]
-      }else if(str[i].length>str[j].length){
-        longWord = str[i]
-      }else{
-        longWord = str[i]
-      }
-
-      }
-      if(pre.length>longWord.length){
-       longWord = pre
-      }else{
-        pre = longWord
-      }
-    }
-    console.log(longWord)
-
+  function result(n) {
+const decimal = parseInt(n,16)    
+console.log(decimal)
   }
 
 rl.on('close', () => {
-const str = userInput[0].split(' ')
-result(str)
+const n = userInput[0]
+result(n)
 });
