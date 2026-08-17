@@ -1,19 +1,15 @@
 /*
-137. Prefix Sum Array
+138. Suffix Sum of an Array
 
 Geekoin50
 Medium
 Topics
 Problem Statement:
-Given a number N and an array of N elements, print the prefix sum array.
+Given a number N and an array of N elements, print the suffix sum of the array.
 
 
 Input Description:
-Input Size : N <= 100000
-
-
-Output Description:
-The output is the prefix sum array.
+The input consists of an integer N, representing the number of elements, followed by N integers forming the array. N is at most 100000.
 
 
 Sample Input:
@@ -22,7 +18,7 @@ Sample Input:
 
 
 Sample Output:
-2 6 10 12
+12 10 6 2
 */
 
 const readline = require('readline');
@@ -38,8 +34,8 @@ rl.on('line', (data) => {
 });
 
   function result(n,nums) {
-  for(let i =0;i<n-1;i++){
-    nums[i+1] = nums[i+1]+nums[i]
+  for(let i =n-1;i!==0;i--){
+    nums[i-1] = nums[i]+nums[i-1]
   }
   console.log(nums.join(' '))
 }
