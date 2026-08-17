@@ -1,29 +1,24 @@
 /*
-133. Sum of Consecutive Pairs
+134. Sort and Print Original Indices
 
-Geekoin40
+Geekoin50
 Medium
 Topics
 Problem Statement:
-Given a number N and an array of N elements, find the sum of the sums obtained by considering all consecutive pairs of adjacent elements.
+Given a number N and an array of N elements,sort the array in increasing order and print the original indices of the elements present in sorted array.
 
 
 Input Description:
-The input consists of a number N and an array of N elements. N <= 100000.
-
-
-Output Description:
-The output is the sum of the sums obtained by considering all consecutive pairs of adjacent elements.
+Input Size : N <= 100000
 
 
 Sample Input:
 5
-1 2 3 4 5
+5 4 3 2 1
 
 
 Sample Output:
-24((1+2)+(2+3)+(3+4)+(4+5))
-
+5 4 3 2 1
 */
 
 const readline = require('readline');
@@ -39,18 +34,24 @@ rl.on('line', (data) => {
 });
 
   function result(arr) {
-  // arr = arr.sort((a,b)=>a-b)
-  // console.log(arr)
+   let obj = []
+   for(let i=0;i<arr.length;i++){
+    obj.push({index:i+1,value:arr[i]})
+   }
 
-  let max=0
-  function maxOfPairs(n1,n2){
-   max=max+n1+n2
-  }
-
-  for(let i =0 ;i<arr.length-1;i++){
-   maxOfPairs(arr[i],arr[i+1])
-  }
-  console.log(max)
+   arr = arr.sort((a,b)=>a-b)
+   let position = []
+   for(let i=0;i<arr.length;i++){
+    for(let j=0;j<obj.length;j++){
+       if(obj[j].value===arr[i]){
+        position.push(obj[j].index)
+       }
+      
+    }
+   }
+  //  console.log(obj)
+  //  console.log(arr)
+   console.log(position.join(' '))
 }
 
 rl.on('close', () => {
