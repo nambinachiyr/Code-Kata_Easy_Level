@@ -1,11 +1,11 @@
 /*
-134. Sort and Print Original Indices
+135. Remove Duplicates from Array
 
-Geekoin50
+Geekoin40
 Medium
 Topics
 Problem Statement:
-Given a number N and an array of N elements,sort the array in increasing order and print the original indices of the elements present in sorted array.
+Given a number N and an array of N elements, print the array after removing duplicate elements.If no duplicate elements found print the same.
 
 
 Input Description:
@@ -13,12 +13,13 @@ Input Size : N <= 100000
 
 
 Sample Input:
-5
-5 4 3 2 1
+4
+2 4 4 2
 
 
 Sample Output:
-5 4 3 2 1
+2 4
+
 */
 
 const readline = require('readline');
@@ -34,24 +35,20 @@ rl.on('line', (data) => {
 });
 
   function result(arr) {
-   let obj = []
-   for(let i=0;i<arr.length;i++){
-    obj.push({index:i+1,value:arr[i]})
-   }
-
-   arr = arr.sort((a,b)=>a-b)
-   let position = []
-   for(let i=0;i<arr.length;i++){
-    for(let j=0;j<obj.length;j++){
-       if(obj[j].value===arr[i]){
-        position.push(obj[j].index)
-       }
-      
+  for(let i= 0;i<arr.length;i++){
+    for(let j=i+1;j<arr.length;j++){
+      if(arr[i]===arr[j]){
+       for(k=j;k<=arr.length-1;k++){
+        // console.log(arr[k],arr[j+k])
+         arr[k] = arr[k+1] 
+       }      
+       arr.length--
+       j--
     }
-   }
-  //  console.log(obj)
-  //  console.log(arr)
-   console.log(position.join(' '))
+      // console.log(arr)
+    }
+  }
+  console.log(arr.join(' '))
 }
 
 rl.on('close', () => {
