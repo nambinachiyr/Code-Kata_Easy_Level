@@ -1,20 +1,24 @@
 /*
-143. Equalize String Lengths
+144. Character Frequency Sort
 
 Geekoin50
 Medium
 Topics
 Problem Statement:
-Given 2 strings S1 and S2,work on the strings such that both string has the same number of characters.To adjust the length reduce number of exceeding characters from longer string.
+Given an array of N elements.find the number of occurences of each character and print it in the decreasing order of occurences, if 2 or more number occurs the same number of times, print the numbers in decreasing order.
+
+
+Input Description:
+Input Size : |N| <= 100000
 
 
 Sample Input:
-guvi
-geeks
+5
+3 3 4 4 7
 
 
 Sample Output:
-guvigeek
+4 3 7
 */
 
 const readline = require('readline');
@@ -29,27 +33,29 @@ rl.on('line', (data) => {
   userInput.push(data.trim());
 });
 
-  function result(str1,str2) {
-    let string1 = str1.split('')
-    let string2 = str2.split('')
-    let string  = []
-    if(string1.length<string2.length){
-      string = [...string1]
-      for(let i = 0;i<string1.length;i++){
-       string.push(string2[i])
-       string.length++
-      }
-    }else{
-      string = [...string2]
-      for(let i = 0;i<string2.length;i++){
-        string.unshift(string1[(string2.length-1)-i])
+  function result(n,arr) {
+   let decreasingArr = arr.sort((a,b)=>b-a)
+  //  console.log(decreasingArr)
+   let sameElements = []
+
+   for(let i = 0;i<decreasingArr.length-1;i++){
+    if(decreasingArr[i]===decreasingArr[i+1]){
+      if(!sameElements.includes[decreasingArr[i]]){
+        sameElements.push(decreasingArr[i])
       }
     }
-    console.log(string.join(''))
+   }
+  //  console.log(sameElements)
+   for(let i = 0;i<decreasingArr.length;i++){
+    if(!sameElements.includes(decreasingArr[i])){
+      sameElements.push(decreasingArr[i])
+    }
+   }
+   console.log(sameElements.length===0?decreasingArr.join(' '):sameElements.join(' '))
   }
 
 rl.on('close', () => {
-const [str1,str2] = userInput[0].split(' ')
-// console.log(str1,str2)
- result(str1,str2)
+const n = Number(userInput[0])
+const arr = userInput[1].split(' ').map(n=>Number(n))
+result(n,arr)
 });
