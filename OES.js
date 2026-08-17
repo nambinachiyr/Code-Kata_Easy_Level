@@ -1,28 +1,28 @@
 /*
-140. Common Numbers in Sorted Order
+141. Counting Subarrays
 
 Geekoin40
 Medium
 Topics
 Problem Statement:
-Given 2 numbers N and M followed by N numbers and M numbers, print the common numbers in sorted order.
+Given an array print the number of subarrays that can be formed with it.
 
 
 Input Description:
-N,M <= 100000 (ie do it in O(n) time complexity)
+The input consists of an integer N representing the size of the array, where N <= 100000, followed by N space-separated integers representing the array elements.
 
 
 Output Description:
-The common numbers in sorted order.
+The output is a single integer representing the total number of subarrays that can be formed from the given array.
 
 
 Sample Input:
-5 4
-1 2 3 4 5 1 2 3 4
+5
+1 2 3 2 1
 
 
 Sample Output:
-1 2 3 4
+15
 */
 
 const readline = require('readline');
@@ -37,29 +37,19 @@ rl.on('line', (data) => {
   userInput.push(data.trim());
 });
 
-  function result(n,k,arr1,arr2) {
-    console.log(arr2[0])
-    let isTrue = false
-    let sameElement = []
-  for(let i = 0 ;i<n-1;i++){
-   for(let j =i ;j<k;j++){
-    if(arr1[i]===arr2[j]){
-    isTrue = true
-    sameElement.push(arr1[i])
-    break
-   }else{
-    isTrue = false
-    break
+  function result(n,nums) {
+  //  console.log(n,nums)
+   let subarrayCount = 0
+   for(let i = n;i>=1;i--){
+    // console.log(i)
+    subarrayCount = subarrayCount+i
    }
-   }
-  }
-  console.log(isTrue?sameElement.join(' '):-1)
+   console.log(subarrayCount)
 }
 rl.on('close', () => {
-const [n,k] = userInput[0].split(' ').map(n=>Number(n))
+const n= userInput[0].split('').map(n=>Number(n))[0]
 const nums = userInput[1].split(' ').map(n=>Number(n))
-const arr1 = nums.slice(0,n)
-const arr2 = nums.slice(n,n+k)
+
 // console.log(arr1,arr2,nums)
- result(n,k,arr1,arr2)
+ result(n,nums)
 });
