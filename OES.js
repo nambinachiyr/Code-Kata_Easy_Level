@@ -1,19 +1,30 @@
 /*
-147. Hexadecimal to Decimal Conversion
+148. Lexicographically Smallest String
 
-Geekoin40
+Geekoin50
 Medium
 Topics
 Problem Statement:
-Given a hexadecimal number convert it into decimal.
+Given a number N and an array of N strings, find the lexicographically smallest string.
+
+
+Input Description:
+The input consists of an integer N, representing the number of strings, followed by N strings. N is less than or equal to 1000.
+
+
+Output Description:
+The output is the lexicographically smallest string among the given N strings.
 
 
 Sample Input:
-293
+3
+code
+learn
+practice
 
 
 Sample Output:
-659
+code
 */
 
 const readline = require('readline');
@@ -28,12 +39,16 @@ rl.on('line', (data) => {
   userInput.push(data.trim());
 });
 
-  function result(n) {
-const decimal = parseInt(n,16)    
-console.log(decimal)
+  function result(n,arr) {
+    let sortAccend = arr.sort()
+    console.log(sortAccend[0])
+
+    // console.log("abc">"ag"?"d":'df')
   }
 
 rl.on('close', () => {
-const n = userInput[0]
-result(n)
+const n = Number(userInput[0])
+const arr = userInput.slice(1,)
+console.log(arr)
+result(n,arr)
 });
