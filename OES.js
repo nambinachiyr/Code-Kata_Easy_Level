@@ -1,23 +1,28 @@
 /*
-150. Prime Factorization
+151. Smallest Divisible Number
 
 Geekoin50
 Medium
 Topics
 Problem Statement:
-Given a number N, print all the prime factors once in ascending order.
+Given a number N and an array of N integers, find the smallest number divisible by all the elements of the array.
 
 
 Input Description:
 Input Size : N <= 100000
 
 
+Output Description:
+The smallest number divisible by all the elements of the array.
+
+
 Sample Input:
-100
+5
+1 2 3 4 5
 
 
 Sample Output:
-2 5
+60
 */
 
 const readline = require('readline');
@@ -31,35 +36,29 @@ const userInput = [];
 rl.on('line', (data) => {
   userInput.push(data.trim());
 });
- function result(n){
+ function result(n,nums){
 
-  let factors = []
-
-   for(let i =2;i<=n;i++){
-    if(n%i===0){
-      factors.push(i)
+  let smallestNumber = []
+  for(let i = 1;i<=100000;i++){
+    let divide = true
+    for(let j = 0;j<=nums.length-1;j++){
+      if(i % nums[j] !== 0){
+        divide = false
+        break
+        console.log(i,nums[j])
+      }
     }
-   }
-
-   let primeFactors = []
-   for(let i=0;i<factors.length;i++){
-      let count = 0
-      for(let j=2;j<=factors[i];j++){
-        if(factors[i]%j===0){
-           count++
-      }
-      }
-      if(count===1){
-        primeFactors.push(factors[i])
-      }
-      // console.log(count,factors[i])
+    if(divide){
+      smallestNumber.push(i)
     }
-   console.log(primeFactors.join(' '))
+  }
+  console.log(smallestNumber[0])
  }
   
 
 rl.on('close', () => {
 const n = Number(userInput[0])
+const nums = userInput[1].split(' ').map(n=>Number(n))
 
-result(n)
+result(n,nums)
 });
