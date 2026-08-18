@@ -1,24 +1,24 @@
 /*
-153. Print Numbers with Frequency < K
+154. String Deletion
 
-Geekoin50
+Geekoin40
 Medium
 Topics
 Problem Statement:
-Given 2 numbers N,K and an array of N integers, print all numbers in sorted order if it has been repeated less than K times.
+Given 2 strings S,X. Print the string after deleting X.If X not found print the same string.
 
 
 Input Description:
-Input Size : N,K <= 100000
+Input Size : 1 <= |s|, |x| <= 1000
 
 
 Sample Input:
-4 2
-2 4 4 1
+Happy Birthday
+Happy
 
 
 Sample Output:
-1 2
+Birthday
 */
 
 const readline = require('readline');
@@ -34,48 +34,35 @@ rl.on('line', (data) => {
 });
 
 
- function result(n,k,nums){
-  // 5/5
-  let freq = {}
+ function result(strs,str){
+//  2/5
+  //  const replacedStr = strs.split(str).join('').replace(str,'')
+  //  console.log(replacedStr!==''?replacedStr:strs.join(' '))
+   
+   // This mothed 3/5 but no good why they want delete the substing
+  // for(let i = 0 ;i<strs.length-1;i++){
 
-  let sorted = [...new Set(nums)].sort((a,b)=>a-b)
-  for(let num of nums){
-    freq[num] = (freq[num] || 0) + 1
-  }
-  const noCount = sorted.filter(n=>freq[n]<k)
-  console.log(noCount.join(' '))
 
-  // O(n^2) /4/5
-//  let sorted = nums.sort()
-//    let numbers = []
-//    let MostRepeated = []
-//    for(let i = 0 ;i<n;i++){
-//     let count = 1
-//     for(let j = i+1;j<n;j++){
-//       if(sorted[i]===sorted[j]){
-//         count++
-//         console.log(sorted[i],'-i',sorted[j],'-j')
-//         if(k<=count){
-//           if(!MostRepeated.includes(sorted[i])){
-//             MostRepeated.push(sorted[i])
-//           }
-//         }
-//       }
-//     }
-//     if(count<k){
-//        numbers.push(nums[i])
-//     }
-//     console.log(k,count)
-//   }
-//    let uniqueNum = numbers.filter(n=>!MostRepeated.includes(n))
-//    console.log(uniqueNum)
+  //   if(strs[i]===str){
+  //     let temp = strs[i]
+  //     strs[i] = strs[i+1]
+  //     strs[(strs.length-1)] = temp
+  //     strs.length--
+      
+  //   }
+  // }
+  // console.log(strs)
+
+  // This is easy way but 4/5
+  const filter = strs.filter(s=>s!==str)
+  console.log(filter.join(''))
  }
   
 
 rl.on('close', () => {  
-  const [n,k] = userInput[0].split(' ').map(n=>Number(n))
-  const nums = userInput[1].split(' ').map(n=>Number(n))
+  const str = userInput[1]
+  const strs = userInput[0].split(str) //in relpace dont split
   
 
-result(n,k,nums)
+result(strs,str)
 });
