@@ -1,25 +1,28 @@
 /*
-157. Conditional Prefix Sum Array
+158. Odd Digit Sum Check
 
 Geekoin50
 Medium
 Topics
-Company
 Problem Statement:
-Given a number N and array of N integers, print the prefix sum array for each position if it is divisible by 2 else print the element itself.
+A number is given as input. Find the odd digits in the number, add them and find if the sum is odd or not. If even print E, if odd print O.
 
 
 Input Description:
-The input consists of a number N, representing the size of the array, followed by N integers. The size N is at most 10000.
+Input Size : N <= 10000000000
+
+
+Output Description:
+If the sum of odd digits is even print E, if odd print O.
 
 
 Sample Input:
-4
-2 4 4 4
+413
 
 
 Sample Output:
-2 6 10 14
+E
+
 */
 
 const readline = require('readline');
@@ -35,28 +38,13 @@ rl.on('line', (data) => {
 });
 
 
- function result(n,nums){
-    
-   let previousSum = 0 
-
-    for(let i = 0 ;i<n-1;i++){
-      console.log(nums[i])
-      previousSum = previousSum+nums[i+1]
-      let preSub = nums[i+1]+nums[i]
-      
-      if(preSub % 2 === 0){
-        nums[i+1] = preSub
-      }else{
-        nums[i] = previousSum
-        console.log(previousSum)
-    }
-  }
-console.log(nums.join(' '))  
+ function result(nums){
+    const sum = nums.reduce((acc,cur)=>acc+cur,0)
+    console.log(sum%2===0?"E":"O")
  }
   
 
 rl.on('close', () => {  
-  const n = userInput[0]
-  const nums = userInput[1].split(' ').map(n=>Number(n)) 
-result(n,nums)
+  const nums = userInput[0].split('').map(n=>Number(n)) 
+result(nums)
 });
