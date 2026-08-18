@@ -1,27 +1,22 @@
 /*
-159. Max Length Alternating Digits Substring
+160. Reachable Point
 
-Geekoin50
+Geekoin40
 Medium
 Topics
 Problem Statement:
-A number is given as input(as string). Find the maximum length of substring alternating digits of odd and even.
-
-
-Input Description:
-The input is a number given as a string. The input size N is less than or equal to 10000000000.
-
-
-Output Description:
-The output is the maximum length of a substring with alternating odd and even digits.
+Given 2 numbers n and m, n pairs of numbers a and b are given. In each pair 'a' means a person can start moving from point 'a' in the x axis to point 'b'(he can visit any point in between). Find if he can visit point m.
 
 
 Sample Input:
-4123
+3 5
+0 2
+2 4
+3 5
 
 
 Sample Output:
-4
+yes
 */
 
 const readline = require('readline');
@@ -37,38 +32,30 @@ rl.on('line', (data) => {
 });
 
 
- function result(nums){
-    let length = 1
-    let maxLengths = 0
-    let subArrLength = []
-    let isAlternative = false
-    for(let i = 0;i<nums.length-1;i++){
-      if((nums[i] % 2 === 0 && nums[i+1] % 2 !==0) ||(nums[i] % 2 !== 0 && nums[i+1] % 2 === 0) ){
-        length +=1
-        isAlternative = true
-        // console.log(length)
-       
-      
-      }
-      else{
-        isAlternative = false
-        length = 1
-        continue;
-      }
-
-      if(isAlternative){
-         if(maxLengths<length){
-          maxLengths=length
-          subArrLength.push(maxLengths)
-        }
+ function result(n,m,pairs){
+   let isBetween = false
+   for(let i=0;i<n;i++){
+     p = pairs[i].split(' ').map(n=>Number(n))
+    //  console.log(p,"p")
+      for(let j = 0;j<1;j++){
+        // console.log(p[j],p[j+1])
+         if(p[j]<=m && m<=p[j+1]){
+          isBetween = true
+         }else{
+          // console.log("no")
+          isBetween = false
+         }
       }
     }
-    // console.log(maxLengths,subArrLength)
-    console.log(subArrLength.sort((a,b)=>b-a)[0])
+    console.log(isBetween?"yes":"no")
+   
  }
   
 
 rl.on('close', () => {  
-  const nums = userInput[0].split('').map(n=>Number(n)) 
-result(nums)
+  const [n,m] = userInput[0].split(' ').map(n=>Number(n))
+  const pairs = userInput.slice(1)
+  
+ 
+result(n,m,pairs)
 });
