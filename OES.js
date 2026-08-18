@@ -1,19 +1,15 @@
 /*
-155. Even or Odd Product
+156. Minimum Subarray Sum-2
 
-Geekoin50
+Geekoin40
 Medium
 Topics
 Problem Statement:
-Given a number N and an array of N integers, predict if the product of all elements would be even or odd(actual multiplication may lead to overflows ai <= 100000000).If there is only one element present in the array print whether that number is odd or even.
+Given a number N and an array of N integers, print the minimum sum of the sub-array from the given array.
 
 
 Input Description:
-The input consists of a number N, followed by an array of N integers. N is up to 100000.
-
-
-Output Description:
-The output should be 'even' or 'odd', indicating whether the product of all elements is even or odd. If there is only one element, it indicates whether that single element is odd or even.
+Input Size : N <= 100000
 
 
 Sample Input:
@@ -22,8 +18,7 @@ Sample Input:
 
 
 Sample Output:
-even
-
+2
 */
 
 const readline = require('readline');
@@ -40,27 +35,34 @@ rl.on('line', (data) => {
 
 
  function result(n,nums){
-
-  // WE dont do multiplication here bcz the amount is huge so we use the simple trick for this 
-  //1.if all element is ODD that only we should print ODD
-  //2.If Only one element is Even then the whole array is even
-
- let even = false ;
- for(let i of nums){
-  if(i % 2 ===0 ){
-    even = true
-    break;  
+  let hasNagative = false
+  for(let num of nums){
+    if(num<0){
+      hasNagative=true
+    }
   }
-}
-console.log(even?"even":"odd")
 
+  
+  if(!hasNagative){
+    const smallSubArrySum = Math.min(...nums)
+    console.log(smallSubArrySum)
+  }else{
+    let currentSubArrySum = nums[0]
+    let minSum = nums[0]
+    for(let i = 0 ;i<nums.length-1;i++){
+       currentSubArrySum = Math.min(nums[i],currentSubArrySum+nums[i])
+      //  console.log(currentSubArrySum,"Loop - ",i)
+       minSum = Math.min(minSum,currentSubArrySum)
+      //  console.log(minSum,"Loop - ",i)
+    }
+    console.log(minSum)
+  }
+  
  }
   
 
 rl.on('close', () => {  
   const n = userInput[0]
-  const nums = userInput[1].split(' ').map(n=>Number(n)) //in relpace dont split
-  
-
+  const nums = userInput[1].split(' ').map(n=>Number(n)) 
 result(n,nums)
 });
