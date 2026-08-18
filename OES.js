@@ -1,19 +1,15 @@
 /*
-151. Smallest Divisible Number
+152. Greatest Common Divisor
 
 Geekoin50
 Medium
 Topics
 Problem Statement:
-Given a number N and an array of N integers, find the smallest number divisible by all the elements of the array.
+Given a number N and an array of N integers, find the greatest number which divides all the elements of the array.
 
 
 Input Description:
 Input Size : N <= 100000
-
-
-Output Description:
-The smallest number divisible by all the elements of the array.
 
 
 Sample Input:
@@ -22,7 +18,7 @@ Sample Input:
 
 
 Sample Output:
-60
+1
 */
 
 const readline = require('readline');
@@ -38,21 +34,26 @@ rl.on('line', (data) => {
 });
  function result(n,nums){
 
-  let smallestNumber = []
-  for(let i = 1;i<=100000;i++){
+  let greatestCommonDiviser = []
+  let smallNum = nums.sort()[0]
+  console.log(smallNum)
+  for(let i = 1;i<=smallNum;i++){
     let divide = true
     for(let j = 0;j<=nums.length-1;j++){
-      if(i % nums[j] !== 0){
+    if(nums[j] % i !== 0){
         divide = false
-        break
-        console.log(i,nums[j])
+        console.log(i,nums[j])      
       }
+
     }
     if(divide){
-      smallestNumber.push(i)
+         if(!greatestCommonDiviser.includes(i)){
+         greatestCommonDiviser.push(i)
+       }
     }
+    
   }
-  console.log(smallestNumber[0])
+  console.log(greatestCommonDiviser[greatestCommonDiviser.length-1])
  }
   
 
