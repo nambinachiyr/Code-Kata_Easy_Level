@@ -1,24 +1,29 @@
 /*
-154. String Deletion
+155. Even or Odd Product
 
-Geekoin40
+Geekoin50
 Medium
 Topics
 Problem Statement:
-Given 2 strings S,X. Print the string after deleting X.If X not found print the same string.
+Given a number N and an array of N integers, predict if the product of all elements would be even or odd(actual multiplication may lead to overflows ai <= 100000000).If there is only one element present in the array print whether that number is odd or even.
 
 
 Input Description:
-Input Size : 1 <= |s|, |x| <= 1000
+The input consists of a number N, followed by an array of N integers. N is up to 100000.
+
+
+Output Description:
+The output should be 'even' or 'odd', indicating whether the product of all elements is even or odd. If there is only one element, it indicates whether that single element is odd or even.
 
 
 Sample Input:
-Happy Birthday
-Happy
+4
+2 4 4 2
 
 
 Sample Output:
-Birthday
+even
+
 */
 
 const readline = require('readline');
@@ -34,35 +39,28 @@ rl.on('line', (data) => {
 });
 
 
- function result(strs,str){
-//  2/5
-  //  const replacedStr = strs.split(str).join('').replace(str,'')
-  //  console.log(replacedStr!==''?replacedStr:strs.join(' '))
-   
-   // This mothed 3/5 but no good why they want delete the substing
-  // for(let i = 0 ;i<strs.length-1;i++){
+ function result(n,nums){
 
+  // WE dont do multiplication here bcz the amount is huge so we use the simple trick for this 
+  //1.if all element is ODD that only we should print ODD
+  //2.If Only one element is Even then the whole array is even
 
-  //   if(strs[i]===str){
-  //     let temp = strs[i]
-  //     strs[i] = strs[i+1]
-  //     strs[(strs.length-1)] = temp
-  //     strs.length--
-      
-  //   }
-  // }
-  // console.log(strs)
+ let even = false ;
+ for(let i of nums){
+  if(i % 2 ===0 ){
+    even = true
+    break;  
+  }
+}
+console.log(even?"even":"odd")
 
-  // This is easy way but 4/5
-  const filter = strs.filter(s=>s!==str)
-  console.log(filter.join(''))
  }
   
 
 rl.on('close', () => {  
-  const str = userInput[1]
-  const strs = userInput[0].split(str) //in relpace dont split
+  const n = userInput[0]
+  const nums = userInput[1].split(' ').map(n=>Number(n)) //in relpace dont split
   
 
-result(strs,str)
+result(n,nums)
 });
