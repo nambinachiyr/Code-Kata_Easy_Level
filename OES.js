@@ -1,30 +1,23 @@
 /*
-148. Lexicographically Smallest String
+150. Prime Factorization
 
 Geekoin50
 Medium
 Topics
 Problem Statement:
-Given a number N and an array of N strings, find the lexicographically smallest string.
+Given a number N, print all the prime factors once in ascending order.
 
 
 Input Description:
-The input consists of an integer N, representing the number of strings, followed by N strings. N is less than or equal to 1000.
-
-
-Output Description:
-The output is the lexicographically smallest string among the given N strings.
+Input Size : N <= 100000
 
 
 Sample Input:
-3
-code
-learn
-practice
+100
 
 
 Sample Output:
-code
+2 5
 */
 
 const readline = require('readline');
@@ -38,17 +31,35 @@ const userInput = [];
 rl.on('line', (data) => {
   userInput.push(data.trim());
 });
+ function result(n){
 
-  function result(n,arr) {
-    let sortAccend = arr.sort()
-    console.log(sortAccend[0])
+  let factors = []
 
-    // console.log("abc">"ag"?"d":'df')
-  }
+   for(let i =2;i<=n;i++){
+    if(n%i===0){
+      factors.push(i)
+    }
+   }
+
+   let primeFactors = []
+   for(let i=0;i<factors.length;i++){
+      let count = 0
+      for(let j=2;j<=factors[i];j++){
+        if(factors[i]%j===0){
+           count++
+      }
+      }
+      if(count===1){
+        primeFactors.push(factors[i])
+      }
+      // console.log(count,factors[i])
+    }
+   console.log(primeFactors.join(' '))
+ }
+  
 
 rl.on('close', () => {
 const n = Number(userInput[0])
-const arr = userInput.slice(1,)
-console.log(arr)
-result(n,arr)
+
+result(n)
 });
