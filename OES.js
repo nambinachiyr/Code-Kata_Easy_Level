@@ -1,28 +1,27 @@
 /*
-158. Odd Digit Sum Check
+159. Max Length Alternating Digits Substring
 
 Geekoin50
 Medium
 Topics
 Problem Statement:
-A number is given as input. Find the odd digits in the number, add them and find if the sum is odd or not. If even print E, if odd print O.
+A number is given as input(as string). Find the maximum length of substring alternating digits of odd and even.
 
 
 Input Description:
-Input Size : N <= 10000000000
+The input is a number given as a string. The input size N is less than or equal to 10000000000.
 
 
 Output Description:
-If the sum of odd digits is even print E, if odd print O.
+The output is the maximum length of a substring with alternating odd and even digits.
 
 
 Sample Input:
-413
+4123
 
 
 Sample Output:
-E
-
+4
 */
 
 const readline = require('readline');
@@ -39,8 +38,33 @@ rl.on('line', (data) => {
 
 
  function result(nums){
-    const sum = nums.reduce((acc,cur)=>acc+cur,0)
-    console.log(sum%2===0?"E":"O")
+    let length = 1
+    let maxLengths = 0
+    let subArrLength = []
+    let isAlternative = false
+    for(let i = 0;i<nums.length-1;i++){
+      if((nums[i] % 2 === 0 && nums[i+1] % 2 !==0) ||(nums[i] % 2 !== 0 && nums[i+1] % 2 === 0) ){
+        length +=1
+        isAlternative = true
+        // console.log(length)
+       
+      
+      }
+      else{
+        isAlternative = false
+        length = 1
+        continue;
+      }
+
+      if(isAlternative){
+         if(maxLengths<length){
+          maxLengths=length
+          subArrLength.push(maxLengths)
+        }
+      }
+    }
+    // console.log(maxLengths,subArrLength)
+    console.log(subArrLength.sort((a,b)=>b-a)[0])
  }
   
 
