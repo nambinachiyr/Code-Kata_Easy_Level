@@ -1,11 +1,11 @@
 /*
-871. Solid Half Diamond Pattern
+872. Half Diamond Star Number Pattern
 
-Geekoin40
+Geekoin50
 Medium
 Topics
 Problem Statement:
-Write a code to generate a solid half diamond pattern using stars.
+Generate a half diamond pattern using stars and numbers in a palindromic pattern.
 
 
 Input Description:
@@ -13,29 +13,29 @@ Given an integer R indicates number of rows.Where 1<=R<=100
 
 
 Output Description:
-Print the solid half diamond pattern based on the given integer R.
+Print the half diamond pattern using stars and numbers in a palindromic pattern based on the given integer R.
 
 
 Explanation:
-From the given input R=5, print the solid half diamond pattern with the size 5.
+From the given input R=3, print the half diamond pattern with number and star pattern in the form of palindromic number.
 
 
 Sample Input:
-5
+3
 
 
 Sample Output:
 
 
 *  
-**  
-***  
-****  
-*****  
-****  
-***  
-**  
-*  
+*1*  
+*121*  
+*12321*  
+*121*  
+*1*  
+*
+
+
 */
 
 const readline = require('readline');
@@ -51,29 +51,33 @@ rl.on('line', (data) => {
 });
 
  function result(nums){
-  for(let row = 1;row<nums;row++){
-    let str = ''
-   for(let star = 1;star<=row;star++){
-    // if(star===row){
-      str = str+ '*' // this question is withOut space
-    // }
-    // else{
-      // str = str+"* "
-    // }
-   }
-   console.log(str)
+ 
+  for(let row = 0 ;row<=nums;row++){
+    let str = '*'
+    for(let i = 1;i<=row;i++){
+      str +=i 
+    }
+    for(let i = row-1;i>0;i--){
+      str+=i
+    }
+    if(row!==0){
+      str=str+'*'
+    }
+    console.log(str)
   }
-  for(let row = nums;row>=1;row--){
-    let str = ''
-   for(let star = row;star>=1;star--){
-    // if(star===1){
-      str = str+ '*'
-    // }
-    // else{
-    //   str = str+"* "
-    // }
-   }
-   console.log(str)
+   
+  for(let row = nums-1 ;row>=0;row--){
+    let str = '*'
+    for(let i = 1;i<=row;i++){
+      str +=i 
+    }
+    for(let i = row-1;i>0;i--){
+      str+=i
+    }
+    if(row!==0){
+      str=str+'*'
+    }
+    console.log(str)
   }
   }
  
