@@ -1,38 +1,51 @@
 /*
-882. Alphabet Pattern
+883. Character Pattern
 
-Geekoin50
+Geekoin40
 Medium
 Topics
 Problem Statement:
-Generate the aplhabet pattern using nested loops.
+Wrrite a code to generate the following pattern.
 
+
+bbbb*bbbb  
+bbb***bbb  
+bb*****bb  
+b*******b  
+*********  
+b*******b  
+bb*****bb  
+bbb***bbb  
+bbbb*bbbb  
 
 Input Description:
-Input consists of a string S.where length of the string (S) Where 2<=R<=100
+Given an odd integer R indicates number of rows.R is always an odd number.Where 1<=R<=100
 
 
 Output Description:
-Print the alphabet pattern from the given input string S.
+Print the character pattern based on the given input R.
+
+
+Explanation:
+From the given input R=9 indicates the no. of rows to print the character pattern.
 
 
 Sample Input:
-abcdef
+9
 
 
 Sample Output:
 
 
-abcdef  
-b    e  
-c    d  
-d    c  
-e    b  
-fedcba  
-
-Explanation:
-Form the given input string S=abcdef. 6 is the length of string so that print the alphabet pattern of 6 rows.
-
+bbbb*bbbb  
+bbb***bbb  
+bb*****bb  
+b*******b  
+*********  
+b*******b  
+bb*****bb  
+bbb***bbb  
+bbbb*bbbb  
 
 
 */
@@ -49,42 +62,58 @@ rl.on('line', (data) => {
   userInput.push(data.trim());
 });
 
- function result(word){
-  
-   for(let row = 0;row<word.length;row++){
-    let str = ''
-     
-      for(let j = 0;j<=word.length-1;j++){
-        if(j===0  || row===0 ){
-          str+=word[j+row]
-        } 
-        else if(row===word.length-1){         
-          str+=''       
-        }else{
-          if(j===word.length-1){
-            str+=word[j-row]
-          }else{
+ function result(n){
 
-            str+=' '
-          }
-        }
-       
-      }
-      
-      for(let rightSide=(word.length-1);rightSide>0;rightSide--){
-       if( row===word.length-1){
-         str+=word[rightSide-1]
-       }
-      }
-      console.log(str)
+  let firstHalf = Math.ceil(n/2)
+  for(let row = 1; row<firstHalf; row++){
+    let str = ''
+    for(let rightSpace=row; rightSpace<firstHalf; rightSpace++){
+      str+='b'
+    }
+    for(let star = 1; star<=row; star++){
+      str+='*'
+    }
+    for(let star = 2; star<=row; star++){
+      str+='*'
+    }
+    for(let leftSpace = row; leftSpace<firstHalf; leftSpace++){
+      str+='b'
+    }
+    // for(let bottomLeft = row-1; bottomLeft>=row; bottomLeft--){
+    //   str+='b'
+    // }
+    
+   
+    console.log(str)
   }
+
+  for(let row = firstHalf; row>=1; row--){
+    let str = ''
+    for(let rightSpace=row; rightSpace<firstHalf; rightSpace++){
+      str+='b'
+    }
+    for(let star = 1; star<=row; star++){
+      str+='*'
+    }
+    for(let star = 2; star<=row; star++){
+      str+='*'
+    }
+    for(let leftSpace = row; leftSpace<firstHalf; leftSpace++){
+      str+='b'
+    }
+    
+   
+    console.log(str)
+  }
+
+  
   }
  
 
 rl.on('close', () => {  
 
-  const word = userInput[0].split('')
+  const n = Number(userInput[0])
  
-  result(word)
+  result(n)
 
 });
