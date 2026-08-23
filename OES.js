@@ -1,11 +1,11 @@
 /*
-868. Star Pyramid Pattern-2
+869. Inverted Full Pyramid Pattern
 
 Geekoin40
 Medium
 Topics
 Problem Statement:
-Write a code to generate a full pyramid pattern using stars.
+Write a code to generate an inverted full pyramid pattern using stars.
 
 
 Input Description:
@@ -13,11 +13,11 @@ Given an integer R indicates number of rows.Where 1<=R<=100
 
 
 Output Description:
-Print the star pyramid with the given integer R.
+Print the star inverted full pyramid with the given integer R.
 
 
 Explanation:
-From the given input R=5, print the full pyramid star pattern with size 5.
+From the given input R=5, print the inverted full pyramid star pattern with size 5.
 
 
 Sample Input:
@@ -27,11 +27,11 @@ Sample Input:
 Sample Output:
 
 
-    *  
-   * *  
-  * * *  
- * * * *  
 * * * * *  
+ * * * *  
+  * * *  
+   * *  
+    *  
 */
 
 const readline = require('readline');
@@ -47,7 +47,7 @@ rl.on('line', (data) => {
 });
 
  function result(nums){
-  for(let row = 1;row<=nums;row++){
+  for(let row = nums;row>=1;row--){
     let str = ''
     for(let space = 1;space<=nums-row;space++){
       str = ' ' + str
@@ -68,5 +68,7 @@ rl.on('close', () => {
 
   const nums = userInput.map(n=>Number(n))  
  
-result(nums)
+if(nums<=100 && nums>=1){
+  result(nums[0])
+}
 });
