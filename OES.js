@@ -1,43 +1,39 @@
 /*
-881. Character Pattern Generation
+882. Alphabet Pattern
 
-Geekoin40
+Geekoin50
 Medium
 Topics
 Problem Statement:
-Generate the following pattern.
+Generate the aplhabet pattern using nested loops.
 
-
-*****  
-b****  
-bb***  
-bbb**  
-bbbb*  
 
 Input Description:
-Input consists of a single integer that corresponds to n, the number of rows.Where 1<=R<=100
+Input consists of a string S.where length of the string (S) Where 2<=R<=100
 
 
 Output Description:
-Print the character pattern from the given input n.
-
-
-Explanation:
-From the given input n= 5,so that print 5 rows of character pattern.
+Print the alphabet pattern from the given input string S.
 
 
 Sample Input:
-5
+abcdef
 
 
 Sample Output:
 
 
-*****  
-b****  
-bb***  
-bbb**  
-bbbb*  
+abcdef  
+b    e  
+c    d  
+d    c  
+e    b  
+fedcba  
+
+Explanation:
+Form the given input string S=abcdef. 6 is the length of string so that print the alphabet pattern of 6 rows.
+
+
 
 */
 
@@ -53,30 +49,42 @@ rl.on('line', (data) => {
   userInput.push(data.trim());
 });
 
- function result(nums){
-   let num = 1
-  for(let row = nums ;row>=1;row--){
+ function result(word){
+  
+   for(let row = 0;row<word.length;row++){
     let str = ''
-  for(let leftSpace = 1;leftSpace<=nums-row;leftSpace++){
-    str += 'b'
+     
+      for(let j = 0;j<=word.length-1;j++){
+        if(j===0  || row===0 ){
+          str+=word[j+row]
+        } 
+        else if(row===word.length-1){         
+          str+=''       
+        }else{
+          if(j===word.length-1){
+            str+=word[j-row]
+          }else{
+
+            str+=' '
+          }
+        }
+       
+      }
+      
+      for(let rightSide=(word.length-1);rightSide>0;rightSide--){
+       if( row===word.length-1){
+         str+=word[rightSide-1]
+       }
+      }
+      console.log(str)
   }
-  for(let leftStar = 1;leftStar<=row;leftStar++){
-    str+='*'
-  }
-  
-    
-    console.log(str)
-  }
-   
-  
   }
  
 
 rl.on('close', () => {  
 
-  const nums = userInput.map(n=>Number(n))  
+  const word = userInput[0].split('')
  
-if(nums<=100 && nums>=1){
-  result(nums[0])
-}
+  result(word)
+
 });
