@@ -1,29 +1,29 @@
 /*
-880. Inverted Star Pattern
+881. Character Pattern Generation
 
 Geekoin40
 Medium
 Topics
 Problem Statement:
-Generate the following inverted character with star pattern.
+Generate the following pattern.
 
 
-bbbb*bbbb  
-bbb***bbb  
-bb*****bb  
-b*******b  
-*********  
+*****  
+b****  
+bb***  
+bbb**  
+bbbb*  
 
 Input Description:
-Input consists of a single integer that corresponds to R, the number of rows. R is always an odd number.Where 1<=R<=100
+Input consists of a single integer that corresponds to n, the number of rows.Where 1<=R<=100
 
 
 Output Description:
-Print the inverted character pattern from the given input size R.
+Print the character pattern from the given input n.
 
 
 Explanation:
-From the given n=5,print the 5 rows of inverted character pattern.
+From the given input n= 5,so that print 5 rows of character pattern.
 
 
 Sample Input:
@@ -33,11 +33,11 @@ Sample Input:
 Sample Output:
 
 
-bbbb*bbbb  
-bbb***bbb  
-bb*****bb  
-b*******b  
-*********  
+*****  
+b****  
+bb***  
+bbb**  
+bbbb*  
 
 */
 
@@ -55,7 +55,7 @@ rl.on('line', (data) => {
 
  function result(nums){
    let num = 1
-  for(let row = 1 ;row<=nums;row++){
+  for(let row = nums ;row>=1;row--){
     let str = ''
   for(let leftSpace = 1;leftSpace<=nums-row;leftSpace++){
     str += 'b'
@@ -63,12 +63,7 @@ rl.on('line', (data) => {
   for(let leftStar = 1;leftStar<=row;leftStar++){
     str+='*'
   }
-  for(let rightStar = 1;rightStar<=row-1;rightStar++){
-    str+='*'
-  }
-  for(let rightSpace=1 ; rightSpace<nums-row+1;rightSpace++ ){
-    str+='b'
-  }
+  
     
     console.log(str)
   }
