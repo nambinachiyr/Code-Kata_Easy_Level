@@ -1,11 +1,11 @@
 /*
-869. Inverted Full Pyramid Pattern
+870. Hollow Pyramid Pattern
 
 Geekoin40
 Medium
 Topics
 Problem Statement:
-Write a code to generate an inverted full pyramid pattern using stars.
+Write a code to generate a hollow full pyramid pattern using stars.
 
 
 Input Description:
@@ -13,11 +13,11 @@ Given an integer R indicates number of rows.Where 1<=R<=100
 
 
 Output Description:
-Print the star inverted full pyramid with the given integer R.
+Print the star hollow full pyramid with the given integer R.
 
 
 Explanation:
-From the given input R=5, print the inverted full pyramid star pattern with size 5.
+From the given input R=5, print the hollow full pyramid star pattern with size 5.
 
 
 Sample Input:
@@ -27,11 +27,11 @@ Sample Input:
 Sample Output:
 
 
-* * * * *  
- * * * *  
-  * * *  
-   * *  
     *  
+   * *  
+  *   *  
+ *     *  
+* * * * *  
 */
 
 const readline = require('readline');
@@ -47,16 +47,19 @@ rl.on('line', (data) => {
 });
 
  function result(nums){
-  for(let row = nums;row>=1;row--){
+  for(let row = 1;row<=nums;row++){
     let str = ''
     for(let space = 1;space<=nums-row;space++){
       str = ' ' + str
     }
     for(let star = 1;star<=row;star++){
-     if(row===star){
-       str = str+'*'
+      if(star===1 || row===nums || star===row){
+      str = str + '*'
      }else{
-      str = str + '* '
+      str = str+' '
+     }
+     if(row!==star){
+      str+=' '
      }
     }
   
