@@ -1,11 +1,11 @@
 /*
-874. Number Pyramid Pattern
+875. Number Hollow Half Pyramid
 
-Geekoin40
-Medium
+Geekoin30
+Easy
 Topics
 Problem Statement:
-Generate a full pyramid using numbers.
+Generate a hollow half pyramid pattern using numbers.
 
 
 Input Description:
@@ -13,11 +13,7 @@ Given an integer R indicates number of rows.Where 1<=R<=100
 
 
 Output Description:
-Print the full pyramid using numbers based on the given integer R.
-
-
-Explanation:
-From the given input R=5,print the full pyramid using numbers with the size 5.
+Print the hollow half pyramid pattern using numbers based on the given integer R.
 
 
 Sample Input:
@@ -26,11 +22,12 @@ Sample Input:
 
 Sample Output:
 
-    1  
-   232  
-  34543  
- 4567654  
-567898765  
+
+1  
+12  
+1 3  
+1  4  
+12345  
 */
 
 const readline = require('readline');
@@ -46,21 +43,17 @@ rl.on('line', (data) => {
 });
 
  function result(nums){
- let num = 1
- let pre = 1
+
   for(let row = 1 ;row<=nums;row++){
     let str = ''
-    for(let space = 1;space<=nums-row;space++){
-      str = str+' '
+    for(let i= 1;i<=row;i++){      
+      if(i===1 || i===row || row===nums){
+        str +=i
+      }else{
+        str = str+' '
+      }
     }
-    for(let i= row;i<=(2*row)-1;i++){      
-      str +=i
-    }
-    for(let i=2*row-2;i>=row;i--){
-      str=str+i
-      // console.log(pre)
-      // pre--
-    }
+    
     
     console.log(str)
   }
