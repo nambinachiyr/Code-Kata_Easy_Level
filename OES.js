@@ -1,25 +1,29 @@
 /*
-879. b and * pattern
+880. Inverted Star Pattern
 
 Geekoin40
 Medium
 Topics
 Problem Statement:
-Write a code to generate the following pattern.
+Generate the following inverted character with star pattern.
 
 
-*********  
-b*******b  
-bb*****bb  
-bbb***bbb  
 bbbb*bbbb  
+bbb***bbb  
+bb*****bb  
+b*******b  
+*********  
 
 Input Description:
 Input consists of a single integer that corresponds to R, the number of rows. R is always an odd number.Where 1<=R<=100
 
 
 Output Description:
-Print the character with the letter 'b' pattern with the size based on the given integer R.
+Print the inverted character pattern from the given input size R.
+
+
+Explanation:
+From the given n=5,print the 5 rows of inverted character pattern.
 
 
 Sample Input:
@@ -29,14 +33,11 @@ Sample Input:
 Sample Output:
 
 
-*********  
-b*******b  
-bb*****bb  
-bbb***bbb  
 bbbb*bbbb  
-
-Explanation:
-From the given input R=5,print the character with star pattern.
+bbb***bbb  
+bb*****bb  
+b*******b  
+*********  
 
 */
 
@@ -54,7 +55,7 @@ rl.on('line', (data) => {
 
  function result(nums){
    let num = 1
-  for(let row = nums ;row>0;row--){
+  for(let row = 1 ;row<=nums;row++){
     let str = ''
   for(let leftSpace = 1;leftSpace<=nums-row;leftSpace++){
     str += 'b'
