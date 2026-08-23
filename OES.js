@@ -1,11 +1,11 @@
 /*
-877. Number Hollow Inverted Half Pyramid
+878. Floyd's Triangle Generation
 
-Geekoin40
-Medium
+Geekoin30
+Easy
 Topics
 Problem Statement:
-Generate a hollow inverted half pyramid pattern using numbers.
+Generate a floyd's triangle.
 
 
 Input Description:
@@ -13,11 +13,11 @@ Given an integer R indicates number of rows.Where 1<=R<=100
 
 
 Output Description:
-Print the hollow inverted half pyramid pattern using numbers based on the given integer R.
+Print a floyd's triangle based on the given integer R.
 
 
 Explanation:
-From the given input R=5, print hollow inverted half pyramid pattern using numbers with the size 5.
+From the given input R= 5,print the floyd's triangle with the size 5.
 
 
 Sample Input:
@@ -27,12 +27,12 @@ Sample Input:
 Sample Output:
 
 
-    1  
-   1 2  
-  1   3  
- 1     4  
-1 2 3 4 5  
- 
+1  
+2 3  
+4 5 6  
+7 8 9 10  
+11 12 13 14 15  
+
 */
 
 const readline = require('readline');
@@ -48,22 +48,18 @@ rl.on('line', (data) => {
 });
 
  function result(nums){
-
-  for(let row = 1 ;row<=nums;row++){
+   let num = 1
+  for(let row = 0 ;row<nums;row++){
     let str = ''
-
-    for(let space = 1;space<=nums-row;space++){
-      str += ' '
+  for(let n = 0;n<=row;n++){
+    if(n===row){
+      str+=num
+    }else{
+      str += (num)+' '
     }
-    for(let i= 1;i<=row;i++){      
-      if(i===1 || i===row || row===nums){
-        str +=i
-      }else{
-        str = str+' '
-      }if(row!==i){
-        str=str+' '
-      }
-    }
+    num++
+  }
+    
     
     
     console.log(str)
