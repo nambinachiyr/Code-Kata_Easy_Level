@@ -1,23 +1,25 @@
 /*
-878. Floyd's Triangle Generation
+879. b and * pattern
 
-Geekoin30
-Easy
+Geekoin40
+Medium
 Topics
 Problem Statement:
-Generate a floyd's triangle.
+Write a code to generate the following pattern.
 
+
+*********  
+b*******b  
+bb*****bb  
+bbb***bbb  
+bbbb*bbbb  
 
 Input Description:
-Given an integer R indicates number of rows.Where 1<=R<=100
+Input consists of a single integer that corresponds to R, the number of rows. R is always an odd number.Where 1<=R<=100
 
 
 Output Description:
-Print a floyd's triangle based on the given integer R.
-
-
-Explanation:
-From the given input R= 5,print the floyd's triangle with the size 5.
+Print the character with the letter 'b' pattern with the size based on the given integer R.
 
 
 Sample Input:
@@ -27,11 +29,14 @@ Sample Input:
 Sample Output:
 
 
-1  
-2 3  
-4 5 6  
-7 8 9 10  
-11 12 13 14 15  
+*********  
+b*******b  
+bb*****bb  
+bbb***bbb  
+bbbb*bbbb  
+
+Explanation:
+From the given input R=5,print the character with star pattern.
 
 */
 
@@ -49,18 +54,20 @@ rl.on('line', (data) => {
 
  function result(nums){
    let num = 1
-  for(let row = 0 ;row<nums;row++){
+  for(let row = nums ;row>0;row--){
     let str = ''
-  for(let n = 0;n<=row;n++){
-    if(n===row){
-      str+=num
-    }else{
-      str += (num)+' '
-    }
-    num++
+  for(let leftSpace = 1;leftSpace<=nums-row;leftSpace++){
+    str += 'b'
   }
-    
-    
+  for(let leftStar = 1;leftStar<=row;leftStar++){
+    str+='*'
+  }
+  for(let rightStar = 1;rightStar<=row-1;rightStar++){
+    str+='*'
+  }
+  for(let rightSpace=1 ; rightSpace<nums-row+1;rightSpace++ ){
+    str+='b'
+  }
     
     console.log(str)
   }
