@@ -1,33 +1,37 @@
 /*
-763. Sum of Two Numbers-2
+868. Star Pyramid Pattern-2
 
-Geekoin10
-Easy
+Geekoin40
+Medium
 Topics
 Problem Statement:
-You are given Two Numbers, A and B. If C = A + B. Find C. Note: Round off the output to a single decimal place.
+Write a code to generate a full pyramid pattern using stars.
 
 
 Input Description:
-You are provided with two numbers A and B.
+Given an integer R indicates number of rows.Where 1<=R<=100
 
 
 Output Description:
-Find the sum of the two numbers (A + B)
+Print the star pyramid with the given integer R.
 
 
 Explanation:
-1+1 = 2
+From the given input R=5, print the full pyramid star pattern with size 5.
 
 
 Sample Input:
-1
-1
+5
 
 
 Sample Output:
-2
 
+
+    *  
+   * *  
+  * * *  
+ * * * *  
+* * * * *  
 */
 
 const readline = require('readline');
@@ -43,9 +47,21 @@ rl.on('line', (data) => {
 });
 
  function result(nums){
-    
-  const sum = nums.reduce((acc,cur)=>acc+cur,0);
-  console.log(sum)
+  for(let row = 1;row<=nums;row++){
+    let str = ''
+    for(let space = 1;space<=nums-row;space++){
+      str = ' ' + str
+    }
+    for(let star = 1;star<=row;star++){
+     if(row===star){
+       str = str+'*'
+     }else{
+      str = str + '* '
+     }
+    }
+  
+    console.log(str)
+  }
  }  
 
 rl.on('close', () => {  
