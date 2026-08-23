@@ -1,11 +1,11 @@
 /*
-875. Number Hollow Half Pyramid
+876. Inverted Half Pyramid Pattern-2
 
 Geekoin30
 Easy
 Topics
 Problem Statement:
-Generate a hollow half pyramid pattern using numbers.
+Generate a hollow inverted half pyramid pattern using numbers.
 
 
 Input Description:
@@ -13,7 +13,11 @@ Given an integer R indicates number of rows.Where 1<=R<=100
 
 
 Output Description:
-Print the hollow half pyramid pattern using numbers based on the given integer R.
+Print the hollow Inverted half pyramid pattern using numbers based on the given integer R.
+
+
+Explanation:
+From the given input R=5,print the hollow inverted half pyramid pattern with the size 5.
 
 
 Sample Input:
@@ -23,11 +27,11 @@ Sample Input:
 Sample Output:
 
 
-1  
-12  
-1 3  
-1  4  
 12345  
+1  4  
+1 3  
+12  
+1  
 */
 
 const readline = require('readline');
@@ -44,7 +48,7 @@ rl.on('line', (data) => {
 
  function result(nums){
 
-  for(let row = 1 ;row<=nums;row++){
+  for(let row = nums ;row>=1;row--){
     let str = ''
     for(let i= 1;i<=row;i++){      
       if(i===1 || i===row || row===nums){
