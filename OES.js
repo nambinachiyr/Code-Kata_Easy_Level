@@ -1,7 +1,7 @@
 /*
-914. Alphabet Half Pyramid Pattern-2
+915. Alphabet Half Pyramid Pattern-3
 
-Geekoin50
+Geekoin40
 Medium
 Topics
 Problem Statement:
@@ -26,11 +26,13 @@ Sample Input:
 
 Sample Output:
 
-EEEEE  
- DDDD  
-  CCC  
-   BB  
-    A  
+
+EDCBA  
+EDCB  
+EDC  
+ED  
+E  
+
 */
 
 const readline = require('readline');
@@ -46,13 +48,10 @@ rl.on('line', (data) => {
 });
 
 function result(n) {
-  for (let row = n; row>=1; row--) {
+  for (let row = 1; row<=n; row++) {
     let str = '';
-   for(let space=row;space<n;space++){
-    str+=' '
-   }
-   for(let letter=1;letter<=row;letter++){
-      str+= String.fromCharCode(row+64)
+   for(let letter=n;letter>=row;letter--){
+      str+= String.fromCharCode(letter+64)
    }
 
    console.log(str)
