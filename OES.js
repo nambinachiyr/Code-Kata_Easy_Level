@@ -1,11 +1,11 @@
 /*
-889. Inverted Number Half Pyramid
+890. Number Half Pyramid Pattern-2
 
-Geekoin30
-Easy
+Geekoin40
+Medium
 Topics
 Problem Statement:
-Write a code to generate a inverted half pyramid pattern using numbers.
+Write a code to generate a half pyramid pattern using numbers.
 
 
 Input Description:
@@ -17,7 +17,7 @@ Print the number half pyramid pattern with the size R.
 
 
 Explanation:
-From the given input R=5, Print from 1 to 75 and reduced by 1 number, print from 1 to 4 and 1 to 3, 1 to 2 print till 1.
+From the given input R=5, Print from 1 to 5 and reduced by 1 number, print from 2 to 5 and 3 to 5, 4 to 5 print 5 at end.
 
 
 Sample Input:
@@ -28,10 +28,11 @@ Sample Output:
 
 
 12345  
-1234  
-123  
-12  
-1  
+2345  
+345  
+45  
+5  
+
 */
 
 const readline = require('readline');
@@ -48,11 +49,10 @@ rl.on('line', (data) => {
 
  function result(n){
 
-  let num = 1
   for(let row = n; row>=1; row--){
     let str = ''
    
-   for(let j=1; j<=row; j++){
+   for(let j=n+1-row; j<=n; j++){
     str+=j
    }
    
