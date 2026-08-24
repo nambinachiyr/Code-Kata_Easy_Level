@@ -1,11 +1,11 @@
 /*
-908. Alphabet Pyramid Pattern-2
+909. Number Pyramid Pattern-4
 
 Geekoin50
 Medium
 Topics
 Problem Statement:
-Write a code to generate a aplhabet pyramid pattern.
+Write a code to generate a pyramid pattern on numbers.
 
 
 Input Description:
@@ -13,11 +13,11 @@ Given an integer R indicates number of rows.Where 1<=R<=100
 
 
 Output Description:
-Print the alphabet pyramid pattern according to the given integer R.
+Print the pyramid number pattern based on the given integer R.
 
 
 Explanation:
-From the given input R=5,print 5 rows of the pyramid alphabet.
+From the given input R=5, print the 5 rows of pyramid pattern using numbers.
 
 
 Sample Input:
@@ -25,11 +25,14 @@ Sample Input:
 
 
 Sample Output:
-    A  
-   BAB  
-  CBABC  
- DCBABCD  
-EDCBABCDE  
+
+
+    0  
+   101  
+  21012  
+ 3210123  
+432101234  
+
 
 
 */
@@ -47,17 +50,17 @@ rl.on('line', (data) => {
 });
 
 function result(n) {
-  for (let row = 1; row<=n; row++) {
+  for (let row = 0; row<n; row++) {
     let str = '';
 
-    for (let space = row; space <n; space++) {
+    for (let space = row; space <n-1; space++) {
       str += ' ';
     }
-    for (let leftSide = row; leftSide >=1; leftSide--) {
-      str += String.fromCharCode(64+leftSide);
+    for (let leftSide = row; leftSide >=0; leftSide--) {
+      str += leftSide;
     }
-    for (let rightSide = 2; rightSide<=row; rightSide++) {
-      str += String.fromCharCode(64+rightSide);
+    for (let rightSide = 1; rightSide<=row; rightSide++) {
+      str += rightSide;
     }
 
     console.log(str);
