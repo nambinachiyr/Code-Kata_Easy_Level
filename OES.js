@@ -1,5 +1,5 @@
 /*
-910. Alphabet Pyramid Pattern-3
+911. Alphabet Pyramid Pattern-4
 
 Geekoin50
 Medium
@@ -28,11 +28,10 @@ Sample Output:
 
 
     A  
-   ABC  
-  ABCDE  
- ABCDEFG  
-ABCDEFGHI  
-
+   CCC  
+  EEEEE  
+ GGGGGGG  
+IIIIIIIII  
 */
 
 const readline = require('readline');
@@ -48,18 +47,17 @@ rl.on('line', (data) => {
 });
 
 function result(n) {
-  for (let row = 0; row<n; row++) {
+  for (let row = 1; row<=n; row++) {
     let str = '';
+   for(let space=1;space<=n-row;space++){
+    str+=' '
+   }
+   let lr = String.fromCharCode(row*2+63)
+   for(let letter=1;letter<=2*row-1;letter++){
+      str+=lr
+   }
 
-    for (let space = row; space <n-1; space++) {
-      str += ' ';
-    }
-    for (let leftSide = 0; leftSide<=row*2; leftSide++) {
-      str += String.fromCharCode(leftSide+65);
-    }
-   
-
-    console.log(str);
+   console.log(str)
   }
    
 }
