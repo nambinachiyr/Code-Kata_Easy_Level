@@ -1,5 +1,5 @@
 /*
-913. Alphabet Half Pyramid Pattern
+914. Alphabet Half Pyramid Pattern-2
 
 Geekoin50
 Medium
@@ -17,7 +17,7 @@ Print the alphabet half pyramid pattern according to the given integer R.
 
 
 Explanation:
-From the given input R=5,print 5 rows of the pyramid alphabet.
+From the given input R=5,print 5 rows of the pyramid alphabet pattern.
 
 
 Sample Input:
@@ -26,13 +26,11 @@ Sample Input:
 
 Sample Output:
 
-
-ABCDE  
- ABCD  
-  ABC  
-   AB  
+EEEEE  
+ DDDD  
+  CCC  
+   BB  
     A  
- 
 */
 
 const readline = require('readline');
@@ -48,13 +46,13 @@ rl.on('line', (data) => {
 });
 
 function result(n) {
-  for (let row = 1; row<=n; row++) {
+  for (let row = n; row>=1; row--) {
     let str = '';
-   for(let space=1;space<row;space++){
+   for(let space=row;space<n;space++){
     str+=' '
    }
-   for(let letter=0;letter<=n-row;letter++){
-      str+= String.fromCharCode(letter+65)
+   for(let letter=1;letter<=row;letter++){
+      str+= String.fromCharCode(row+64)
    }
 
    console.log(str)
