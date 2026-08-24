@@ -1,38 +1,39 @@
 /*
-885. Half Pyramid Number Pattern
+886. IPL Dance Program Seating
 
-Geekoin30
-Easy
+Geekoin40
+Medium
 Topics
 Problem Statement:
-Write a code to generate a half pyramid number pattern.
+In the IPL season's valedictory function the organizers have organized for a dance program. The dance has to be performed by men along with the points of the diagonals of the square of side 'n' and the females along with points of the borders. The remaining positions are filled by children. You have to determine their respective positions by writing a program.
 
 
 Input Description:
-Given an even integer R indicates number of rows.Where 1<=R<=100
+Given an integer N indicates representing the matrix (N*N).Where 1<=R<=100
 
 
 Output Description:
-Print the number pattern based on the given integer R.
+Print the N*N character matrix with the character F(Female), M(Male), C(Children).
 
 
 Explanation:
-From the given input R=5, you have to print 1 to 5 in first line,then print 1 to 4 in next line follow the rule ending with number 1.
+From the given input N=7, M can fill the diagonals of left and right.F fill with of the borders.Remaining positions are filled by Children C.
 
 
 Sample Input:
-5
+7
 
 
 Sample Output:
 
 
-12345  
-1234  
-123  
-12  
-1  
-
+M F F F F F M  
+F M C C C M F  
+F C M C M C F  
+F C C M C C F  
+F C M C M C F  
+F M C C C M F  
+M F F F F F M  
 
 */
 
@@ -50,12 +51,24 @@ rl.on('line', (data) => {
 
  function result(n){
 
-  for(let row = n; row>=1; row--){
+  for(let row = 0; row<n; row++){
     let str = ''
-   for(let j = 1;j<=row;j++){
-     str+=j
+   for(let j = 0;j<n;j++){
+    // console.log(n-j===(row-1),row-1)
+    if(row===j || row+j===n-1){
+      str+="M "
+     }
+    else if(row===0 || row===n-1 || j===n-1 || j===0){
+      str+='F '
+      // console.log((row!==n-1 && j===n-1),j,row)
+     }
+     
+     else{
+      str+='C '
+     }
+    
    }
-    console.log(str)
+    console.log(str.trim())
   }  
   }
  
