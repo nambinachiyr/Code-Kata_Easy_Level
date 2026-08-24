@@ -1,52 +1,37 @@
 /*
-883. Character Pattern
+884. Star and b Pattern
 
 Geekoin40
 Medium
 Topics
 Problem Statement:
-Wrrite a code to generate the following pattern.
+write a code to generate the following pattern.
 
-
-bbbb*bbbb  
-bbb***bbb  
-bb*****bb  
-b*******b  
-*********  
-b*******b  
-bb*****bb  
-bbb***bbb  
-bbbb*bbbb  
 
 Input Description:
-Given an odd integer R indicates number of rows.R is always an odd number.Where 1<=R<=100
+Given an even integer R indicates number of stars in first and last row.R is always an even number.Where 2<=R<=100
 
 
 Output Description:
-Print the character pattern based on the given input R.
-
-
-Explanation:
-From the given input R=9 indicates the no. of rows to print the character pattern.
+Print the pattern based on the given integer R.
 
 
 Sample Input:
-9
+10
 
 
 Sample Output:
 
 
-bbbb*bbbb  
-bbb***bbb  
-bb*****bb  
-b*******b  
-*********  
-b*******b  
-bb*****bb  
-bbb***bbb  
-bbbb*bbbb  
-
+**********  
+****bb****  
+***bbbb***  
+**bbbbbb**  
+*bbbbbbbb*  
+**bbbbbb**  
+***bbbb***  
+****bb****  
+**********  
 
 */
 
@@ -63,49 +48,47 @@ rl.on('line', (data) => {
 });
 
  function result(n){
-
-  let firstHalf = Math.ceil(n/2)
-  for(let row = 1; row<firstHalf; row++){
+  let half = n/2
+  for(let row = 1; row<half; row++){
     let str = ''
-    for(let rightSpace=row; rightSpace<firstHalf; rightSpace++){
-      str+='b'
-    }
-    for(let star = 1; star<=row; star++){
+    for(let star = row; star<=half; star++){  
       str+='*'
     }
-    for(let star = 2; star<=row; star++){
-      str+='*'
+    for(let leftb = row+2;leftb<=row*2; leftb++){      
+      str+='b'      
     }
-    for(let leftSpace = row; leftSpace<firstHalf; leftSpace++){
+    for(let rightb = row+4;rightb<row*2+3;rightb++){
       str+='b'
     }
-    // for(let bottomLeft = row-1; bottomLeft>=row; bottomLeft--){
-    //   str+='b'
-    // }
+    for(let star = row; star<=half; star++){
+      str+='*'
+    }
     
-   
+    
+    // for(let ;)
     console.log(str)
   }
 
-  for(let row = firstHalf; row>=1; row--){
+    for(let row = half; row>0; row--){
     let str = ''
-    for(let rightSpace=row; rightSpace<firstHalf; rightSpace++){
-      str+='b'
-    }
-    for(let star = 1; star<=row; star++){
+    for(let star = row; star<=half; star++){  
       str+='*'
     }
-    for(let star = 2; star<=row; star++){
-      str+='*'
+    for(let leftb = row+2;leftb<=row*2; leftb++){      
+      str+='b'      
     }
-    for(let leftSpace = row; leftSpace<firstHalf; leftSpace++){
+    for(let rightb = row+4;rightb<row*2+3;rightb++){
       str+='b'
+    }
+    for(let star = row; star<=half; star++){
+      str+='*'
     }
     
-   
+    
+    // for(let ;)
     console.log(str)
   }
-
+//  TOSOLVE THIs
   
   }
  
