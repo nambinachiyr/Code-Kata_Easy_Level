@@ -1,11 +1,11 @@
 /*
-906. Number Pyramid Pattern-3
+907. Alphabet Pyramid Pattern
 
-Geekoin50
+Geekoin40
 Medium
 Topics
 Problem Statement:
-Write a code to generate a pyramid pattern on numbers.
+Write a code to generate a aplhabet pyramid pattern.
 
 
 Input Description:
@@ -13,11 +13,11 @@ Given an integer R indicates number of rows.Where 1<=R<=100
 
 
 Output Description:
-Print the pyramid number pattern based on the given integer R.
+Print the alphabet pyramid pattern according to the given integer R.
 
 
 Explanation:
-From the given input R=5, print the 5 rows of pyramid, last line print 1,4th line print 3 on 3 times,and so on.
+From the given input R=5,print 5 rows of the pyramid alphabet.
 
 
 Sample Input:
@@ -27,11 +27,12 @@ Sample Input:
 Sample Output:
 
 
-999999999  
- 7777777  
-  55555  
-   333  
-    1  
+    A  
+   ABA  
+  ABCAB  
+ ABCDABC  
+ABCDEABCD  
+
 */
 
 const readline = require('readline');
@@ -47,20 +48,22 @@ rl.on('line', (data) => {
 });
 
 function result(n) {
-  for (let row = n + n; row >= 1; row--) {
+  for (let row = 1; row<=n; row++) {
     let str = '';
-    // console.log((2*n-1-row)/2)
-    if (row % 2 !== 0) {
-      for (let space = 0; space <(2*n-1-row)/2; space++) {
-        str += ' ';
-      }
-      for (let leftSide = 1; leftSide <= row; leftSide++) {
-        str += row;
-      }
 
-      console.log(str);
+    for (let space = row; space <n; space++) {
+      str += ' ';
     }
+    for (let leftSide = 1; leftSide <= row; leftSide++) {
+      str += String.fromCharCode(64+leftSide);
+    }
+    for (let rightSide = 1; rightSide <row; rightSide++) {
+      str += String.fromCharCode(64+rightSide);
+    }
+
+    console.log(str);
   }
+   
 }
 
 rl.on('close', () => {
