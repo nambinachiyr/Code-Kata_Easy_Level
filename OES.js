@@ -1,23 +1,23 @@
 /*
-917. Number Half Pyramid Pattern-9
+918. Number Square Pattern-2
 
 Geekoin50
 Medium
 Topics
 Problem Statement:
-Write a code to generate a number half pyramid pattern.
+Write a code to generate a square pattern using numbers.
 
 
 Input Description:
-Given an integer R indicates number of rows.Where 1<=R<=100
+Given an integer R indicates number of R*2-1 rows.Where 1<=R<=100
 
 
 Output Description:
-Print the number half pyramid pattern based on the given integer R.
+Print the square pyramid number based on the given integer R.
 
 
 Explanation:
-Form the input R=5, print 1 to R in first column (vertical) and print from the upwards 6 to 9 and print downwards 10 to 12 and upwards from 13 and 14, finally print 15.
+Form the input R=5, print 1 to R in first column (vertical) and print 1 in first column ,next 4(22),9(33),16(4(4)),25(5(5)).
 
 
 Sample Input:
@@ -28,10 +28,15 @@ Sample Output:
 
 
 1  
-2 9  
-3 8 10  
-4 7 11 14  
-5 6 12 13 15  
+1 4  
+1 4 9  
+1 4 9 16  
+1 4 9 16 25  
+1 4 9 16  
+1 4 9  
+1 4  
+1  
+
 */
 
 const readline = require('readline');
@@ -47,40 +52,20 @@ rl.on('line', (data) => {
 });
 
 function result(n) {
-
-  let num = 1
-
-  // This is for create Matrix in Array
-  let str = Array.from({length:n},()=>[])
-
-  // We create Column Based array
-  for(let col=0; col<=n-1; col++){
-    if(col % 2 === 0){
-      for(let row=col; row<=n-1; row++){
-        str[row][col] = num //[[1],[2],[3],[4],[5],[6]]
-        num=num+1
-      }
-    }else{
-      for(let row=n-1;row>=col;row--){
-        str[row][col] = num //[[1],[2,9]....]
-        num=num+1
-      }
+  for(let row = 1; row<=n; row++){
+    let str =''
+    for(let j = 1; j<=row; j++){
+     str+=j*j+" "
     }
-    // console.log(str)
+    console.log(str.trim())
   }
 
-/* 
-[ 
-[ 1 ], 
-[ 2, 9 ],
-[ 3, 8, 10 ],
-[ 4, 7, 11, 14 ],
-[ 5, 6, 12, 13, 15 ]
- ]
-*/
-  // console.log(str)
-  for(let i = 0; i<str.length;i++){
-    console.log(str[i].join(' '))
+  for(let row = n-1; row>=1; row--){
+    let str = ''
+    for(let j = 1;j<=row; j++){
+      str+=j*j+' '
+    }
+    console.log(str.trim())
   }
 }
 
