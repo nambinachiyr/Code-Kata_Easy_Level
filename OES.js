@@ -1,11 +1,11 @@
 /*
-899. Hollow Rhombus Pattern-2
+900. Hollow Diamond Pattern
 
-Geekoin50
+Geekoin60
 Medium
 Topics
 Problem Statement:
-Write a code to generate an hollow rhombus Pattern using stars.
+Write a code to generate the hollow diamond inscribed in a rectangle using stars.
 
 
 Input Description:
@@ -13,20 +13,29 @@ Given an integer R indicates number of rows.Where 1<=R<=100
 
 
 Output Description:
-Print the solid rhombus using stars with the size R.
+Print the hollow diamond in a rectangle using stars with the size R.
 
 
 Sample Input:
-4
+5
 
 
 Sample Output:
 
 
-   ****  
-  *  *  
- *  *  
-****  
+**********  
+****  ****  
+***    ***  
+**      **  
+*        *  
+*        *  
+**      **  
+***    ***  
+****  ****  
+**********  
+
+Explanation:
+From the given input R=5, Print the R*2 rows of hollow diamond in a rectangle using stars.
 
 */
 
@@ -47,21 +56,33 @@ rl.on('line', (data) => {
    for(let row =1; row<=n; row++){
      let str = ''
      
-     for(let space = 1;space<=n-row;space++){
-      str+=' '
-     }
-
-     for(let j=1; j<=n; j++){     
-     if(row===1 || row===n || j===1 || j===n){
+     //  Top
+     for(let leftSide=row; leftSide<=n; leftSide++){     
        str+='*'
-     }else{
+      }
+     for(let space =2;space<=row+row-1;space++){
       str+=' '
      }
-   }
-  
-   
+     for(let rightSide=row;rightSide<=n;rightSide++){
+      str+='*'
+     }
     console.log(str)
+
+    //  Bottom
   }  
+  for(let row=1;row<=n;row++){
+    let str=''
+    for(let leftSide=1; leftSide<=row; leftSide++){     
+   str+='*'
+ }
+ for(let space =row*2;space<=n*2-1;space++){
+  str+=' '
+ }
+ for(let rightSide=1;rightSide<=row;rightSide++){
+  str+='*'
+ }   
+console.log(str)
+  }
   }
  
 
