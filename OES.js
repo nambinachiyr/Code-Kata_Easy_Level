@@ -1,11 +1,11 @@
 /*
-898. Rhombus Star Pattern
+899. Hollow Rhombus Pattern-2
 
 Geekoin50
 Medium
 Topics
 Problem Statement:
-Write a code to generate an Rhombus Pattern using stars.
+Write a code to generate an hollow rhombus Pattern using stars.
 
 
 Input Description:
@@ -13,11 +13,7 @@ Given an integer R indicates number of rows.Where 1<=R<=100
 
 
 Output Description:
-Print the solid rhombus using stars with the size of rhombus R.
-
-
-Explanation:
-From the given input R=4 print the rhombus 4 * 4 using stars.
+Print the solid rhombus using stars with the size R.
 
 
 Sample Input:
@@ -28,9 +24,10 @@ Sample Output:
 
 
    ****  
-  ****  
- ****  
+  *  *  
+ *  *  
 ****  
+
 */
 
 const readline = require('readline');
@@ -55,7 +52,11 @@ rl.on('line', (data) => {
      }
 
      for(let j=1; j<=n; j++){     
-     str+='*'
+     if(row===1 || row===n || j===1 || j===n){
+       str+='*'
+     }else{
+      str+=' '
+     }
    }
   
    
