@@ -1,37 +1,38 @@
 /*
-884. Star and b Pattern
+885. Half Pyramid Number Pattern
 
-Geekoin40
-Medium
+Geekoin30
+Easy
 Topics
 Problem Statement:
-write a code to generate the following pattern.
+Write a code to generate a half pyramid number pattern.
 
 
 Input Description:
-Given an even integer R indicates number of stars in first and last row.R is always an even number.Where 2<=R<=100
+Given an even integer R indicates number of rows.Where 1<=R<=100
 
 
 Output Description:
-Print the pattern based on the given integer R.
+Print the number pattern based on the given integer R.
+
+
+Explanation:
+From the given input R=5, you have to print 1 to 5 in first line,then print 1 to 4 in next line follow the rule ending with number 1.
 
 
 Sample Input:
-10
+5
 
 
 Sample Output:
 
 
-**********  
-****bb****  
-***bbbb***  
-**bbbbbb**  
-*bbbbbbbb*  
-**bbbbbb**  
-***bbbb***  
-****bb****  
-**********  
+12345  
+1234  
+123  
+12  
+1  
+
 
 */
 
@@ -48,48 +49,14 @@ rl.on('line', (data) => {
 });
 
  function result(n){
-  let half = n/2
-  for(let row = 1; row<half; row++){
-    let str = ''
-    for(let star = row; star<=half; star++){  
-      str+='*'
-    }
-    for(let leftb = row+2;leftb<=row*2; leftb++){      
-      str+='b'      
-    }
-    for(let rightb = row+4;rightb<row*2+3;rightb++){
-      str+='b'
-    }
-    for(let star = row; star<=half; star++){
-      str+='*'
-    }
-    
-    
-    // for(let ;)
-    console.log(str)
-  }
 
-    for(let row = half; row>0; row--){
+  for(let row = n; row>=1; row--){
     let str = ''
-    for(let star = row; star<=half; star++){  
-      str+='*'
-    }
-    for(let leftb = row+2;leftb<=row*2; leftb++){      
-      str+='b'      
-    }
-    for(let rightb = row+4;rightb<row*2+3;rightb++){
-      str+='b'
-    }
-    for(let star = row; star<=half; star++){
-      str+='*'
-    }
-    
-    
-    // for(let ;)
+   for(let j = 1;j<=row;j++){
+     str+=j
+   }
     console.log(str)
-  }
-//  TOSOLVE THIs
-  
+  }  
   }
  
 
