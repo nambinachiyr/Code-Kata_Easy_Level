@@ -1,11 +1,11 @@
 /*
-916. Alphabet Pyramid Pattern-6
+917. Number Half Pyramid Pattern-9
 
-Geekoin40
+Geekoin50
 Medium
 Topics
 Problem Statement:
-Write a code to generate a triangle character pattern.
+Write a code to generate a number half pyramid pattern.
 
 
 Input Description:
@@ -13,11 +13,11 @@ Given an integer R indicates number of rows.Where 1<=R<=100
 
 
 Output Description:
-Print the alphabet pyramid pattern according to the given integer R.
+Print the number half pyramid pattern based on the given integer R.
 
 
 Explanation:
-From the given input R=5,print 5 rows of the pyramid alphabet pattern.First line print A,then next line print A B, repeat this process until reach R characters on last line.
+Form the input R=5, print 1 to R in first column (vertical) and print from the upwards 6 to 9 and print downwards 10 to 12 and upwards from 13 and 14, finally print 15.
 
 
 Sample Input:
@@ -26,12 +26,12 @@ Sample Input:
 
 Sample Output:
 
-    A  
-   A B  
-  A B C  
- A B C D  
-A B C D E  
 
+1  
+2 9  
+3 8 10  
+4 7 11 14  
+5 6 12 13 15  
 */
 
 const readline = require('readline');
@@ -47,22 +47,41 @@ rl.on('line', (data) => {
 });
 
 function result(n) {
-  for (let row = 1; row<=n; row++) {
-    let str = '';
-    for(let space = row;space<n;space++){
-      str+=' '
-    }
-   for(let letter=1;letter<=row;letter++){
-      if(letter!==row){
-        str+= String.fromCharCode(letter+64)+' '
-      }else{
-        str+= String.fromCharCode(letter+64)
-      }
-   }
 
-   console.log(str)
+  let num = 1
+
+  // This is for create Matrix in Array
+  let str = Array.from({length:n},()=>[])
+
+  // We create Column Based array
+  for(let col=0; col<=n-1; col++){
+    if(col % 2 === 0){
+      for(let row=col; row<=n-1; row++){
+        str[row][col] = num //[[1],[2],[3],[4],[5],[6]]
+        num=num+1
+      }
+    }else{
+      for(let row=n-1;row>=col;row--){
+        str[row][col] = num //[[1],[2,9]....]
+        num=num+1
+      }
+    }
+    // console.log(str)
   }
-   
+
+/* 
+[ 
+[ 1 ], 
+[ 2, 9 ],
+[ 3, 8, 10 ],
+[ 4, 7, 11, 14 ],
+[ 5, 6, 12, 13, 15 ]
+ ]
+*/
+  // console.log(str)
+  for(let i = 0; i<str.length;i++){
+    console.log(str[i].join(' '))
+  }
 }
 
 rl.on('close', () => {
