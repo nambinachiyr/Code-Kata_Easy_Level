@@ -1,39 +1,37 @@
 /*
-886. IPL Dance Program Seating
+887. Half Pyramid Number Pattern-2
 
-Geekoin40
-Medium
+Geekoin30
+Easy
 Topics
 Problem Statement:
-In the IPL season's valedictory function the organizers have organized for a dance program. The dance has to be performed by men along with the points of the diagonals of the square of side 'n' and the females along with points of the borders. The remaining positions are filled by children. You have to determine their respective positions by writing a program.
+Write a code to generate a half pyramid number pattern.
 
 
 Input Description:
-Given an integer N indicates representing the matrix (N*N).Where 1<=R<=100
+Given an even integer R indicates number of rows.Where 1<=R<=100
 
 
 Output Description:
-Print the N*N character matrix with the character F(Female), M(Male), C(Children).
+Print the number half pyramid pattern with the size R.
 
 
 Explanation:
-From the given input N=7, M can fill the diagonals of left and right.F fill with of the borders.Remaining positions are filled by Children C.
+Form the given input R=5, print form 1 to 5, next line print for 4 to 1 and the third line 1 to 3, then fourth line 12 and last line end with 1 always. Alternate rows indicates in reverse the numbers.
 
 
 Sample Input:
-7
+5
 
 
 Sample Output:
 
 
-M F F F F F M  
-F M C C C M F  
-F C M C M C F  
-F C C M C C F  
-F C M C M C F  
-F M C C C M F  
-M F F F F F M  
+12345  
+4321  
+123  
+21  
+1  
 
 */
 
@@ -51,24 +49,23 @@ rl.on('line', (data) => {
 
  function result(n){
 
-  for(let row = 0; row<n; row++){
+  let num = 1
+  for(let row = n; row>=1; row--){
     let str = ''
-   for(let j = 0;j<n;j++){
-    // console.log(n-j===(row-1),row-1)
-    if(row===j || row+j===n-1){
-      str+="M "
-     }
-    else if(row===0 || row===n-1 || j===n-1 || j===0){
-      str+='F '
-      // console.log((row!==n-1 && j===n-1),j,row)
-     }
+   
+   for(let j=1; j<=row; j++){
+    if(num % 2!==0){
+      str+=j
+
+    }else{
+      str+=row+1-j
      
-     else{
-      str+='C '
-     }
-    
+    }
+  
    }
-    console.log(str.trim())
+   num++
+   
+    console.log(str)
   }  
   }
  
