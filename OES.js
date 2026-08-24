@@ -1,11 +1,11 @@
 /*
-911. Alphabet Pyramid Pattern-4
+912. Alphabet Pyramid Pattern-5
 
 Geekoin50
 Medium
 Topics
 Problem Statement:
-Write a code to generate a alphabet pyramid pattern.
+Write a code to generate a aplhabet pyramid pattern.
 
 
 Input Description:
@@ -28,10 +28,11 @@ Sample Output:
 
 
     A  
-   CCC  
-  EEEEE  
- GGGGGGG  
-IIIIIIIII  
+   BBB  
+  CCCCC  
+ DDDDDDD  
+EEEEEEEEE  
+ 
 */
 
 const readline = require('readline');
@@ -52,7 +53,7 @@ function result(n) {
    for(let space=1;space<=n-row;space++){
     str+=' '
    }
-   let lr = String.fromCharCode(row*2+63)
+   let lr = String.fromCharCode(row+64)
    for(let letter=1;letter<=2*row-1;letter++){
       str+=lr
    }
