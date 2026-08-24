@@ -1,5 +1,5 @@
 /*
-904. Star Pyramid Pattern-3
+905. Star Pyramid Pattern-4
 
 Geekoin30
 Easy
@@ -17,22 +17,20 @@ Print the pyramid pattern using stars based on the given integer R.
 
 
 Explanation:
-From the given input R=6, to print the half pyramid using star with the given rows 6
+From the given input R=5,print the half pyramid using star with the given rows 5.
 
 
 Sample Input:
-6
+5
 
 
 Sample Output:
 
-
-     *  
-    **  
-   ***  
-  ****  
- *****  
-******  
+*****  
+ ****  
+  ***  
+   **  
+    *   
 */
 
 const readline = require('readline');
@@ -49,7 +47,7 @@ rl.on('line', (data) => {
 
 function result(n) {  
 
-  for (let row = 1; row <= n; row++) {
+  for (let row = n; row >=1; row--) {
     let str = '';
 
     for (let space = row; space < n; space++) {
