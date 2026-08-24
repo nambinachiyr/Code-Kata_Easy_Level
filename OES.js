@@ -1,5 +1,5 @@
 /*
-891. Number Half Pyramid Pattern-3
+892. Number Half Pyramid Pattern-4
 
 Geekoin40
 Medium
@@ -16,6 +16,10 @@ Output Description:
 Print the number half pyramid pattern with the size R.
 
 
+Explanation:
+From the given input R=5, Print from 5 in first line and increased by 1 number, print from 4 to 5 and 3 to 5, 2 to 5 print 1 to 5 at end.
+
+
 Sample Input:
 5
 
@@ -23,14 +27,11 @@ Sample Input:
 Sample Output:
 
 
-4321  
-321  
-21  
-1  
-
-Explanation:
-From the given input R=5, print from 5 to 1 and reduced by 1 number, print from 4 to 1 and 3 to 1, 2 to 1 print 1 at end.
-
+5  
+45  
+345  
+2345  
+12345  
 */
 
 const readline = require('readline');
@@ -50,7 +51,7 @@ rl.on('line', (data) => {
   for(let row = 1; row<=n; row++){
     let str = ''
    
-   for(let j=n+1-row; j>=1; j--){
+   for(let j=n+1-row; j<=n; j++){
     str+=j
    }
    
