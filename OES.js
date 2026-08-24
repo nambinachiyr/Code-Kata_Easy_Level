@@ -1,11 +1,11 @@
 /*
-912. Alphabet Pyramid Pattern-5
+913. Alphabet Half Pyramid Pattern
 
 Geekoin50
 Medium
 Topics
 Problem Statement:
-Write a code to generate a aplhabet pyramid pattern.
+Write a code to generate a aplhabet half pyramid pattern.
 
 
 Input Description:
@@ -13,7 +13,7 @@ Given an integer R indicates number of rows.Where 1<=R<=100
 
 
 Output Description:
-Print the alphabet pyramid pattern according to the given integer R.
+Print the alphabet half pyramid pattern according to the given integer R.
 
 
 Explanation:
@@ -27,11 +27,11 @@ Sample Input:
 Sample Output:
 
 
+ABCDE  
+ ABCD  
+  ABC  
+   AB  
     A  
-   BBB  
-  CCCCC  
- DDDDDDD  
-EEEEEEEEE  
  
 */
 
@@ -50,12 +50,11 @@ rl.on('line', (data) => {
 function result(n) {
   for (let row = 1; row<=n; row++) {
     let str = '';
-   for(let space=1;space<=n-row;space++){
+   for(let space=1;space<row;space++){
     str+=' '
    }
-   let lr = String.fromCharCode(row+64)
-   for(let letter=1;letter<=2*row-1;letter++){
-      str+=lr
+   for(let letter=0;letter<=n-row;letter++){
+      str+= String.fromCharCode(letter+65)
    }
 
    console.log(str)
