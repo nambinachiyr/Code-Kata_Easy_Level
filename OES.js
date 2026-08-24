@@ -1,7 +1,7 @@
 /*
-907. Alphabet Pyramid Pattern
+908. Alphabet Pyramid Pattern-2
 
-Geekoin40
+Geekoin50
 Medium
 Topics
 Problem Statement:
@@ -25,13 +25,12 @@ Sample Input:
 
 
 Sample Output:
-
-
     A  
-   ABA  
-  ABCAB  
- ABCDABC  
-ABCDEABCD  
+   BAB  
+  CBABC  
+ DCBABCD  
+EDCBABCDE  
+
 
 */
 
@@ -54,10 +53,10 @@ function result(n) {
     for (let space = row; space <n; space++) {
       str += ' ';
     }
-    for (let leftSide = 1; leftSide <= row; leftSide++) {
+    for (let leftSide = row; leftSide >=1; leftSide--) {
       str += String.fromCharCode(64+leftSide);
     }
-    for (let rightSide = 1; rightSide <row; rightSide++) {
+    for (let rightSide = 2; rightSide<=row; rightSide++) {
       str += String.fromCharCode(64+rightSide);
     }
 
