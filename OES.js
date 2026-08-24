@@ -1,8 +1,8 @@
 /*
-894. Number Half Pyramid Pattern-6
+895. Number Half Pyramid Pattern-7
 
-Geekoin30
-Easy
+Geekoin50
+Medium
 Topics
 Problem Statement:
 Write a code to generate a half pyramid pattern using numbers.
@@ -17,7 +17,7 @@ Print the number half pyramid pattern with the size R.
 
 
 Explanation:
-From the given input R=5, Print from 55555 in first line and reduced by 1 number, print from 4444 in second line repeat this process until 1.
+From the given input R=5, Print from 13579 in first line and reduced by 1 number, print from 3579 in second line and 579, and 79 and finally print 9.
 
 
 Sample Input:
@@ -27,11 +27,11 @@ Sample Input:
 Sample Output:
 
 
-55555  
-4444  
-333  
-22  
-1  
+13579  
+3579  
+579  
+79  
+9  
 */
 
 const readline = require('readline');
@@ -48,11 +48,15 @@ rl.on('line', (data) => {
 
  function result(n){
 
-  for(let row = n; row>=1; row--){
+  for(let row =1; row<=n; row++){
     let str = ''
    
-   for(let j=1; j<=row; j++){
-    str+=row
+   for(let j=row*2-1; j<=n*2; j++){
+  
+     if(j%2!==0){
+      str+=j
+    }
+   
    }
    
     console.log(str)
