@@ -1,11 +1,11 @@
 /*
-900. Hollow Diamond Pattern
+901. Butterfly Pattern with Stars
 
 Geekoin60
 Medium
 Topics
 Problem Statement:
-Write a code to generate the hollow diamond inscribed in a rectangle using stars.
+Write a code to generate a butterfly pattern printing using stars.
 
 
 Input Description:
@@ -13,7 +13,11 @@ Given an integer R indicates number of rows.Where 1<=R<=100
 
 
 Output Description:
-Print the hollow diamond in a rectangle using stars with the size R.
+Print the butterfly pattern printing using stars based on the given integer R.
+
+
+Explanation:
+From the given input R= 5, print the R*2 rows in the form of butterfly using stars.
 
 
 Sample Input:
@@ -23,19 +27,16 @@ Sample Input:
 Sample Output:
 
 
-**********  
-****  ****  
-***    ***  
-**      **  
-*        *  
 *        *  
 **      **  
 ***    ***  
 ****  ****  
 **********  
-
-Explanation:
-From the given input R=5, Print the R*2 rows of hollow diamond in a rectangle using stars.
+**********  
+****  ****  
+***    ***  
+**      **  
+*        *  
 
 */
 
@@ -57,13 +58,13 @@ rl.on('line', (data) => {
      let str = ''
      
      //  Top
-     for(let leftSide=row; leftSide<=n; leftSide++){     
+     for(let leftSide=1; leftSide<=row; leftSide++){     
        str+='*'
       }
-     for(let space =2;space<=row+row-1;space++){
+     for(let space =row*2;space<=n*2-1;space++){
       str+=' '
      }
-     for(let rightSide=row;rightSide<=n;rightSide++){
+     for(let rightSide=1;rightSide<=row;rightSide++){
       str+='*'
      }
     console.log(str)
@@ -72,13 +73,13 @@ rl.on('line', (data) => {
   }  
   for(let row=1;row<=n;row++){
     let str=''
-    for(let leftSide=1; leftSide<=row; leftSide++){     
+    for(let leftSide=row; leftSide<=n; leftSide++){     
    str+='*'
  }
- for(let space =row*2;space<=n*2-1;space++){
+ for(let space =2;space<=row+row-1;space++){
   str+=' '
  }
- for(let rightSide=1;rightSide<=row;rightSide++){
+ for(let rightSide=row;rightSide<=n;rightSide++){
   str+='*'
  }   
 console.log(str)
