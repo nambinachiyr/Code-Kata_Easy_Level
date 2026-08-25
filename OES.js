@@ -1,12 +1,11 @@
 /*
-939. Reverse Integer Sequence
+940. Sum of Numbers up to N
 
 Geekoin30
 Easy
 Topics
-Solved!
 Problem Statement:
-Write a code to get an integer N and print the values from N to 1.
+Write a code to get an integer N and print the sum of values from 1 to N.
 
 
 Input Description:
@@ -14,11 +13,11 @@ A single line contains an integer N.
 
 
 Output Description:
-Print the values from N to 1 in a separate line.
+Print the sum of values from 1 to N.
 
 
 Explanation:
-The values from N upto 1 is printed.
+The sum of values from 1-10 is 55.
 
 
 Sample Input:
@@ -26,18 +25,7 @@ Sample Input:
 
 
 Sample Output:
-10
-9
-8
-7
-6
-5
-4
-3
-2
-1
-
-
+55
 */
 
 const readline = require('readline');
@@ -53,11 +41,13 @@ rl.on('line', (data) => {
 });
 
 function result(n) {
- for(let row = n; row>=1; row--){
- 
-    console.log(row)
-  
- }
+  const arr = Array.from({length:n})
+  for(let i = 1;i<=n;i++){
+    arr[i-1]=i
+  }
+  const sum = arr.reduce((acc,cur)=>acc+cur,0)
+
+  console.log(sum)
 }
 
 rl.on('close', () => {
