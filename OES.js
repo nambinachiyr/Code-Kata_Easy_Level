@@ -1,23 +1,19 @@
 /*
-923. Half Pyramid Number Pattern-3
+924. X Number Pattern
 
-Geekoin50
+Geekoin60
 Medium
 Topics
 Problem Statement:
-Write a code to generate a half pyramid number pattern.
+Write a code to generate the X form of a number pattern.
 
 
 Input Description:
-Given an integer R indicates number of rows.Where 1<R<10
+Given an integer N indicates X pattern.Where 1<=N<=100
 
 
 Output Description:
-Print the number half pyramid pattern based on the given integer R.
-
-
-Explanation:
-From the given input R=5, print odd numbers in odd line,print even numbers in even lines, so first print 1,second line print 2 4,and till Rth row 1 3 5 7 9
+Print the numbers in X form based on the given integer N.Where 1<=N<=100
 
 
 Sample Input:
@@ -27,11 +23,15 @@ Sample Input:
 Sample Output:
 
 
-1  
-2 4  
-1 3 5  
-2 4 6 8  
-1 3 5 7 9  
+1       1  
+ 2     2  
+  3   3  
+   4 4  
+    5  
+   4 4  
+  3   3  
+ 2     2  
+1       1  
 */
 
 const readline = require('readline');
@@ -49,15 +49,47 @@ rl.on('line', (data) => {
 function result(n) {
  for(let row = 1; row<=n; row++){
   let str = ''
-  for(let num = 1; num<=row*2;num++){
-   if(num%2!==0 && row % 2 !==0){
-    str+=num+' '  
-  }else if(num % 2===0 && row % 2===0){
-    str+=num+' ' 
+
+  // Left Side -TOP
+  for(let space = 1;space<row;space++){
+    str+=' '
   }
-}
-console.log(str.trim())
+  for(let num = 1; num<=1;num++){
+   str+=row
+  }
+
+  // Right Side -TOP
+  for(let space = row; space<(n*2-row)-1; space++){
+    str+=' '
+  }
+  for(let num = 1;num<=1;num++){
+    if(row !== n){
+      str+=row
+    }
+  }
+console.log(str)
  }
+
+//  Left Side - BOTTOM
+for(let row = n-1;row>=1;row--){
+  let str= ''
+  for(let space = 1;space<row;space++){
+    str+=' '
+  }
+  for(let num = 1;num<=1;num++){
+    str+=row
+  }
+
+  // Right Side - BOTTOM
+  for(let space = 1;space<(n-row)*2;space++){
+    str+=' '
+  }
+  for(let num = 1;num<=1;num++){
+    str+=row
+  }
+
+  console.log(str)
+}
 }
 
 rl.on('close', () => {
