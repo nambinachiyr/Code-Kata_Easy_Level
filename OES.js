@@ -1,19 +1,19 @@
 /*
-924. X Number Pattern
+937. Print Numbers 1 to N
 
-Geekoin60
-Medium
+Geekoin20
+Easy
 Topics
 Problem Statement:
-Write a code to generate the X form of a number pattern.
+Write a code to get an integer N and print values from 1 till N in a separate line.
 
 
 Input Description:
-Given an integer N indicates X pattern.Where 1<=N<=100
+A single line contains an integer N.
 
 
 Output Description:
-Print the numbers in X form based on the given integer N.Where 1<=N<=100
+Print the values from 1 to N in a separate line.
 
 
 Sample Input:
@@ -21,17 +21,16 @@ Sample Input:
 
 
 Sample Output:
+1
+2
+3
+4
+5
 
 
-1       1  
- 2     2  
-  3   3  
-   4 4  
-    5  
-   4 4  
-  3   3  
- 2     2  
-1       1  
+Explanation:
+The values from 1 upto N is printed.
+
 */
 
 const readline = require('readline');
@@ -48,48 +47,8 @@ rl.on('line', (data) => {
 
 function result(n) {
  for(let row = 1; row<=n; row++){
-  let str = ''
-
-  // Left Side -TOP
-  for(let space = 1;space<row;space++){
-    str+=' '
-  }
-  for(let num = 1; num<=1;num++){
-   str+=row
-  }
-
-  // Right Side -TOP
-  for(let space = row; space<(n*2-row)-1; space++){
-    str+=' '
-  }
-  for(let num = 1;num<=1;num++){
-    if(row !== n){
-      str+=row
-    }
-  }
-console.log(str)
+  console.log(row)
  }
-
-//  Left Side - BOTTOM
-for(let row = n-1;row>=1;row--){
-  let str= ''
-  for(let space = 1;space<row;space++){
-    str+=' '
-  }
-  for(let num = 1;num<=1;num++){
-    str+=row
-  }
-
-  // Right Side - BOTTOM
-  for(let space = 1;space<(n-row)*2;space++){
-    str+=' '
-  }
-  for(let num = 1;num<=1;num++){
-    str+=row
-  }
-
-  console.log(str)
-}
 }
 
 rl.on('close', () => {
