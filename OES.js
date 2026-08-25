@@ -1,11 +1,12 @@
 /*
-938. Print Even Numbers up to N
+939. Reverse Integer Sequence
 
-Geekoin20
+Geekoin30
 Easy
 Topics
+Solved!
 Problem Statement:
-Write a code to get an integer N and print the even values from 1 till N in a separate line.
+Write a code to get an integer N and print the values from N to 1.
 
 
 Input Description:
@@ -13,22 +14,28 @@ A single line contains an integer N.
 
 
 Output Description:
-Print the even values from 1 to N in a separate line.
+Print the values from N to 1 in a separate line.
 
 
 Explanation:
-The even values from 1 upto N is printed.
+The values from N upto 1 is printed.
 
 
 Sample Input:
-6
+10
 
 
 Sample Output:
-2
-4
+10
+9
+8
+7
 6
-
+5
+4
+3
+2
+1
 
 
 */
@@ -46,10 +53,10 @@ rl.on('line', (data) => {
 });
 
 function result(n) {
- for(let row = 1; row<=n; row++){
-  if(row%2===0){
+ for(let row = n; row>=1; row--){
+ 
     console.log(row)
-  }
+  
  }
 }
 
