@@ -1,40 +1,38 @@
 /*
-921. Number and Alphabet Pyramid
+922. Generate a Square Pattern of 1s
 
-Geekoin60
-Medium
+Geekoin20
+Easy
 Topics
 Problem Statement:
-Write a code to generate a pyramid of numbers and aplhabets.
+Write a code to generate a square pattern using the number '1'.
 
 
 Input Description:
-Given an integer R indicates number of rows. Where 1<=R<=100
+Given an integer R indicates number of rows.Where 1<=R<=100
 
 
 Output Description:
-Print the number half pyramid pattern of multiples based on the given integer R.
+Print the square pattern with the number '1' in R*R form based on the given integer R.
 
 
 Explanation:
-From the given input R=8, print 8 rows in the form of pyramid with number & aplhabets.
+From the given input R=5, print R*R matrix with the value '1' only.
 
 
 Sample Input:
-8
+5
 
 
 Sample Output:
 
 
-       A1  
-      AB12  
-     ABC123  
-    ABCD1234  
-   ABCDE12345  
-  ABCDEF123456  
- ABCDEFG1234567  
-ABCDEFGH12345678  
+11111  
+11111  
+11111  
+11111  
+11111  
+
 
 */
 
@@ -53,14 +51,8 @@ rl.on('line', (data) => {
 function result(n) {
  for(let row = 1; row<=n; row++){
   let str = ''
-  for(let space=row;space<n;space++){
-    str+=' '
-  }
-  for(let l = 1;l<=row;l++){
-    str+=String.fromCharCode(l+64)
-  }
-  for(let num = 1; num<=row;num++){
-    str+=num
+  for(let num = 1; num<=n;num++){
+    str+=1
   }
   console.log(str)
  }
