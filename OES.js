@@ -1,11 +1,11 @@
 /*
-940. Sum of Numbers up to N
+941. Print Integer Digits
 
 Geekoin30
 Easy
 Topics
 Problem Statement:
-Write a code to get an integer N and print the sum of values from 1 to N.
+Write a code to get an integer N and print the digits of the integer.
 
 
 Input Description:
@@ -13,19 +13,20 @@ A single line contains an integer N.
 
 
 Output Description:
-Print the sum of values from 1 to N.
+Print the digits of the integer in a single line separated by space,
 
 
 Explanation:
-The sum of values from 1-10 is 55.
+The digits are splitted and displayed.
 
 
 Sample Input:
-10
+348
 
 
 Sample Output:
-55
+3 4 8
+
 */
 
 const readline = require('readline');
@@ -41,17 +42,11 @@ rl.on('line', (data) => {
 });
 
 function result(n) {
-  const arr = Array.from({length:n})
-  for(let i = 1;i<=n;i++){
-    arr[i-1]=i
-  }
-  const sum = arr.reduce((acc,cur)=>acc+cur,0)
-
-  console.log(sum)
 }
 
 rl.on('close', () => {
-  const n = Number(userInput[0]);
+  const n = userInput[0].split('').join(' ');
+  console.log(n)
 
-  result(n);
+  // result(n);
 });
