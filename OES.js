@@ -1,36 +1,42 @@
 /*
-919. Matrix Number Pattern
+920. Half Pyramid of Multiples
 
-Geekoin40
+Geekoin50
 Medium
 Topics
 Problem Statement:
-Write a code to generate a matrix number pattern.
+Write a code to generate a half pyramid pattern of mulitples of the given number.
 
 
 Input Description:
-Given an odd integer R indicates number of rows.R is always odd integer. Where 1<=R<=100
+Given an integer R indicates number of rows.Where 1<=R<=100
 
 
 Output Description:
-Print the matrix number pattern R*R based on the given integer R.
+Print the number half pyramid pattern of multiples based on the given integer R.
 
 
 Explanation:
-From the given input R=5, print the square matrix R*R.
+From the given input R=10, print 1 multiple in first line, print 2 multiples in second line with size 2, print 3 multiple with size 3,print 4 multiples with size 4,print until R rows with size R.
 
 
 Sample Input:
-5
+10
 
 
 Sample Output:
 
-33333  
-32223  
-32123  
-32223  
-33333  
+
+1  
+2 4  
+3 6 9  
+4 8 12 16  
+5 10 15 20 25  
+6 12 18 24 30 36  
+7 14 21 28 35 42 49  
+8 16 24 32 40 48 56 64  
+9 18 27 36 45 54 63 72 81  
+10 20 30 40 50 60 70 80 90 100  
 
 */
 
@@ -48,15 +54,20 @@ rl.on('line', (data) => {
 
 function result(n) {
  
-  let num = Math.round(n/2)
-  for(let row = 1; row<=n; row++){
-    let str = ''
-    for(let j = 1; j<=n; j++){
-      let min = Math.min(row,j,n-row+1,n-j+1) //(1,1,5-1+1,5-1+1) => min=(1)
-      let layer = num-min+1 //3-1+1=>3
-      str+=layer
+  let str = Array.from({length:n},()=>[])
+  for(let col = 1; col<=n; col++){
+    let num = 0
+    // if(col % 2 ===0 ){
+      for(let row=col;row<=n;row++){
+        str[row-1][col-1] = num+col*col
+      // }
+      num=num+col
     }
-    console.log(str)
+  }
+  // console.log(str.join(' '))
+
+  for(let row = 0;row<str.length;row++){
+    console.log(str[row].join(' '))
   }
  
 }
