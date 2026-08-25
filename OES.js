@@ -1,33 +1,31 @@
 /*
-945. LCM without GCD
+946. HCF of two integers
 
-Geekoin80
-Hard
+Geekoin40
+Medium
 Topics
 Problem Statement:
-Write a program to get a list of integers as input and find the LCM of the values without using GCD
+Write a code to get 2 integers as input and find the HCF of the 2 integer without using recursion or Euclidean algorithm.
 
 
 Input Description:
-First line contains an integer N, number of values.
-Second line contains N space separated values.
+A single line containing 2 integers separated by space.
 
 
 Output Description:
-Print the LCM of the values.
+Print the HCF of the integers.
 
 
 Explanation:
-The LCM of the 1,2,3,4,5 is 60
+The HCF of 2 and 3 is 1 as they are prime numbers.
 
 
 Sample Input:
-1 2 3 4 5
+2 3
 
 
 Sample Output:
-60
-
+1
 */
 
 const readline = require('readline');
@@ -43,28 +41,14 @@ rl.on('line', (data) => {
 });
 
 function result(a) {
-  const max = Math.max(...a)
-  let i = max
 
-  while(true){
-  //  This Condition will be always true until we found the tracate
-    let isLCM = true
-   for(let num =0 ;num<a.length;num++){
-    // Inside the array search for it's divided the max value
-    if(!Number.isInteger(i/a[num])){
-      // Check if is divide  is the Number is Integer or not
-      // console.log(i/a[num])
-      isLCM =false
-       break
+  let factors = []
+  for(let i=0;i<a[1];i++){
+    if(a[0]%i===0 && a[1]%i===0){
+     factors.push(i)
     }
   }
-  if(isLCM){
-    break
-  }
-  i+=max
-    // console.log(i,"o")
-  }
-  console.log(i)
+  console.log(factors[factors.length-1])
 }
 
 rl.on('close', () => {
