@@ -1,15 +1,15 @@
 /*
-920. Half Pyramid of Multiples
+921. Number and Alphabet Pyramid
 
-Geekoin50
+Geekoin60
 Medium
 Topics
 Problem Statement:
-Write a code to generate a half pyramid pattern of mulitples of the given number.
+Write a code to generate a pyramid of numbers and aplhabets.
 
 
 Input Description:
-Given an integer R indicates number of rows.Where 1<=R<=100
+Given an integer R indicates number of rows. Where 1<=R<=100
 
 
 Output Description:
@@ -17,26 +17,24 @@ Print the number half pyramid pattern of multiples based on the given integer R.
 
 
 Explanation:
-From the given input R=10, print 1 multiple in first line, print 2 multiples in second line with size 2, print 3 multiple with size 3,print 4 multiples with size 4,print until R rows with size R.
+From the given input R=8, print 8 rows in the form of pyramid with number & aplhabets.
 
 
 Sample Input:
-10
+8
 
 
 Sample Output:
 
 
-1  
-2 4  
-3 6 9  
-4 8 12 16  
-5 10 15 20 25  
-6 12 18 24 30 36  
-7 14 21 28 35 42 49  
-8 16 24 32 40 48 56 64  
-9 18 27 36 45 54 63 72 81  
-10 20 30 40 50 60 70 80 90 100  
+       A1  
+      AB12  
+     ABC123  
+    ABCD1234  
+   ABCDE12345  
+  ABCDEF123456  
+ ABCDEFG1234567  
+ABCDEFGH12345678  
 
 */
 
@@ -53,23 +51,19 @@ rl.on('line', (data) => {
 });
 
 function result(n) {
- 
-  let str = Array.from({length:n},()=>[])
-  for(let col = 1; col<=n; col++){
-    let num = 0
-    // if(col % 2 ===0 ){
-      for(let row=col;row<=n;row++){
-        str[row-1][col-1] = num+col*col
-      // }
-      num=num+col
-    }
+ for(let row = 1; row<=n; row++){
+  let str = ''
+  for(let space=row;space<n;space++){
+    str+=' '
   }
-  // console.log(str.join(' '))
-
-  for(let row = 0;row<str.length;row++){
-    console.log(str[row].join(' '))
+  for(let l = 1;l<=row;l++){
+    str+=String.fromCharCode(l+64)
   }
- 
+  for(let num = 1; num<=row;num++){
+    str+=num
+  }
+  console.log(str)
+ }
 }
 
 rl.on('close', () => {
