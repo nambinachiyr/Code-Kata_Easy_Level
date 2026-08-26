@@ -1,32 +1,24 @@
 /*
-948. Add Integers without Carry
+253. Nearest Neighbors in Array
 
-Geekoin40
+Geekoin60
 Medium
 Topics
 Problem Statement:
-Write a code to get 2 integers as input and add the integers without any carry.
+Given two numbers N,K and an array of size N, print the three nearest neighbours of K(nearest neighbours are numbers which have least difference with K).
 
 
 Input Description:
-A single line containing 2 integers.
-
-
-Output Description:
-Print sum of the 2 integers without carry
+Input Size : 4 <= N, K <= 100000
 
 
 Sample Input:
-44 66
+5 3
+1 2 3 4 6
 
 
 Sample Output:
-0
-
-
-Explanation:
-44+66 --> 4+6=0 and 4+6=0. 44+66=0.
-
+2 4 1
 */
 
 const readline = require('readline');
@@ -41,43 +33,28 @@ rl.on('line', (data) => {
   userInput.push(data.trim());
 });
 
-function result(num) {
-  let n1;
-  let n2;
-  for(let i=0; i<num.length-1; i++){
-  
-    let num1 = num[i].split('').map(n=>Number(n))
-    let num2 = num[i+1].split('').map(n=>Number(n))
-    
-    n1 = (num1[i]+num2[i]).toString()
-    n2 = (num1[i+1]+num2[i+1]).toString()   
+function result(num,k,arr) {
+  const filter = arr.filter(n=>n!==k)
+  let diff_k = []
+  for(let i=0; i<filter.length; i++){
+    let diff = Math.abs(k-filter[i]) // This function Using for Cacle the Negative Number
+    diff_k.push({
+      value:filter[i],
+      dif:diff
+    })
   }
- 
-  let ar1 = []
-  if(n1[1]===undefined){
-   ar1.push(n1[0])
+  diff_k.sort((a,b)=>a.dif-b.dif)
 
-  }else{
-    if(n1[1]!=='0'){
-     ar1.push(n1[1])
-    }
+  let nearestNumber = []
+  for(let i=0; i<3; i++){
+    nearestNumber.push(diff_k[i].value)
   }
-
-    if(n2[1]===undefined){
-   ar1.push(n2[0])
-
-  }else{
-    ar1.push(n2[1])
-  }
-  
-  console.log(ar1.join(''))
-
-
+  console.log(nearestNumber.join(' '))
  
 }
 
 rl.on('close', () => {
-  const num = userInput[0].split(' ');
-//  console.log(num)
-  result(num);
+  const [num,k] = userInput[0].split(' ').map(n=>Number(n));
+  const arr = userInput[1].split(' ').map(n=>Number(n))
+  result(num,k,arr);
 });
