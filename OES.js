@@ -1,31 +1,31 @@
 /*
-947. Smallest Power of 2 Greater Than N
+948. Add Integers without Carry
 
-Geekoin30
-Easy
+Geekoin40
+Medium
 Topics
 Problem Statement:
-Write a code to get a integer n as input and calculate the smallest perfect power of 2 greater than n.
+Write a code to get 2 integers as input and add the integers without any carry.
 
 
 Input Description:
-A single line containing an integer,n.
+A single line containing 2 integers.
 
 
 Output Description:
-Print the smallest perfect power of 2 greater than n.
-
-
-Explanation:
-The smallest perfect power of 2 greater than 48 is 64.
+Print sum of the 2 integers without carry
 
 
 Sample Input:
-48
+44 66
 
 
 Sample Output:
-64
+0
+
+
+Explanation:
+44+66 --> 4+6=0 and 4+6=0. 44+66=0.
 
 */
 
@@ -42,20 +42,42 @@ rl.on('line', (data) => {
 });
 
 function result(num) {
-  let n=1
- for(let i = 2;i<=num;i+2){
-  n*=i
-
-  if(n>num)
-  {
-    console.log(n)
-    break
+  let n1;
+  let n2;
+  for(let i=0; i<num.length-1; i++){
+  
+    let num1 = num[i].split('').map(n=>Number(n))
+    let num2 = num[i+1].split('').map(n=>Number(n))
+    
+    n1 = (num1[i]+num2[i]).toString()
+    n2 = (num1[i+1]+num2[i+1]).toString()   
   }
- }
+ 
+  let ar1 = []
+  if(n1[1]===undefined){
+   ar1.push(n1[0])
+
+  }else{
+    if(n1[1]!=='0'){
+     ar1.push(n1[1])
+    }
+  }
+
+    if(n2[1]===undefined){
+   ar1.push(n2[0])
+
+  }else{
+    ar1.push(n2[1])
+  }
+  
+  console.log(ar1.join(''))
+
+
+ 
 }
 
 rl.on('close', () => {
-  const num = Number(userInput[0]);
- 
+  const num = userInput[0].split(' ');
+//  console.log(num)
   result(num);
 });
