@@ -1,31 +1,32 @@
 /*
-946. HCF of two integers
+947. Smallest Power of 2 Greater Than N
 
-Geekoin40
-Medium
+Geekoin30
+Easy
 Topics
 Problem Statement:
-Write a code to get 2 integers as input and find the HCF of the 2 integer without using recursion or Euclidean algorithm.
+Write a code to get a integer n as input and calculate the smallest perfect power of 2 greater than n.
 
 
 Input Description:
-A single line containing 2 integers separated by space.
+A single line containing an integer,n.
 
 
 Output Description:
-Print the HCF of the integers.
+Print the smallest perfect power of 2 greater than n.
 
 
 Explanation:
-The HCF of 2 and 3 is 1 as they are prime numbers.
+The smallest perfect power of 2 greater than 48 is 64.
 
 
 Sample Input:
-2 3
+48
 
 
 Sample Output:
-1
+64
+
 */
 
 const readline = require('readline');
@@ -40,19 +41,21 @@ rl.on('line', (data) => {
   userInput.push(data.trim());
 });
 
-function result(a) {
+function result(num) {
+  let n=1
+ for(let i = 2;i<=num;i+2){
+  n*=i
 
-  let factors = []
-  for(let i=0;i<a[1];i++){
-    if(a[0]%i===0 && a[1]%i===0){
-     factors.push(i)
-    }
+  if(n>num)
+  {
+    console.log(n)
+    break
   }
-  console.log(factors[factors.length-1])
+ }
 }
 
 rl.on('close', () => {
-  const a = userInput[0].split(' ').map(n=>Number(n));
+  const num = Number(userInput[0]);
  
-  result(a);
+  result(num);
 });
