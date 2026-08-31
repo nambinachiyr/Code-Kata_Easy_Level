@@ -1,20 +1,33 @@
 /*
-182. First 1's Position in Binary Product
+183. Vowel Check in Strings
 
-Geekoin50
+Geekoin40
 Medium
 Topics
 Company
 Problem Statement:
-Print the position of first 1 from left to right, in binary representation of product of 2 integers after the first one.
+Given a number N and an array of N strings,Print yes, if all strings have atleast one vowel in them otherwise print no.
+
+
+Input Description:
+The input consists of an integer N (where N <= 1000), followed by N strings.
+
+
+Output Description:
+The output is "yes" if all N strings contain at least one vowel, and "no" otherwise.
 
 
 Sample Input:
-18 2
+5
+code
+overload
+vishal
+sundar
+anish
 
 
 Sample Output:
-4
+yes
 */
 
 const readline = require('readline');
@@ -29,28 +42,29 @@ rl.on('line', (data) => {
   userInput.push(data.trim());
 });
 
-function result(num) {
-  const mul = num.reduce((acc,cur)=>acc*cur,1)
-  const binaryNum = mul.toString(2)
-
+function result(num,strs) {
+  const vowelArr = ['a','e','i','o','u']
   let count = 0
-  if(binaryNum==='0'){
-    console.log(0)
-  }else{
-    for(let i=0; i<binaryNum.length; i++){
-    if(binaryNum[i]==='1'){
+  for(let i=0; i<num; i++){
+    let isVowel = false
+    for(let j=0; j<strs[i].length; j++){
+      if(vowelArr.includes(strs[i][j])){
+       isVowel = true
+       break
+      }
+    }if(!isVowel){
+      count=0
+      break
+    }else{
       count+=1
     }
-    if(count===2){
-      console.log(i+1)
-      break
-    }
-    // console.log(binaryNum[i])
+   
   }
-  }
+  console.log(count===num?"yes":'no')
 }
 
 rl.on('close', () => {
-  const num = userInput[0].split(' ').map(n=>Number(n))
-  result(num);
+  const num = Number(userInput[0])
+  const strs = userInput.slice(1,) 
+  result(num,strs);
 });
