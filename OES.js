@@ -1,28 +1,28 @@
 /*
-279. Find the Single Number
+179. Uppercase Every Kth Character
 
-Geekoin60
+Geekoin40
 Medium
 Topics
+Company
 Problem Statement:
-Given a number N followed by an array of N integers, every element appears twice except for one. Find that single one and print it.
+Given a string and a number K, change every kth character to uppercase from beginning in string.
 
 
 Input Description:
-The input consists of a number N followed by an array of N integers. N is the size of the array, where N <= 100000.
+The input consists of a string and an integer K.
 
 
 Output Description:
-The output is the single integer that appears only once in the array.
+The output is the modified string where every Kth character is converted to uppercase.
 
 
 Sample Input:
-5
-30 5 5 30 -45
+string 2
 
 
 Sample Output:
--45
+sTrInG
 */
 
 const readline = require('readline');
@@ -37,23 +37,23 @@ rl.on('line', (data) => {
   userInput.push(data.trim());
 });
 
-function result(num,arr) {
-  for(let i =0 ;i<num;i++){
-    let count = 0
-  for(let j=0; j<num;j++){
-    if(arr[i]===arr[j]){
-      count=count+1
-    }
+function result(k,arr) {
+  let str = ''
+  let count = 0
+  for(let i=0; i<arr.length; i++){
+    // console.log(k,count)
+    count+=1
+     if(Number(k)===count){
+       str+=arr[i].toUpperCase()
+       count=0
+      }else{
+        str+=arr[i]
+      } 
   }
-  if(count===1){
-    console.log(arr[i])
-  }
- }
-
+  console.log(str)
 }
 
 rl.on('close', () => {
-  const [num] = userInput[0].split(' ').map(n=>Number(n));
-  const arr = userInput[1].split(' ').map(n=>Number(n))
-  result(num,arr);
+  const [arr,k] = userInput[0].split(' ')
+  result(k,arr);
 });
